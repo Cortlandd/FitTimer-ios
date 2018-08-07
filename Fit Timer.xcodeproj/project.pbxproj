@@ -13,6 +13,7 @@
 		7FE8EA5A21187F6400FD1596 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8EA5921187F6400FD1596 /* Assets.xcassets */; };
 		7FE8EA5D21187F6400FD1596 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8EA5B21187F6400FD1596 /* LaunchScreen.storyboard */; };
 		7FE8EA6821187F6500FD1596 /* Fit_TimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8EA6721187F6500FD1596 /* Fit_TimerUITests.swift */; };
+		7FE8EA7521192E5F00FD1596 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8EA7421192E5F00FD1596 /* PopupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		7FE8EA6321187F6500FD1596 /* Fit TimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fit TimerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE8EA6721187F6500FD1596 /* Fit_TimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fit_TimerUITests.swift; sourceTree = "<group>"; };
 		7FE8EA6921187F6500FD1596 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FE8EA7421192E5F00FD1596 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				7FE8EA5921187F6400FD1596 /* Assets.xcassets */,
 				7FE8EA5B21187F6400FD1596 /* LaunchScreen.storyboard */,
 				7FE8EA5E21187F6400FD1596 /* Info.plist */,
+				7FE8EA7421192E5F00FD1596 /* PopupViewController.swift */,
 			);
 			path = "Fit Timer";
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 			files = (
 				7FE8EA5521187F6100FD1596 /* ViewController.swift in Sources */,
 				7FE8EA5321187F6100FD1596 /* AppDelegate.swift in Sources */,
+				7FE8EA7521192E5F00FD1596 /* PopupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
