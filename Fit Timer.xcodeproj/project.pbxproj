@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F08E391211BA2B000D6D9C9 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08E390211BA2B000D6D9C9 /* TimerModel.swift */; };
+		7F08E395212AF45500D6D9C9 /* TimerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08E394212AF45500D6D9C9 /* TimerStore.swift */; };
+		7F08E397212B5C4600D6D9C9 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08E396212B5C4600D6D9C9 /* TimerViewController.swift */; };
+		7F88C399212BAF3100C7D622 /* TimerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F88C398212BAF3100C7D622 /* TimerCell.swift */; };
+		7F88C39B212C4D2500C7D622 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F88C39A212C4D2500C7D622 /* DetailViewController.swift */; };
 		7FE8EA5321187F6100FD1596 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8EA5221187F6100FD1596 /* AppDelegate.swift */; };
 		7FE8EA5521187F6100FD1596 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8EA5421187F6100FD1596 /* ViewController.swift */; };
 		7FE8EA5821187F6100FD1596 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8EA5621187F6100FD1596 /* Main.storyboard */; };
@@ -27,6 +32,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F08E390211BA2B000D6D9C9 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
+		7F08E394212AF45500D6D9C9 /* TimerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStore.swift; sourceTree = "<group>"; };
+		7F08E396212B5C4600D6D9C9 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		7F88C398212BAF3100C7D622 /* TimerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCell.swift; sourceTree = "<group>"; };
+		7F88C39A212C4D2500C7D622 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		7FE8EA4F21187F6100FD1596 /* Fit Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE8EA5221187F6100FD1596 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FE8EA5421187F6100FD1596 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,11 +91,16 @@
 			children = (
 				7FE8EA5221187F6100FD1596 /* AppDelegate.swift */,
 				7FE8EA5421187F6100FD1596 /* ViewController.swift */,
+				7F08E396212B5C4600D6D9C9 /* TimerViewController.swift */,
 				7FE8EA5621187F6100FD1596 /* Main.storyboard */,
 				7FE8EA5921187F6400FD1596 /* Assets.xcassets */,
 				7FE8EA5B21187F6400FD1596 /* LaunchScreen.storyboard */,
 				7FE8EA5E21187F6400FD1596 /* Info.plist */,
 				7FE8EA7421192E5F00FD1596 /* PopupViewController.swift */,
+				7F08E390211BA2B000D6D9C9 /* TimerModel.swift */,
+				7F08E394212AF45500D6D9C9 /* TimerStore.swift */,
+				7F88C398212BAF3100C7D622 /* TimerCell.swift */,
+				7F88C39A212C4D2500C7D622 /* DetailViewController.swift */,
 			);
 			path = "Fit Timer";
 			sourceTree = "<group>";
@@ -200,9 +215,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F88C399212BAF3100C7D622 /* TimerCell.swift in Sources */,
 				7FE8EA5521187F6100FD1596 /* ViewController.swift in Sources */,
+				7F08E395212AF45500D6D9C9 /* TimerStore.swift in Sources */,
+				7F08E391211BA2B000D6D9C9 /* TimerModel.swift in Sources */,
+				7F08E397212B5C4600D6D9C9 /* TimerViewController.swift in Sources */,
 				7FE8EA5321187F6100FD1596 /* AppDelegate.swift in Sources */,
 				7FE8EA7521192E5F00FD1596 /* PopupViewController.swift in Sources */,
+				7F88C39B212C4D2500C7D622 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
