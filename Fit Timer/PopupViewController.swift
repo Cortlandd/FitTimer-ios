@@ -36,6 +36,7 @@ class PopupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        secondsField.keyboardType = UIKeyboardType.numberPad
     }
     
     

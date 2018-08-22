@@ -73,7 +73,7 @@ class TimerViewController: UITableViewController {
         let timers = timerStore.allTimers[indexPath.row]
         
         cell.workoutLabel?.text = timers.workout
-        cell.secondsLabel?.text = "\(timers.secondsPick) Seconds"
+        cell.secondsLabel?.text = timers.secondsPick
         
         return cell
     }

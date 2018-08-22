@@ -10,6 +10,14 @@ import UIKit
 
 class TimerCell: UITableViewCell {
 
+    var timer = Timer()
+    
+    @IBAction func playCellButton(_ sender: UIButton) {
+            
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCellTimer), userInfo: nil, repeats: true)
+        
+        
+    }
     @IBOutlet weak var workoutLabel: UILabel!
     @IBOutlet weak var secondsLabel: UILabel!
     
@@ -26,10 +34,24 @@ class TimerCell: UITableViewCell {
         secondsLabel.adjustsFontForContentSizeCategory = true
     }
     
+    @objc func updateCellTimer() {
+        
+        // TODO: How do I reset this time back to its initial time?
+        
+        var seconds: Int = Int(secondsLabel.text!)!
+        seconds -= 1
+        secondsLabel.text = String(seconds)
+        
+        if (seconds == 0) {
+            timer.invalidate()
+            //secondsLabel.text! = startingValue
+        }
+        
+    }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 
