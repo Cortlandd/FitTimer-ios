@@ -53,8 +53,13 @@ class TimerViewController: UITableViewController {
                 let timer = timerStore.allTimers[row]
                 let detailViewController = segue.destination as! DetailViewController
                 detailViewController.timerModel = timer
-            } default:
-                preconditionFailure("Unexpected segue identifier.")
+            }
+        case "showAddPopup"?:
+            if (segue.destination.isKind(of: PopupViewController.self)) {
+                (segue.destination as! PopupViewController).timerStore = timerStore
+            }
+        default:
+            preconditionFailure("Unexpected segue identifier.")
         }
     }
     

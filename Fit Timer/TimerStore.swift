@@ -18,6 +18,7 @@
 import UIKit
 
 class TimerStore {
+    
     var allTimers = [TimerModel]()
     
     @discardableResult func customTimer(workout: String, seconds: String) -> TimerModel {

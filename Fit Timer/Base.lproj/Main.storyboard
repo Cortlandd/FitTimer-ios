@@ -74,7 +74,7 @@
                     <navigationItem key="navigationItem" title="Fit Timer" id="2f5-Zd-WHP">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sls-cV-IeV">
                             <connections>
-                                <action selector="addNewTimer:" destination="94h-fj-HfI" id="Uez-xU-2a1"/>
+                                <segue destination="XxZ-vQ-Jqy" kind="show" identifier="showAddPopup" id="Sfn-uW-4WB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -144,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOP-Aw-2Xs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2896.8000000000002" y="132.68365817091455"/>
+            <point key="canvasLocation" x="2238" y="-135"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="zdY-vF-Qky">
@@ -235,7 +235,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2232.8000000000002" y="132.68365817091455"/>
+            <point key="canvasLocation" x="2238" y="595"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HR4-Hx-YZc">
