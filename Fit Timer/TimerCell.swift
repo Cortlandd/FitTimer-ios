@@ -16,10 +16,11 @@ class TimerCell: UITableViewCell {
             
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCellTimer), userInfo: nil, repeats: true)
         
-        
     }
+    
     @IBOutlet weak var workoutLabel: UILabel!
     @IBOutlet weak var secondsLabel: UILabel!
+    @IBOutlet weak var secondsText: UILabel!
     
     /*
      The method awakeFromNib() gets called on an object after it is loaded
@@ -32,6 +33,7 @@ class TimerCell: UITableViewCell {
         // Initialization code
         workoutLabel.adjustsFontForContentSizeCategory = true
         secondsLabel.adjustsFontForContentSizeCategory = true
+        secondsText.adjustsFontForContentSizeCategory = true
     }
     
     @objc func updateCellTimer() {
@@ -48,7 +50,6 @@ class TimerCell: UITableViewCell {
         }
         
     }
-    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
