@@ -47,14 +47,20 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWH-Eb-XWw">
-                                            <rect key="frame" x="40" y="54" width="65" height="22"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWH-Eb-XWw">
+                                            <rect key="frame" x="40" y="55.5" width="65" height="20.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUw-Be-pVK" userLabel="Countdown Label">
+                                            <rect key="frame" x="179" y="29" width="16.5" height="31.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWh-r0-eOb">
-                                            <rect key="frame" x="172" y="29" width="30" height="30"/>
+                                            <rect key="frame" x="329" y="30" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Play"/>
                                             <connections>
@@ -65,18 +71,21 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vbK-QT-BNS" secondAttribute="trailing" constant="20" symbolic="YES" id="6LC-rJ-XWW"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="vbK-QT-BNS" secondAttribute="bottom" constant="2" id="HQF-Ej-6gn"/>
+                                        <constraint firstItem="DUw-Be-pVK" firstAttribute="centerX" secondItem="BuW-in-TQo" secondAttribute="centerX" id="KVh-hJ-XTp"/>
                                         <constraint firstItem="aax-HY-4gk" firstAttribute="top" secondItem="BuW-in-TQo" secondAttribute="topMargin" id="SJV-RA-NK6"/>
                                         <constraint firstItem="vbK-QT-BNS" firstAttribute="leading" secondItem="aax-HY-4gk" secondAttribute="leading" id="avr-3h-hso"/>
                                         <constraint firstItem="aax-HY-4gk" firstAttribute="leading" secondItem="BuW-in-TQo" secondAttribute="leadingMargin" id="gUY-t2-cyg"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="vbK-QT-BNS" secondAttribute="bottom" constant="2" id="nc6-4m-imR"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AWH-Eb-XWw" secondAttribute="trailing" constant="20" symbolic="YES" id="nxP-Sv-l4b"/>
                                         <constraint firstItem="AWH-Eb-XWw" firstAttribute="baseline" secondItem="vbK-QT-BNS" secondAttribute="baseline" constant="-1" id="r4l-dX-qLv"/>
+                                        <constraint firstItem="DUw-Be-pVK" firstAttribute="centerY" secondItem="BuW-in-TQo" secondAttribute="centerY" id="suF-tF-yoz"/>
                                         <constraint firstItem="AWH-Eb-XWw" firstAttribute="leading" secondItem="vbK-QT-BNS" secondAttribute="trailing" constant="3" id="vaa-R5-Yi9"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aax-HY-4gk" secondAttribute="trailing" constant="20" symbolic="YES" id="wXY-cU-vkz"/>
                                         <constraint firstItem="vbK-QT-BNS" firstAttribute="top" secondItem="aax-HY-4gk" secondAttribute="bottom" constant="6" id="z22-b3-da8"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="countdownLabel" destination="DUw-Be-pVK" id="GG9-88-gQH"/>
                                     <outlet property="secondsLabel" destination="vbK-QT-BNS" id="gOY-Vv-dfz"/>
                                     <outlet property="secondsText" destination="AWH-Eb-XWw" id="WDN-ph-qhO"/>
                                     <outlet property="workoutLabel" destination="aax-HY-4gk" id="3zF-Ai-cQF"/>
@@ -187,7 +196,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oTs-5j-wvc" customClass="RTextField" customModule="Homepwner" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oTs-5j-wvc" customClass="RTextField" customModule="Fit_Timer" customModuleProvider="target">
                                                         <rect key="frame" x="75" y="0.0" width="268" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -205,7 +214,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rG4-Ot-WCY" customClass="RTextField" customModule="Homepwner" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rG4-Ot-WCY" customClass="RTextField" customModule="Fit_Timer" customModuleProvider="target">
                                                         <rect key="frame" x="75" y="0.0" width="268" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>

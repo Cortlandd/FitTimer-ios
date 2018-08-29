@@ -10,14 +10,21 @@ import UIKit
 
 class TimerCell: UITableViewCell {
 
+    // timer variable used to schedule the countdown
     var timer = Timer()
     
+    // Keeps track of remaining seconds
+    //var secondsRemaining = 1
+    
     @IBAction func playCellButton(_ sender: UIButton) {
-            
+        
+        //countdownLabel.text = String(secondsRemaining)
+        
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCellTimer), userInfo: nil, repeats: true)
         
     }
     
+    @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var workoutLabel: UILabel!
     @IBOutlet weak var secondsLabel: UILabel!
     @IBOutlet weak var secondsText: UILabel!
@@ -38,11 +45,15 @@ class TimerCell: UITableViewCell {
     
     @objc func updateCellTimer() {
         
-        // TODO: How do I reset this time back to its initial time?
+        //var secondsRemaining = Int(secondsLabel.text!)!
+        //secondsRemaining -= 1
         
         var seconds: Int = Int(secondsLabel.text!)!
         seconds -= 1
         secondsLabel.text = String(seconds)
+        
+        // why wont you work!!!
+        //countdownLabel.text = String(seconds)
         
         if (seconds == 0) {
             timer.invalidate()
