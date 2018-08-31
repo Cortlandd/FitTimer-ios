@@ -48,23 +48,29 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWH-Eb-XWw">
-                                            <rect key="frame" x="40" y="55.5" width="65" height="20.5"/>
+                                            <rect key="frame" x="40" y="55" width="65" height="21"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUw-Be-pVK" userLabel="Countdown Label">
-                                            <rect key="frame" x="179" y="29" width="16.5" height="31.5"/>
+                                            <rect key="frame" x="179" y="29" width="17" height="32"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWh-r0-eOb">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWh-r0-eOb">
                                             <rect key="frame" x="329" y="30" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Play"/>
                                             <connections>
                                                 <action selector="playCellButton:" destination="Yvm-K7-1Px" eventType="touchUpInside" id="8HR-8F-ho1"/>
+                                            </connections>
+                                        </button>
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7I-4n-AIb">
+                                            <rect key="frame" x="328" y="30" width="32" height="30"/>
+                                            <state key="normal" title="Stop"/>
+                                            <connections>
+                                                <action selector="stopCellButton:" destination="Yvm-K7-1Px" eventType="touchUpInside" id="Pjf-Js-qxV"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -72,12 +78,16 @@
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vbK-QT-BNS" secondAttribute="trailing" constant="20" symbolic="YES" id="6LC-rJ-XWW"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="vbK-QT-BNS" secondAttribute="bottom" constant="2" id="HQF-Ej-6gn"/>
                                         <constraint firstItem="DUw-Be-pVK" firstAttribute="centerX" secondItem="BuW-in-TQo" secondAttribute="centerX" id="KVh-hJ-XTp"/>
+                                        <constraint firstItem="KWh-r0-eOb" firstAttribute="centerY" secondItem="DUw-Be-pVK" secondAttribute="centerY" id="MxX-lc-Fn7"/>
                                         <constraint firstItem="aax-HY-4gk" firstAttribute="top" secondItem="BuW-in-TQo" secondAttribute="topMargin" id="SJV-RA-NK6"/>
                                         <constraint firstItem="vbK-QT-BNS" firstAttribute="leading" secondItem="aax-HY-4gk" secondAttribute="leading" id="avr-3h-hso"/>
+                                        <constraint firstItem="KWh-r0-eOb" firstAttribute="trailing" secondItem="BuW-in-TQo" secondAttribute="trailingMargin" id="ctL-r4-I3Z"/>
                                         <constraint firstItem="aax-HY-4gk" firstAttribute="leading" secondItem="BuW-in-TQo" secondAttribute="leadingMargin" id="gUY-t2-cyg"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="vbK-QT-BNS" secondAttribute="bottom" constant="2" id="nc6-4m-imR"/>
+                                        <constraint firstItem="KWh-r0-eOb" firstAttribute="centerX" secondItem="v7I-4n-AIb" secondAttribute="centerX" id="nrb-9m-mdc"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AWH-Eb-XWw" secondAttribute="trailing" constant="20" symbolic="YES" id="nxP-Sv-l4b"/>
                                         <constraint firstItem="AWH-Eb-XWw" firstAttribute="baseline" secondItem="vbK-QT-BNS" secondAttribute="baseline" constant="-1" id="r4l-dX-qLv"/>
+                                        <constraint firstItem="KWh-r0-eOb" firstAttribute="centerY" secondItem="v7I-4n-AIb" secondAttribute="centerY" id="sAh-aW-9Dt"/>
                                         <constraint firstItem="DUw-Be-pVK" firstAttribute="centerY" secondItem="BuW-in-TQo" secondAttribute="centerY" id="suF-tF-yoz"/>
                                         <constraint firstItem="AWH-Eb-XWw" firstAttribute="leading" secondItem="vbK-QT-BNS" secondAttribute="trailing" constant="3" id="vaa-R5-Yi9"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aax-HY-4gk" secondAttribute="trailing" constant="20" symbolic="YES" id="wXY-cU-vkz"/>
@@ -86,8 +96,10 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="countdownLabel" destination="DUw-Be-pVK" id="GG9-88-gQH"/>
+                                    <outlet property="playCellButton" destination="KWh-r0-eOb" id="Ybq-zk-Yhv"/>
                                     <outlet property="secondsLabel" destination="vbK-QT-BNS" id="gOY-Vv-dfz"/>
                                     <outlet property="secondsText" destination="AWH-Eb-XWw" id="WDN-ph-qhO"/>
+                                    <outlet property="stopCellButton" destination="v7I-4n-AIb" id="nxt-K3-GsX"/>
                                     <outlet property="workoutLabel" destination="aax-HY-4gk" id="3zF-Ai-cQF"/>
                                     <segue destination="VV8-MK-kem" kind="show" identifier="showTimer" id="BLh-7T-udc"/>
                                 </connections>

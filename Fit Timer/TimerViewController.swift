@@ -75,6 +75,9 @@ class TimerViewController: UITableViewController {
         cell.workoutLabel?.text = timers.workout
         cell.secondsLabel?.text = timers.secondsPick
         
+        // Assign the middle timer text to be the same as the seconds time
+        cell.countdownLabel?.text = timers.secondsPick
+        
         return cell
     }
     

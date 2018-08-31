@@ -13,16 +13,31 @@ class TimerCell: UITableViewCell {
     // timer variable used to schedule the countdown
     var timer = Timer()
     
-    // Keeps track of remaining seconds
-    //var secondsRemaining = 1
     
+    @IBOutlet weak var playCellButton: UIButton!
     @IBAction func playCellButton(_ sender: UIButton) {
         
         //countdownLabel.text = String(secondsRemaining)
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCellTimer), userInfo: nil, repeats: true)
         
+        playCellButton.isHidden = true
+        stopCellButton.isHidden = false
+        
     }
+    
+    @IBOutlet weak var stopCellButton: UIButton!
+    @IBAction func stopCellButton(_ sender: UIButton) {
+        
+        timer.invalidate()
+        
+        playCellButton.isHidden = false
+        stopCellButton.isHidden = true
+        
+        countdownLabel.text = secondsLabel.text
+        
+    }
+    
     
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var workoutLabel: UILabel!
@@ -45,22 +60,21 @@ class TimerCell: UITableViewCell {
     
     @objc func updateCellTimer() {
         
-        //var secondsRemaining = Int(secondsLabel.text!)!
-        //secondsRemaining -= 1
+        var secondsRemaining: Int = Int(countdownLabel.text!)!
+        secondsRemaining -= 1
+        countdownLabel.text = String(secondsRemaining)
         
-        var seconds: Int = Int(secondsLabel.text!)!
-        seconds -= 1
-        secondsLabel.text = String(seconds)
-        
-        // why wont you work!!!
-        //countdownLabel.text = String(seconds)
-        
-        if (seconds == 0) {
+        if (secondsRemaining == 0) {
             timer.invalidate()
-            //secondsLabel.text! = startingValue
+            
+            countdownLabel.text = secondsLabel.text
+            
+            playCellButton.isHidden = false
+            stopCellButton.isHidden = true
         }
         
     }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
