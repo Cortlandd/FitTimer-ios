@@ -23,6 +23,9 @@
                             <rect key="frame" x="0.0" y="118" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Play All"/>
+                            <connections>
+                                <action selector="playAllCellButton:" destination="94h-fj-HfI" eventType="touchUpInside" id="It8-Ta-HvR"/>
+                            </connections>
                         </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimerCell" rowHeight="90" id="Yvm-K7-1Px" customClass="TimerCell" customModule="Fit_Timer" customModuleProvider="target">

@@ -10,6 +10,13 @@ import UIKit
 
 class TimerViewController: UITableViewController {
     
+    var timerStore: TimerStore!
+    
+    @IBAction func playAllCellButton(_ sender: Any) {
+        
+        // For every cell listed, tap the play button or do its functionality 1 by 1
+    }
+    
     @IBAction func addNewTimer(_ sender: UIBarButtonItem) {
         // Create a new item and add it to the store
         let newTimer = timerStore.createTimer()
@@ -20,8 +27,6 @@ class TimerViewController: UITableViewController {
             tableView.insertRows(at: [indexPath], with: .automatic)
         }
     }
-    
-    var timerStore: TimerStore!
     
     override func viewDidLoad() {
         super.viewDidLoad()
