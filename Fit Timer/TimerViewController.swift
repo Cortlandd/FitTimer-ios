@@ -12,9 +12,22 @@ class TimerViewController: UITableViewController {
     
     var timerStore: TimerStore!
     
+    var timer = Timer()
+    
+    let playAllSerialQueue = DispatchQueue(label: "playAllSerialQueue")
+    
     @IBAction func playAllCellButton(_ sender: Any) {
+        iterateTimerCells()
         
-        // For every cell listed, tap the play button or do its functionality 1 by 1
+    }
+    
+    func iterateTimerCells() {
+        
+        let cells = self.tableView.visibleCells as! [TimerCell]
+        for cell in cells {
+            
+            cell.playCellButton(nil)
+        }
     }
     
     @IBAction func addNewTimer(_ sender: UIBarButtonItem) {

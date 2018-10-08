@@ -15,7 +15,7 @@ class TimerCell: UITableViewCell {
     
     
     @IBOutlet weak var playCellButton: UIButton!
-    @IBAction func playCellButton(_ sender: UIButton) {
+    @IBAction func playCellButton(_ sender: UIButton?) {
         
         //countdownLabel.text = String(secondsRemaining)
         
