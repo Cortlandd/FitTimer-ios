@@ -14,19 +14,36 @@ class TimerViewController: UITableViewController {
     
     var timer = Timer()
     
-    let playAllSerialQueue = DispatchQueue(label: "playAllSerialQueue")
     
     @IBAction func playAllCellButton(_ sender: Any) {
         iterateTimerCells()
         
     }
     
+    let playAllSerialQueue = DispatchQueue(label: "playAllSerialQueue")
     func iterateTimerCells() {
+        let playAllSemaphore = DispatchSemaphore(value: 1 )
         
         let cells = self.tableView.visibleCells as! [TimerCell]
         for cell in cells {
             
-            cell.playCellButton(nil)
+                cell.playCellButton(nil)
+                if cell.countdownLabel.text == "0" {
+                    self.playAllSerialQueue.async {
+                        playAllSemaphore.signal()
+                    }
+                } else {
+                    playAllSerialQueue.async {
+                        playAllSemaphore.wait()
+                    }
+            }
+            
+            /*
+            Other than that, remember that `playAllSerialQueue.async { /* ... */ }`
+             executes on a background thread. `playCellButton()` might have to do its
+             work of creating timers and/or updating the UI back on the main
+             thread, through `DispatchQueue.main.async { /* ... */ }`.
+            */
         }
     }
     
