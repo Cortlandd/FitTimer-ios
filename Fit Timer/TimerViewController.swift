@@ -27,15 +27,10 @@ class TimerViewController: UITableViewController {
         let cells = self.tableView.visibleCells as! [TimerCell]
         for cell in cells {
             
-                cell.playCellButton(nil)
-                if cell.countdownLabel.text == "0" {
-                    self.playAllSerialQueue.async {
-                        playAllSemaphore.signal()
-                    }
-                } else {
-                    playAllSerialQueue.async {
-                        playAllSemaphore.wait()
-                    }
+            
+            self.playAllSerialQueue.async {
+                cell.playCellButton(nil, semaphore: playAllSemaphore)
+                playAllSemaphore.wait()
             }
             
             /*
