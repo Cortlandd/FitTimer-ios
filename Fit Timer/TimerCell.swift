@@ -13,13 +13,15 @@ class TimerCell: UITableViewCell {
     // timer variable used to schedule the countdown
     var timer = Timer()
     
-    
     @IBOutlet weak var playCellButton: UIButton!
-    @IBAction func playCellButton(_ sender: UIButton?) {
+    @IBAction func playCellButton(_ sender: UIButton?, semaphore: DispatchSemaphore) {
+    
+        let t = DispatchSource.makeTimerSource()
         
-        //countdownLabel.text = String(secondsRemaining)
-        
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCellTimer), userInfo: nil, repeats: true)
+        t.schedule(deadline: .now(), repeating: .seconds(1))
+        t.setEventHandler(handler: { [weak self] in
+            self?.updateCellTimer(timer: t, semaphore: semaphore)
+        })
         
         playCellButton.isHidden = true
         stopCellButton.isHidden = false
@@ -58,14 +60,15 @@ class TimerCell: UITableViewCell {
         secondsText.adjustsFontForContentSizeCategory = true
     }
     
-    @objc func updateCellTimer() {
+    @objc func updateCellTimer(timer: DispatchSourceTimer, semaphore: DispatchSemaphore) {
         
         var secondsRemaining: Int = Int(countdownLabel.text!)!
         secondsRemaining -= 1
         countdownLabel.text = String(secondsRemaining)
         
         if (secondsRemaining == 0) {
-            timer.invalidate()
+            timer.cancel()
+            semaphore.signal()
             
             countdownLabel.text = secondsLabel.text
             
