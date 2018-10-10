@@ -11,27 +11,22 @@ import UIKit
 class TimerCell: UITableViewCell {
 
     // timer variable used to schedule the countdown
-    var timer = Timer()
+    var timer : DispatchSourceTimer?
     
     @IBOutlet weak var playCellButton: UIButton!
-    @IBAction func playCellButton(_ sender: UIButton?, semaphore: DispatchSemaphore) {
+    @IBAction func playCellButton(_ sender: UIButton?) {
     
-        let t = DispatchSource.makeTimerSource()
+        play(semaphore: nil)
         
-        t.schedule(deadline: .now(), repeating: .seconds(1))
-        t.setEventHandler(handler: { [weak self] in
-            self?.updateCellTimer(timer: t, semaphore: semaphore)
-        })
-        
-        playCellButton.isHidden = true
-        stopCellButton.isHidden = false
         
     }
+    
+    
     
     @IBOutlet weak var stopCellButton: UIButton!
     @IBAction func stopCellButton(_ sender: UIButton) {
         
-        timer.invalidate()
+        timer?.cancel()
         
         playCellButton.isHidden = false
         stopCellButton.isHidden = true
@@ -60,15 +55,37 @@ class TimerCell: UITableViewCell {
         secondsText.adjustsFontForContentSizeCategory = true
     }
     
-    @objc func updateCellTimer(timer: DispatchSourceTimer, semaphore: DispatchSemaphore) {
+    
+    @objc func play(semaphore: DispatchSemaphore?) {
+     
+        timer?.cancel()
+        
+        timer = DispatchSource.makeTimerSource(queue: DispatchQueue.main)
+        timer?.schedule(deadline: .now(), repeating: .seconds(1))
+        
+        timer?.setEventHandler(handler: { [weak self] in
+            self!.updateCellTimer(semaphore: semaphore)
+        })
+        
+        timer?.resume()
+        
+        DispatchQueue.main.async {
+            self.playCellButton.isHidden = true
+            self.stopCellButton.isHidden = false
+        }
+        
+        
+    }
+    
+    @objc func updateCellTimer(semaphore: DispatchSemaphore?) {
         
         var secondsRemaining: Int = Int(countdownLabel.text!)!
         secondsRemaining -= 1
         countdownLabel.text = String(secondsRemaining)
         
         if (secondsRemaining == 0) {
-            timer.cancel()
-            semaphore.signal()
+            timer?.cancel()
+            semaphore?.signal()
             
             countdownLabel.text = secondsLabel.text
             
