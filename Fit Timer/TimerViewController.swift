@@ -11,20 +11,21 @@ import UIKit
 class TimerViewController: UITableViewController {
     
     var timerStore: TimerStore!
-    
-    var timer = Timer()
+    var playAllSemaphore : DispatchSemaphore?
     
     @IBAction func playAllCellButton(_ sender: Any) {
     
         
         let cells = self.tableView.visibleCells as! [TimerCell]
         
-        let semaphore = DispatchSemaphore(value: 1)
+        if (playAllSemaphore == nil) {
+            playAllSemaphore = DispatchSemaphore(value: 1)
+        }
         
         DispatchQueue.global().async {
             for cell in cells {
-                semaphore.wait()
-                cell.play(semaphore: semaphore)
+                self.playAllSemaphore?.wait()
+                cell.play(semaphore: self.playAllSemaphore)
             }
         }
         
