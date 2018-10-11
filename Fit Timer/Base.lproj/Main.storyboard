@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0xK-Pz-lRz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0xK-Pz-lRz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -133,50 +132,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uiU-SR-TvN">
-                                <rect key="frame" x="16" y="142" width="343" height="247"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avq-T4-YEF" userLabel="Close Popup">
-                                        <rect key="frame" x="102" y="160" width="51" height="47"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="closePopup"/>
-                                        <state key="normal" title="Close"/>
-                                        <connections>
-                                            <action selector="closePopup:" destination="XxZ-vQ-Jqy" eventType="touchUpInside" id="cF9-I7-pCh"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Workout" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPP-s8-kq7">
-                                        <rect key="frame" x="67" y="94" width="221" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="workoutText"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Seconds" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K14-Sy-Op0">
-                                        <rect key="frame" x="123" y="56" width="97" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVL-ig-XIQ" userLabel="Save Popup">
-                                        <rect key="frame" x="195" y="160" width="47" height="47"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="savePopup"/>
-                                        <state key="normal" title="Save"/>
-                                        <connections>
-                                            <action selector="btnNewFitTimer:" destination="XxZ-vQ-Jqy" eventType="touchUpInside" id="Y5R-Ez-ObL"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Seconds" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K14-Sy-Op0">
+                                <rect key="frame" x="139" y="98" width="97" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avq-T4-YEF" userLabel="Close Popup">
+                                <rect key="frame" x="72" y="205" width="100" height="47"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="closePopup"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="Jya-Ar-c7j"/>
+                                </constraints>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closePopup:" destination="XxZ-vQ-Jqy" eventType="touchUpInside" id="cF9-I7-pCh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVL-ig-XIQ" userLabel="Save Popup">
+                                <rect key="frame" x="204" y="205" width="100" height="47"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="savePopup"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="btnNewFitTimer:" destination="XxZ-vQ-Jqy" eventType="touchUpInside" id="Y5R-Ez-ObL"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Workout" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPP-s8-kq7">
+                                <rect key="frame" x="130.5" y="149" width="114" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="workoutText"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="K14-Sy-Op0" firstAttribute="leading" secondItem="QCE-6e-lNM" secondAttribute="leading" constant="139" id="4r7-1U-SOk"/>
+                            <constraint firstItem="K14-Sy-Op0" firstAttribute="centerX" secondItem="cPP-s8-kq7" secondAttribute="centerX" id="CbT-RD-qks"/>
+                            <constraint firstItem="K14-Sy-Op0" firstAttribute="centerX" secondItem="bFf-0b-0kW" secondAttribute="centerX" id="L2J-1V-ROy"/>
+                            <constraint firstItem="IVL-ig-XIQ" firstAttribute="leading" secondItem="avq-T4-YEF" secondAttribute="trailing" constant="32" id="L3U-od-bkY"/>
+                            <constraint firstItem="avq-T4-YEF" firstAttribute="leading" secondItem="QCE-6e-lNM" secondAttribute="leading" constant="73" id="MZ8-Hp-50i"/>
+                            <constraint firstItem="K14-Sy-Op0" firstAttribute="top" secondItem="QCE-6e-lNM" secondAttribute="top" constant="34" id="Qas-21-DG8"/>
+                            <constraint firstItem="avq-T4-YEF" firstAttribute="baseline" secondItem="IVL-ig-XIQ" secondAttribute="firstBaseline" id="RQ0-Wu-EJp"/>
+                            <constraint firstItem="cPP-s8-kq7" firstAttribute="top" secondItem="K14-Sy-Op0" secondAttribute="bottom" constant="21" id="m1e-eb-8CR"/>
+                            <constraint firstItem="avq-T4-YEF" firstAttribute="top" secondItem="cPP-s8-kq7" secondAttribute="bottom" constant="29" id="nrW-XL-wny"/>
+                            <constraint firstItem="QCE-6e-lNM" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="IVL-ig-XIQ" secondAttribute="trailing" symbolic="YES" id="y5I-UD-UyD"/>
+                            <constraint firstItem="avq-T4-YEF" firstAttribute="top" secondItem="IVL-ig-XIQ" secondAttribute="top" id="zo9-cV-gYe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QCE-6e-lNM"/>
                     </view>
                     <connections>
@@ -186,7 +190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOP-Aw-2Xs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2250" y="-196"/>
+            <point key="canvasLocation" x="2248.8000000000002" y="-196.55172413793105"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="zdY-vF-Qky">
@@ -277,7 +281,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2250" y="594"/>
+            <point key="canvasLocation" x="2248.8000000000002" y="593.25337331334333"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HR4-Hx-YZc">
