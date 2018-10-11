@@ -12,10 +12,7 @@ class TimerViewController: UITableViewController {
     
     var timerStore: TimerStore!
     
-    var timer = Timer()
-    
     @IBAction func playAllCellButton(_ sender: Any) {
-    
         
         let cells = self.tableView.visibleCells as! [TimerCell]
         
@@ -27,9 +24,6 @@ class TimerViewController: UITableViewController {
                 cell.play(semaphore: semaphore)
             }
         }
-        
-        
-        
     }
     
     @IBAction func addNewTimer(_ sender: UIBarButtonItem) {
