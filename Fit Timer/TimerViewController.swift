@@ -14,7 +14,6 @@ class TimerViewController: UITableViewController {
     var playAllSemaphore : DispatchSemaphore?
     
     @IBAction func playAllCellButton(_ sender: Any) {
-    
         
         let cells = self.tableView.visibleCells as! [TimerCell]
         
@@ -28,9 +27,6 @@ class TimerViewController: UITableViewController {
                 cell.play(semaphore: self.playAllSemaphore)
             }
         }
-        
-        
-        
     }
     
     @IBAction func addNewTimer(_ sender: UIBarButtonItem) {
