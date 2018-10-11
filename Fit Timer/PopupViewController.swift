@@ -16,6 +16,7 @@ class PopupViewController: UIViewController {
     
     @IBOutlet weak var newWorkoutField: UITextField!
     @IBOutlet weak var secondsField: UITextField!
+    @IBOutlet weak var soundSwitch: UISwitch!
     
     @IBAction func closePopup(_ sender: Any) {
         let _ = navigationController?.popViewController(animated: true)
@@ -25,8 +26,9 @@ class PopupViewController: UIViewController {
         
         let workoutField = newWorkoutField.text!
         let secondField = secondsField.text!
+        let soundField = soundSwitch.isOn
         
-        timerStore.customTimer(workout: workoutField, seconds: secondField)
+        timerStore.customTimer(workout: workoutField, seconds: secondField, soundEnabled: soundField)
         
         let _ = navigationController?.popViewController(animated: true)
         
