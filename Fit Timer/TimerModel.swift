@@ -13,10 +13,12 @@ class TimerModel: NSObject {
     
     var workout: String
     var secondsPick: String
+    var soundEnabled: Bool
     
-    init(workout: String, secondsPick: String) {
+    init(workout: String, secondsPick: String, soundEnabled: Bool) {
         self.workout = workout
         self.secondsPick = secondsPick
+        self.soundEnabled = soundEnabled
     }
     
     convenience init(random: Bool = false) {
@@ -30,9 +32,9 @@ class TimerModel: NSObject {
             idx = arc4random_uniform(UInt32(secondsPicks.count))
             let randomSeconds = secondsPicks[Int(idx)]
             
-            self.init(workout: randomWorkout, secondsPick: randomSeconds)
+            self.init(workout: randomWorkout, secondsPick: randomSeconds, soundEnabled: true)
         } else {
-            self.init(workout: "", secondsPick: "")
+            self.init(workout: "", secondsPick: "", soundEnabled: true)
         }
     }
     

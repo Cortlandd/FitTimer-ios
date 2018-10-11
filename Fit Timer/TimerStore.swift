@@ -21,8 +21,8 @@ class TimerStore {
     
     var allTimers = [TimerModel]()
     
-    @discardableResult func customTimer(workout: String, seconds: String) -> TimerModel {
-        let newtimer = TimerModel(workout: workout, secondsPick: seconds)
+    @discardableResult func customTimer(workout: String, seconds: String, soundEnabled: Bool) -> TimerModel {
+        let newtimer = TimerModel(workout: workout, secondsPick: seconds, soundEnabled: soundEnabled)
         
         allTimers.append(newtimer)
         

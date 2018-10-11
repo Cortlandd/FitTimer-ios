@@ -15,6 +15,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var secondsDetailField: UITextField!
     @IBOutlet var workoutDetailField: UITextField!
+    @IBOutlet weak var detailSwitch: UISwitch!
     
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
@@ -25,6 +26,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         
         workoutDetailField.text = timerModel.workout
         secondsDetailField.text = timerModel.secondsPick
+        detailSwitch.isOn = timerModel.soundEnabled
         
     }
     
@@ -37,7 +39,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         // Save changes to timer
         timerModel.workout = workoutDetailField.text ?? ""
         timerModel.secondsPick = secondsDetailField.text ?? ""
-        
+        timerModel.soundEnabled = detailSwitch.isOn
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
