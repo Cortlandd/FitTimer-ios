@@ -12,12 +12,11 @@ class TimerCell: UITableViewCell {
 
     // timer variable used to schedule the countdown
     var timer : DispatchSourceTimer?
-    var cellSemaphore : DispatchSemaphore?
     
     @IBOutlet weak var playCellButton: UIButton!
     @IBAction func playCellButton(_ sender: UIButton?) {
     
-        play(semaphore: cellSemaphore)
+        play(semaphore: nil)
         
     }
     
@@ -27,7 +26,6 @@ class TimerCell: UITableViewCell {
     @IBAction func stopCellButton(_ sender: UIButton) {
         
         timer?.cancel()
-        cellSemaphore?.signal()
         
         playCellButton.isHidden = false
         stopCellButton.isHidden = true
@@ -60,15 +58,12 @@ class TimerCell: UITableViewCell {
     @objc func play(semaphore: DispatchSemaphore?) {
      
         timer?.cancel()
-        semaphore?.signal()
-        
-        cellSemaphore = semaphore
         
         timer = DispatchSource.makeTimerSource(queue: DispatchQueue.main)
         timer?.schedule(deadline: .now(), repeating: .seconds(1))
         
         timer?.setEventHandler(handler: { [weak self] in
-            self!.updateCellTimer()
+            self!.updateCellTimer(semaphore: semaphore)
         })
         
         timer?.resume()
@@ -81,7 +76,7 @@ class TimerCell: UITableViewCell {
         
     }
     
-    @objc func updateCellTimer() {
+    @objc func updateCellTimer(semaphore: DispatchSemaphore?) {
         
         var secondsRemaining: Int = Int(countdownLabel.text!)!
         secondsRemaining -= 1
@@ -89,7 +84,7 @@ class TimerCell: UITableViewCell {
         
         if (secondsRemaining == 0) {
             timer?.cancel()
-            cellSemaphore?.signal()
+            semaphore?.signal()
             
             countdownLabel.text = secondsLabel.text
             
