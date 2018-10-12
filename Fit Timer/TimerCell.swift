@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import AVFoundation
 
 class TimerCell: UITableViewCell {
 
     // timer variable used to schedule the countdown
     var timer : DispatchSourceTimer?
+    
+    private var audioPlayer: AVAudioPlayer?
     
     @IBOutlet weak var playCellButton: UIButton!
     @IBAction func playCellButton(_ sender: UIButton?) {
@@ -19,8 +22,6 @@ class TimerCell: UITableViewCell {
         play(semaphore: nil)
         
     }
-    
-    
     
     @IBOutlet weak var stopCellButton: UIButton!
     @IBAction func stopCellButton(_ sender: UIButton) {
@@ -52,6 +53,13 @@ class TimerCell: UITableViewCell {
         workoutLabel.adjustsFontForContentSizeCategory = true
         secondsLabel.adjustsFontForContentSizeCategory = true
         secondsText.adjustsFontForContentSizeCategory = true
+        
+        // Settings for timer notification sound
+        let alertSound = URL(fileURLWithPath: Bundle.main.path(forResource: "bell", ofType: "wav")!)
+        try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        try! AVAudioSession.sharedInstance().setActive(true)
+        try! audioPlayer = AVAudioPlayer(contentsOf: alertSound)
+        audioPlayer?.prepareToPlay()
     }
     
     
@@ -72,8 +80,6 @@ class TimerCell: UITableViewCell {
             self.playCellButton.isHidden = true
             self.stopCellButton.isHidden = false
         }
-        
-        
     }
     
     @objc func updateCellTimer(semaphore: DispatchSemaphore?) {
@@ -83,6 +89,9 @@ class TimerCell: UITableViewCell {
         countdownLabel.text = String(secondsRemaining)
         
         if (secondsRemaining == 0) {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            audioPlayer?.play()
+            
             timer?.cancel()
             semaphore?.signal()
             
