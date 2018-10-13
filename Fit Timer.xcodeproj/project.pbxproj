@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D266958711DBF4458D9C63C /* Pods_Fit_Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D24483537D34EE0CCB28F4A1 /* Pods_Fit_Timer.framework */; };
 		7F08E391211BA2B000D6D9C9 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08E390211BA2B000D6D9C9 /* TimerModel.swift */; };
 		7F08E395212AF45500D6D9C9 /* TimerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08E394212AF45500D6D9C9 /* TimerStore.swift */; };
 		7F08E397212B5C4600D6D9C9 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08E396212B5C4600D6D9C9 /* TimerViewController.swift */; };
 		7F298746217046900039171E /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7F298745217046900039171E /* bell.wav */; };
+		7F29874821716A360039171E /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F29874721716A360039171E /* UIImage+Gif.swift */; };
+		7F29874A21716E220039171E /* sasuke.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7F29874921716E220039171E /* sasuke.gif */; };
 		7F88C399212BAF3100C7D622 /* TimerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F88C398212BAF3100C7D622 /* TimerCell.swift */; };
 		7F88C39B212C4D2500C7D622 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F88C39A212C4D2500C7D622 /* DetailViewController.swift */; };
 		7FE8EA5321187F6100FD1596 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8EA5221187F6100FD1596 /* AppDelegate.swift */; };
@@ -20,6 +23,7 @@
 		7FE8EA5D21187F6400FD1596 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8EA5B21187F6400FD1596 /* LaunchScreen.storyboard */; };
 		7FE8EA6821187F6500FD1596 /* Fit_TimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8EA6721187F6500FD1596 /* Fit_TimerUITests.swift */; };
 		7FE8EA7521192E5F00FD1596 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8EA7421192E5F00FD1596 /* PopupViewController.swift */; };
+		A644F40080557EE6C478FC94 /* Pods_Fit_TimerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02312E9AB34A57C15DDBD0CE /* Pods_Fit_TimerUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,10 +37,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02312E9AB34A57C15DDBD0CE /* Pods_Fit_TimerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fit_TimerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C354182339AB049E451B576 /* Pods-Fit Timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit Timer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fit Timer/Pods-Fit Timer.debug.xcconfig"; sourceTree = "<group>"; };
 		7F08E390211BA2B000D6D9C9 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		7F08E394212AF45500D6D9C9 /* TimerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStore.swift; sourceTree = "<group>"; };
 		7F08E396212B5C4600D6D9C9 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		7F298745217046900039171E /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bell.wav; path = ../../../../Downloads/bell.wav; sourceTree = "<group>"; };
+		7F29874721716A360039171E /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Gif.swift"; path = "../../../../Desktop/UIImage+Gif.swift"; sourceTree = "<group>"; };
+		7F29874921716E220039171E /* sasuke.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = sasuke.gif; path = ../../../../Desktop/sasuke.gif; sourceTree = "<group>"; };
 		7F88C398212BAF3100C7D622 /* TimerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCell.swift; sourceTree = "<group>"; };
 		7F88C39A212C4D2500C7D622 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		7FE8EA4F21187F6100FD1596 /* Fit Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,6 +58,10 @@
 		7FE8EA6721187F6500FD1596 /* Fit_TimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fit_TimerUITests.swift; sourceTree = "<group>"; };
 		7FE8EA6921187F6500FD1596 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FE8EA7421192E5F00FD1596 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		9D8DEAAF5AE84DB2CDB214D2 /* Pods-Fit TimerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit TimerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fit TimerUITests/Pods-Fit TimerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AD2EAB6074612F8E6F1BC713 /* Pods-Fit TimerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit TimerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fit TimerUITests/Pods-Fit TimerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D24483537D34EE0CCB28F4A1 /* Pods_Fit_Timer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fit_Timer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC87178FA0D6FB502FBCB525 /* Pods-Fit Timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit Timer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fit Timer/Pods-Fit Timer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D266958711DBF4458D9C63C /* Pods_Fit_Timer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A644F40080557EE6C478FC94 /* Pods_Fit_TimerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +90,8 @@
 				7FE8EA5121187F6100FD1596 /* Fit Timer */,
 				7FE8EA6621187F6500FD1596 /* Fit TimerUITests */,
 				7FE8EA5021187F6100FD1596 /* Products */,
+				DB095BC29DA730B7A0906819 /* Pods */,
+				9B1004A6310ABD67B5C07017 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +119,8 @@
 				7F08E394212AF45500D6D9C9 /* TimerStore.swift */,
 				7F88C398212BAF3100C7D622 /* TimerCell.swift */,
 				7F88C39A212C4D2500C7D622 /* DetailViewController.swift */,
+				7F29874921716E220039171E /* sasuke.gif */,
+				7F29874721716A360039171E /* UIImage+Gif.swift */,
 				7F298745217046900039171E /* bell.wav */,
 			);
 			path = "Fit Timer";
@@ -117,6 +135,26 @@
 			path = "Fit TimerUITests";
 			sourceTree = "<group>";
 		};
+		9B1004A6310ABD67B5C07017 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D24483537D34EE0CCB28F4A1 /* Pods_Fit_Timer.framework */,
+				02312E9AB34A57C15DDBD0CE /* Pods_Fit_TimerUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB095BC29DA730B7A0906819 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5C354182339AB049E451B576 /* Pods-Fit Timer.debug.xcconfig */,
+				EC87178FA0D6FB502FBCB525 /* Pods-Fit Timer.release.xcconfig */,
+				9D8DEAAF5AE84DB2CDB214D2 /* Pods-Fit TimerUITests.debug.xcconfig */,
+				AD2EAB6074612F8E6F1BC713 /* Pods-Fit TimerUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -124,9 +162,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7FE8EA6C21187F6500FD1596 /* Build configuration list for PBXNativeTarget "Fit Timer" */;
 			buildPhases = (
+				3A29845982F189E95DEBF212 /* [CP] Check Pods Manifest.lock */,
 				7FE8EA4B21187F6100FD1596 /* Sources */,
 				7FE8EA4C21187F6100FD1596 /* Frameworks */,
 				7FE8EA4D21187F6100FD1596 /* Resources */,
+				843F6622845B3881FC33BADF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -141,6 +181,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7FE8EA6F21187F6500FD1596 /* Build configuration list for PBXNativeTarget "Fit TimerUITests" */;
 			buildPhases = (
+				DCB1208A4516564AABBDD1DF /* [CP] Check Pods Manifest.lock */,
 				7FE8EA5F21187F6500FD1596 /* Sources */,
 				7FE8EA6021187F6500FD1596 /* Frameworks */,
 				7FE8EA6121187F6500FD1596 /* Resources */,
@@ -167,9 +208,11 @@
 				TargetAttributes = {
 					7FE8EA4E21187F6100FD1596 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 					7FE8EA6221187F6500FD1596 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 7FE8EA4E21187F6100FD1596;
 					};
 				};
@@ -202,6 +245,7 @@
 				7FE8EA5A21187F6400FD1596 /* Assets.xcassets in Resources */,
 				7FE8EA5821187F6100FD1596 /* Main.storyboard in Resources */,
 				7F298746217046900039171E /* bell.wav in Resources */,
+				7F29874A21716E220039171E /* sasuke.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +258,71 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3A29845982F189E95DEBF212 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Fit Timer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		843F6622845B3881FC33BADF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Fit Timer/Pods-Fit Timer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
+				"${BUILT_PRODUCTS_DIR}/NSTimer-Blocks/NSTimer_Blocks.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyGiphy/SwiftyGiphy.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSTimer_Blocks.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyGiphy.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fit Timer/Pods-Fit Timer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DCB1208A4516564AABBDD1DF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Fit TimerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7FE8EA4B21187F6100FD1596 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -222,6 +331,7 @@
 				7F88C399212BAF3100C7D622 /* TimerCell.swift in Sources */,
 				7FE8EA5521187F6100FD1596 /* ViewController.swift in Sources */,
 				7F08E395212AF45500D6D9C9 /* TimerStore.swift in Sources */,
+				7F29874821716A360039171E /* UIImage+Gif.swift in Sources */,
 				7F08E391211BA2B000D6D9C9 /* TimerModel.swift in Sources */,
 				7F08E397212B5C4600D6D9C9 /* TimerViewController.swift in Sources */,
 				7FE8EA5321187F6100FD1596 /* AppDelegate.swift in Sources */,
@@ -325,6 +435,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -378,12 +489,14 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		7FE8EA6D21187F6500FD1596 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C354182339AB049E451B576 /* Pods-Fit Timer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -402,6 +515,7 @@
 		};
 		7FE8EA6E21187F6500FD1596 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC87178FA0D6FB502FBCB525 /* Pods-Fit Timer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -420,6 +534,7 @@
 		};
 		7FE8EA7021187F6500FD1596 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D8DEAAF5AE84DB2CDB214D2 /* Pods-Fit TimerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -432,7 +547,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cortland.xyz.Fit-TimerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Fit Timer";
 			};
@@ -440,6 +555,7 @@
 		};
 		7FE8EA7121187F6500FD1596 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD2EAB6074612F8E6F1BC713 /* Pods-Fit TimerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -452,7 +568,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cortland.xyz.Fit-TimerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Fit Timer";
 			};
