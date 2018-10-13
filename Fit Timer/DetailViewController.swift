@@ -12,28 +12,18 @@ import SwiftyGiphy
 
 class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, SwiftyGiphyViewControllerDelegate  {
     
+    var timerModel: TimerModel!
+    var imageStore: ImageStore!
+    
+    @IBOutlet var detailImageView: UIImageView!
+    @IBOutlet var secondsDetailField: UITextField!
+    @IBOutlet var workoutDetailField: UITextField!
+    @IBOutlet weak var detailSwitch: UISwitch!
+    
     @IBAction func useGiphy(_ sender: UIBarButtonItem) {
-        // Open the giphy search menu
+        // Open Navigation controller containing SwiftGiphyViewController
         performSegue(withIdentifier: "gifSelectorSegue", sender: self)
     }
-    
-    func giphyControllerDidSelectGif(controller: SwiftyGiphyViewController, item: GiphyItem) {
-        
-        if let gifDownSized = item.downsizedImage {
-            detailImageView.sd_setImage(with: gifDownSized.url)
-        }
-        
-        print("TAPPED AN IMAGE")
-        
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    func giphyControllerDidCancel(controller: SwiftyGiphyViewController) {
-        print("hello")
-    }
-    
-    var timerModel: TimerModel!
-    
     
     @IBAction func takePicture(_ sender: UIBarButtonItem) {
         
@@ -48,31 +38,49 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         
-        
         // Place imagepicker on the screen
         present(imagePicker, animated: true, completion: nil)
     }
-    @IBOutlet var detailImageView: UIImageView!
-    @IBOutlet var secondsDetailField: UITextField!
-    @IBOutlet var workoutDetailField: UITextField!
-    @IBOutlet weak var detailSwitch: UISwitch!
     
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
+    func giphyControllerDidSelectGif(controller: SwiftyGiphyViewController, item: GiphyItem) {
+        
+        if let gifDownSized = item.downsizedImage {
+            detailImageView.sd_setImage(with: gifDownSized.url)
+            
+            /* I NEED TO CACHE THIS GIF */
+            
+            // Store the image in the ImageStore for the item's key
+            imageStore.setImage(img, forKey: timerModel.imgKey)
+        }
+        
+        print("TAPPED AN IMAGE")
+        
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func giphyControllerDidCancel(controller: SwiftyGiphyViewController) {
+        print("hello")
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         
+        // Get the picked image
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
+        // Store the image in the ImageStore for the item's key
+        imageStore.setImage(image, forKey: timerModel.imgKey)
+        
+        // Put the image to the screen in the detailImageView
         detailImageView.image = image
         
         // Take image picker off the screen you must call this dismiss method
         dismiss(animated: true, completion: nil)
     }
-
     
-    //let del = SwiftyGiphyViewController()
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "gifSelectorSegue"?:
@@ -91,6 +99,13 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         workoutDetailField.text = timerModel.workout
         secondsDetailField.text = timerModel.secondsPick
         detailSwitch.isOn = timerModel.soundEnabled
+        
+        // Get the item key
+        let key = timerModel.imgKey
+        
+        // If there is an associated image with the item display it on the image view
+        let imageToDisplay = imageStore.image(forKey: key)
+        detailImageView.image = imageToDisplay
         
     }
     

@@ -11,6 +11,7 @@
 		7F08E391211BA2B000D6D9C9 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08E390211BA2B000D6D9C9 /* TimerModel.swift */; };
 		7F08E395212AF45500D6D9C9 /* TimerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08E394212AF45500D6D9C9 /* TimerStore.swift */; };
 		7F08E397212B5C4600D6D9C9 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08E396212B5C4600D6D9C9 /* TimerViewController.swift */; };
+		7F1D918B2172803B00AD5A07 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1D918A2172803A00AD5A07 /* ImageStore.swift */; };
 		7F298746217046900039171E /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7F298745217046900039171E /* bell.wav */; };
 		7F29874821716A360039171E /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F29874721716A360039171E /* UIImage+Gif.swift */; };
 		7F29874A21716E220039171E /* sasuke.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7F29874921716E220039171E /* sasuke.gif */; };
@@ -42,6 +43,7 @@
 		7F08E390211BA2B000D6D9C9 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		7F08E394212AF45500D6D9C9 /* TimerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStore.swift; sourceTree = "<group>"; };
 		7F08E396212B5C4600D6D9C9 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		7F1D918A2172803A00AD5A07 /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		7F298745217046900039171E /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bell.wav; path = ../../../../Downloads/bell.wav; sourceTree = "<group>"; };
 		7F29874721716A360039171E /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Gif.swift"; path = "../../../../Desktop/UIImage+Gif.swift"; sourceTree = "<group>"; };
 		7F29874921716E220039171E /* sasuke.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = sasuke.gif; path = ../../../../Desktop/sasuke.gif; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				7FE8EA5421187F6100FD1596 /* ViewController.swift */,
 				7F08E396212B5C4600D6D9C9 /* TimerViewController.swift */,
 				7FE8EA5621187F6100FD1596 /* Main.storyboard */,
+				7F1D918A2172803A00AD5A07 /* ImageStore.swift */,
 				7FE8EA5921187F6400FD1596 /* Assets.xcassets */,
 				7FE8EA5B21187F6400FD1596 /* LaunchScreen.storyboard */,
 				7FE8EA5E21187F6400FD1596 /* Info.plist */,
@@ -331,6 +334,7 @@
 				7F88C399212BAF3100C7D622 /* TimerCell.swift in Sources */,
 				7FE8EA5521187F6100FD1596 /* ViewController.swift in Sources */,
 				7F08E395212AF45500D6D9C9 /* TimerStore.swift in Sources */,
+				7F1D918B2172803B00AD5A07 /* ImageStore.swift in Sources */,
 				7F29874821716A360039171E /* UIImage+Gif.swift in Sources */,
 				7F08E391211BA2B000D6D9C9 /* TimerModel.swift in Sources */,
 				7F08E397212B5C4600D6D9C9 /* TimerViewController.swift in Sources */,
