@@ -54,7 +54,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
             /* I NEED TO CACHE THIS GIF */
             
             // Store the image in the ImageStore for the item's key
-            imageStore.setImage(img, forKey: timerModel.imgKey)
+            //imageStore.setImage(img, forKey: timerModel.imgKey)
         }
         
         print("TAPPED AN IMAGE")
