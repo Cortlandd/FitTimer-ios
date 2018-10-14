@@ -14,11 +14,15 @@ class TimerModel: NSObject {
     var workout: String
     var secondsPick: String
     var soundEnabled: Bool
+    var imgKey: String
     
     init(workout: String, secondsPick: String, soundEnabled: Bool) {
         self.workout = workout
         self.secondsPick = secondsPick
         self.soundEnabled = soundEnabled
+        self.imgKey = UUID().uuidString
+        
+        super.init()
     }
     
     convenience init(random: Bool = false) {

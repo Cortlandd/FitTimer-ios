@@ -7,22 +7,29 @@
 //
 
 import UIKit
+import SwiftyGiphy
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         // Create Timer Store
         let timerStore = TimerStore()
         
+        // Create Image Store
+        let imageStore = ImageStore()
+        
         // Access viewcontroller and set timer to store
         let navController = window!.rootViewController as! UINavigationController
         let timerViewController = navController.topViewController as! TimerViewController
         timerViewController.timerStore = timerStore
+        timerViewController.imageStore = imageStore
+        
+        SwiftyGiphyAPI.shared.apiKey = SwiftyGiphyAPI.publicBetaKey
         
         return true
     }

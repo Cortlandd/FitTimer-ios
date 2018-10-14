@@ -11,6 +11,7 @@ import UIKit
 class TimerViewController: UITableViewController {
     
     var timerStore: TimerStore!
+    var imageStore: ImageStore!
     
     @IBAction func playAllCellButton(_ sender: Any) {
         
@@ -67,6 +68,7 @@ class TimerViewController: UITableViewController {
                 let timer = timerStore.allTimers[row]
                 let detailViewController = segue.destination as! DetailViewController
                 detailViewController.timerModel = timer
+                detailViewController.imageStore = imageStore
             }
         case "showAddPopup"?:
             if (segue.destination.isKind(of: PopupViewController.self)) {
@@ -95,7 +97,7 @@ class TimerViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // if the table is asked to delete
         if editingStyle == .delete {
             
@@ -104,6 +106,9 @@ class TimerViewController: UITableViewController {
             
             // Remove fetched row
             timerStore.removeTimer(item)
+            
+            // Remove the item's image from the image store
+            self.imageStore.deleteImage(forKey: item.imgKey)
             
             // Remove row in table
             tableView.deleteRows(at: [indexPath], with: .automatic)
