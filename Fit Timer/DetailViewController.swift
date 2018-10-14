@@ -29,12 +29,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         
         let imagePicker = UIImagePickerController()
         
-        // If the device has a camera, take a picture; otherwise, just pick from photo library
-        //if UIImagePickerController.isSourceTypeAvailable(.camera) {
-        //    imagePicker.sourceType = .camera
-        //} else {
-        //    imagePicker.sourceType = .photoLibrary
-        //}
+        // Upload image using photo library
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         
@@ -54,7 +49,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
             /* I NEED TO CACHE THIS GIF */
             
             // Store the image in the ImageStore for the item's key
-            //imageStore.setImage(img, forKey: timerModel.imgKey)
+            // imageStore.setImage(detailImageView.image!, forKey: timerModel.imgKey)
         }
         
         print("TAPPED AN IMAGE")
