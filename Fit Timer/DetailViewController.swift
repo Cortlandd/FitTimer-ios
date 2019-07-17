@@ -9,6 +9,8 @@
 import UIKit
 import Photos
 import SwiftyGiphy
+import SDWebImage
+import FLAnimatedImage
 
 class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, SwiftyGiphyViewControllerDelegate  {
     
@@ -44,12 +46,28 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
     func giphyControllerDidSelectGif(controller: SwiftyGiphyViewController, item: GiphyItem) {
         
         if let gifDownSized = item.downsizedImage {
+            // Simple middle spinner
+            detailImageView.sd_setShowActivityIndicatorView(true)
+            detailImageView.sd_setIndicatorStyle(.gray)
+            
             detailImageView.sd_setImage(with: gifDownSized.url)
+            
+            /*
+            detailImageView.sd_setImage(with: gifDownSized.url) { (image, error, cache, urls) in
+                if (error != nil) {
+                    //Failure code here
+                    print("Failure")
+                } else {
+                    //Success code here
+                    self.imageStore.setImage(image!, forKey: self.timerModel.imgKey)
+                }
+            }
+            */
             
             /* I NEED TO CACHE THIS GIF */
             
             // Store the image in the ImageStore for the item's key
-            // imageStore.setImage(detailImageView.image!, forKey: timerModel.imgKey)
+            //imageStore.setImage(detailImageView.image!, forKey: timerModel.imgKey)
         }
         
         print("TAPPED AN IMAGE")
@@ -58,7 +76,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
     }
     
     func giphyControllerDidCancel(controller: SwiftyGiphyViewController) {
-        print("hello")
+        
+        controller.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
@@ -67,6 +86,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
         // Store the image in the ImageStore for the item's key
+        //imageStore.setImage(image, forKey: timerModel.imgKey)
         imageStore.setImage(image, forKey: timerModel.imgKey)
         
         // Put the image to the screen in the detailImageView
@@ -99,7 +119,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         let key = timerModel.imgKey
         
         // If there is an associated image with the item display it on the image view
-        let imageToDisplay = imageStore.image(forKey: key)
+        print(key.description)
+        /* CHECK HERE FOR GIF IMAGE */
+        let imageToDisplay = imageStore.gifImage(forKey: key)
         detailImageView.image = imageToDisplay
         
     }
@@ -114,6 +136,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         timerModel.workout = workoutDetailField.text ?? ""
         timerModel.secondsPick = secondsDetailField.text ?? ""
         timerModel.soundEnabled = detailSwitch.isOn
+        imageStore.setGifImage(detailImageView.image, forKey: timerModel.imgKey)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

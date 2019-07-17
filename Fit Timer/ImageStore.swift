@@ -7,10 +7,23 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ImageStore {
     
     let cache = NSCache<NSString, UIImage>()
+    let gifcache = SDImageCache()
+    
+    func setGifImage(_ image: UIImage?, forKey key: String) {
+        gifcache.store(image, forKey: key, completion: nil)
+        
+    }
+    func gifImage(forKey key: String) -> UIImage? {
+        return gifcache.imageFromDiskCache(forKey: key)
+    }
+    func deleteGifImage(forKey key: String) {
+        gifcache.removeImage(forKey: key, withCompletion: nil)
+    }
     
     /*
      These three methods all take in a key of type String so that

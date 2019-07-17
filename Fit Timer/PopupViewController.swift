@@ -18,10 +18,6 @@ class PopupViewController: UIViewController {
     @IBOutlet weak var secondsField: UITextField!
     @IBOutlet weak var soundSwitch: UISwitch!
     
-    @IBAction func closePopup(_ sender: Any) {
-        let _ = navigationController?.popViewController(animated: true)
-    }
-    
     @IBAction func btnNewFitTimer(_ sender: Any) {
         
         let workoutField = newWorkoutField.text!

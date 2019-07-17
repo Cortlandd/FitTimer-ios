@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         timerViewController.timerStore = timerStore
         timerViewController.imageStore = imageStore
         
+        //SDWebImageCodersManager.sharedInstance().addCoder(SDWebImageGIFCoder.shared())
+        
         SwiftyGiphyAPI.shared.apiKey = SwiftyGiphyAPI.publicBetaKey
         
         return true
