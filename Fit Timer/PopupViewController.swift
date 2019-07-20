@@ -18,7 +18,7 @@ class PopupViewController: UIViewController {
     @IBOutlet weak var secondsField: UITextField!
     @IBOutlet weak var soundSwitch: UISwitch!
     
-    @IBAction func btnNewFitTimer(_ sender: Any) {
+    @IBAction func saveButton(_ sender: Any) {
         
         let workoutField = newWorkoutField.text!
         let secondField = secondsField.text!

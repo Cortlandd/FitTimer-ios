@@ -43,6 +43,22 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         view.endEditing(true)
     }
     
+    @IBAction func saveButton(_ sender: Any) {
+        
+        // Close the keyboard
+        view.endEditing(true)
+        
+        // Save changes to timer
+        timerModel.workout = workoutDetailField.text ?? ""
+        timerModel.secondsPick = secondsDetailField.text ?? ""
+        timerModel.soundEnabled = detailSwitch.isOn
+        imageStore.setGifImage(detailImageView.image, forKey: timerModel.imgKey)
+        
+        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
     func giphyControllerDidSelectGif(controller: SwiftyGiphyViewController, item: GiphyItem) {
         
         if let gifDownSized = item.downsizedImage {
@@ -129,14 +145,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        // Close the keyboard
-        view.endEditing(true)
-        
-        // Save changes to timer
-        timerModel.workout = workoutDetailField.text ?? ""
-        timerModel.secondsPick = secondsDetailField.text ?? ""
-        timerModel.soundEnabled = detailSwitch.isOn
-        imageStore.setGifImage(detailImageView.image, forKey: timerModel.imgKey)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

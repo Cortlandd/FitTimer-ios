@@ -13,20 +13,52 @@ class TimerViewController: UITableViewController {
     var timerStore: TimerStore!
     var imageStore: ImageStore!
     
-    @IBAction func playAllCellButton(_ sender: Any) {
+    var playAllSemaphore : DispatchSemaphore?
+    
+    var workoutCellPlaying: Bool = false
+    
+    @IBOutlet weak var _playAllButton: UIButton!
+    @IBAction func _playAllButton(_ sender: UIButton) {
         
         let cells = self.tableView.visibleCells as! [TimerCell]
         
-        let semaphore = DispatchSemaphore(value: 1)
-        
-        DispatchQueue.global().async {
-            for cell in cells {
-                semaphore.wait()
-                cell.play(semaphore: semaphore)
-            }
+        if (playAllSemaphore == nil) {
+            playAllSemaphore = DispatchSemaphore(value: 1)
         }
+        
+        if _playAllButton.titleLabel?.text == "Play All" {
+            
+            _addNewTimer.isEnabled = false
+            
+            _playAllButton.setTitle("Stop All", for: .normal)
+            
+            DispatchQueue.global().async {
+                for cell in cells {
+                    self.playAllSemaphore?.wait()
+                    cell.play(semaphore: self.playAllSemaphore)
+                }
+            }
+    
+        }
+        
+        if _playAllButton.titleLabel?.text == "Stop All" {
+            
+            self.playAllSemaphore?.suspend()
+            
+            for cell in cells {
+                cell.playCellButton.isEnabled = true
+            }
+            
+            _playAllButton.setTitle("Play All", for: .normal)
+            
+            _addNewTimer.isEnabled = true
+            
+        }
+        
     }
     
+    
+    @IBOutlet weak var _addNewTimer: UIBarButtonItem!
     @IBAction func addNewTimer(_ sender: UIBarButtonItem) {
         // Create a new item and add it to the store
         let newTimer = timerStore.createTimer()
@@ -41,14 +73,14 @@ class TimerViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 90
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        navigationItem.leftBarButtonItem = editButtonItem
+        //navigationItem.leftBarButtonItem = editButtonItem
     }
     
     // Once the backbutton is pressed on detail page and this screen appears. Do:
@@ -80,6 +112,13 @@ class TimerViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if timerStore.allTimers.count <= 1 {
+            _playAllButton.isEnabled = false
+        } else {
+            _playAllButton.isEnabled = true
+        }
+        
         return timerStore.allTimers.count
     }
     

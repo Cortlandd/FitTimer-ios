@@ -9,50 +9,70 @@
 import UIKit
 import AVFoundation
 
+enum TimerCellState {
+    case playing
+    case stopped
+    case paused
+}
+
 class TimerCell: UITableViewCell {
 
+    @IBOutlet weak var _parentStackviewHeight: NSLayoutConstraint!
     // timer variable used to schedule the countdown
     var timer : DispatchSourceTimer?
+    var cellSemaphore : DispatchSemaphore?
+    
+    var defaultHeight: CGFloat!
+    
+    var cellState: TimerCellState!
     
     //private var audioPlayer: AVAudioPlayer?
+    @IBOutlet weak var _playbackOptionsView: UIStackView!
     
     @IBOutlet weak var playCellButton: UIButton!
     @IBAction func playCellButton(_ sender: UIButton?) {
     
-        play(semaphore: nil)
+        play(semaphore: cellSemaphore)
         
     }
     
-    @IBOutlet weak var stopCellButton: UIButton!
-    @IBAction func stopCellButton(_ sender: UIButton) {
+    @IBOutlet weak var pauseCellButton: UIButton!
+    @IBAction func pauseCellButton(_ sender: UIButton) {
         
-        timer?.cancel()
+        //cellState = .paused
         
-        playCellButton.isHidden = false
-        stopCellButton.isHidden = true
+        if pauseCellButton.titleLabel?.text == "Pause" {
+            pauseCellButton.setTitle("Resume", for: .normal)
+            
+            timer?.suspend()
+            
+        }
         
-        countdownLabel.text = secondsLabel.text
+        if pauseCellButton.titleLabel?.text == "Resume" {
+            pauseCellButton.setTitle("Pause", for: .normal)
+            
+            timer?.resume()
+            
+            //cellState = .playing
+        }
         
     }
     
+    
+    @IBAction func stopCellButton(_ sender: Any) {
+        stopCell()
+    }
     
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var workoutLabel: UILabel!
     @IBOutlet weak var secondsLabel: UILabel!
-    @IBOutlet weak var secondsText: UILabel!
-    
-    /*
-     The method awakeFromNib() gets called on an object after it is loaded
-     from an archive, which in this case is the storyboard file. By the time
-     this method is called, all of the outlets have values and can be used.
-     */
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         workoutLabel.adjustsFontForContentSizeCategory = true
         secondsLabel.adjustsFontForContentSizeCategory = true
-        secondsText.adjustsFontForContentSizeCategory = true
+        
         
         // Settings for timer notification sound
 //        let alertSound = URL(fileURLWithPath: Bundle.main.path(forResource: "bell", ofType: "wav")!)
@@ -60,29 +80,52 @@ class TimerCell: UITableViewCell {
 //        try! AVAudioSession.sharedInstance().setActive(true)
 //        try! audioPlayer = AVAudioPlayer(contentsOf: alertSound)
 //        audioPlayer?.prepareToPlay()
+        
+    }
+    
+    func stopCell() {
+        
+        //cellState = .stopped
+        
+        timer?.cancel()
+        cellSemaphore?.signal()
+        
+        _playbackOptionsView.isHidden = true
+        playCellButton.isEnabled = true
+        
+        countdownLabel.text = secondsLabel.text
+        
     }
     
     
     @objc func play(semaphore: DispatchSemaphore?) {
-     
+        
+        //cellState = .playing
+        
         timer?.cancel()
+        semaphore?.signal()
+        
+        cellSemaphore = semaphore
         
         timer = DispatchSource.makeTimerSource(queue: DispatchQueue.main)
         timer?.schedule(deadline: .now(), repeating: .seconds(1))
         
         timer?.setEventHandler(handler: { [weak self] in
-            self!.updateCellTimer(semaphore: semaphore)
+            self!.updateCellTimer()
         })
         
         timer?.resume()
         
+        _playbackOptionsView.isHidden = false
+        
+        // MARK: Figure out why this won't work on main thread
         DispatchQueue.main.async {
-            self.playCellButton.isHidden = true
-            self.stopCellButton.isHidden = false
+            self.playCellButton.isEnabled = false
         }
+        
     }
     
-    @objc func updateCellTimer(semaphore: DispatchSemaphore?) {
+    @objc func updateCellTimer() {
         
         var secondsRemaining: Int = Int(countdownLabel.text!)!
         secondsRemaining -= 1
@@ -91,14 +134,17 @@ class TimerCell: UITableViewCell {
         if (secondsRemaining == 0) {
             //AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             //audioPlayer?.play()
-            
             timer?.cancel()
-            semaphore?.signal()
+            
+            //cellState = .stopped
+            cellSemaphore?.signal()
             
             countdownLabel.text = secondsLabel.text
             
-            playCellButton.isHidden = false
-            stopCellButton.isHidden = true
+            playCellButton.isEnabled = true
+            
+            _playbackOptionsView.isHidden = true
+            
         }
         
     }
