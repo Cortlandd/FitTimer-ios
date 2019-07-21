@@ -15,50 +15,61 @@ enum TimerCellState {
     case paused
 }
 
-class TimerCell: UITableViewCell {
+enum TimerAllCellState {
+    case playingAll
+    case stoppedAll
+    case pausedAll
+}
 
-    @IBOutlet weak var _parentStackviewHeight: NSLayoutConstraint!
+class TimerCell: UITableViewCell {
+    
     // timer variable used to schedule the countdown
     var timer : DispatchSourceTimer?
-    var cellSemaphore : DispatchSemaphore?
     
     var defaultHeight: CGFloat!
     
-    var cellState: TimerCellState!
+    var cellState: TimerCellState = .playing {
+        didSet {
+            DispatchQueue.main.async {
+                self.validateState()
+            }
+        }
+    }
+    
+    var allCellState: TimerAllCellState = .playingAll {
+        didSet {
+            ""
+        }
+    }
+    
+    var currentScore: String!
     
     //private var audioPlayer: AVAudioPlayer?
+
     @IBOutlet weak var _playbackOptionsView: UIStackView!
     
     @IBOutlet weak var playCellButton: UIButton!
     @IBAction func playCellButton(_ sender: UIButton?) {
-    
-        play(semaphore: cellSemaphore)
-        
+        play()
     }
     
     @IBOutlet weak var pauseCellButton: UIButton!
     @IBAction func pauseCellButton(_ sender: UIButton) {
         
-        //cellState = .paused
-        
         if pauseCellButton.titleLabel?.text == "Pause" {
             pauseCellButton.setTitle("Resume", for: .normal)
-            
+            cellState = .paused
             timer?.suspend()
-            
         }
         
         if pauseCellButton.titleLabel?.text == "Resume" {
             pauseCellButton.setTitle("Pause", for: .normal)
-            
+            cellState = .playing
             timer?.resume()
-            
-            //cellState = .playing
         }
-        
     }
     
-    
+    @IBOutlet weak var stopCellButton: UIButton!
     @IBAction func stopCellButton(_ sender: Any) {
         stopCell()
     }
@@ -73,39 +84,63 @@ class TimerCell: UITableViewCell {
         workoutLabel.adjustsFontForContentSizeCategory = true
         secondsLabel.adjustsFontForContentSizeCategory = true
         
-        
-        // Settings for timer notification sound
-//        let alertSound = URL(fileURLWithPath: Bundle.main.path(forResource: "bell", ofType: "wav")!)
-//        try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-//        try! AVAudioSession.sharedInstance().setActive(true)
-//        try! audioPlayer = AVAudioPlayer(contentsOf: alertSound)
-//        audioPlayer?.prepareToPlay()
-        
+        /* Settings for timer notification sound
+        let alertSound = URL(fileURLWithPath: Bundle.main.path(forResource: "bell", ofType: "wav")!)
+        try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        try! AVAudioSession.sharedInstance().setActive(true)
+        try! audioPlayer = AVAudioPlayer(contentsOf: alertSound)
+        audioPlayer?.prepareToPlay()
+        */
+    }
+    
+    func validateState() {
+        switch cellState {
+        case .playing:
+            _playbackOptionsView.isHidden = false
+            playCellButton.isEnabled = false
+        case .paused:
+            _playbackOptionsView.isHidden = false
+        case .stopped:
+            _playbackOptionsView.isHidden = true
+            countdownLabel.text = secondsLabel.text
+            playCellButton.isEnabled = true
+        default:
+            break
+        }
     }
     
     func stopCell() {
         
-        //cellState = .stopped
+        // Capture current state before stopped state to decide to timer.resume() or not
+        let prevState = cellState
         
+        if cellState == .stopped {
+            return
+        }
+        cellState = .stopped
+        
+        timer?.setEventHandler {}
         timer?.cancel()
-        cellSemaphore?.signal()
         
-        _playbackOptionsView.isHidden = true
-        playCellButton.isEnabled = true
+        /*
+         If the timer is suspended, calling cancel without resuming
+         triggers a crash. This is documented here https://forums.developer.apple.com/thread/15902
+         */
+        if prevState == .paused {
+            timer?.resume()
+        } else {
+            return
+        }
         
-        countdownLabel.text = secondsLabel.text
         
     }
     
-    
-    @objc func play(semaphore: DispatchSemaphore?) {
+    /* Handle Single Cell */
+    @objc func play() {
         
-        //cellState = .playing
+        cellState = .playing
         
-        timer?.cancel()
-        semaphore?.signal()
-        
-        cellSemaphore = semaphore
+        //timer?.cancel() // This here probably shouldn't happen.
         
         timer = DispatchSource.makeTimerSource(queue: DispatchQueue.main)
         timer?.schedule(deadline: .now(), repeating: .seconds(1))
@@ -115,13 +150,6 @@ class TimerCell: UITableViewCell {
         })
         
         timer?.resume()
-        
-        _playbackOptionsView.isHidden = false
-        
-        // MARK: Figure out why this won't work on main thread
-        DispatchQueue.main.async {
-            self.playCellButton.isEnabled = false
-        }
         
     }
     
@@ -134,18 +162,72 @@ class TimerCell: UITableViewCell {
         if (secondsRemaining == 0) {
             //AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             //audioPlayer?.play()
+            
             timer?.cancel()
             
-            //cellState = .stopped
-            cellSemaphore?.signal()
-            
-            countdownLabel.text = secondsLabel.text
-            
-            playCellButton.isEnabled = true
-            
-            _playbackOptionsView.isHidden = true
+            cellState = .stopped
             
         }
+        
+    }
+    
+    /* Handle All Cell */
+    @objc func updateAllCellTimer(semaphore: DispatchSemaphore?) {
+        
+        currentScore = secondsLabel.text
+        
+        var secondsRemaining: Int = Int(countdownLabel.text!)!
+        secondsRemaining -= 1
+        countdownLabel.text = String(secondsRemaining)
+        
+        if (secondsRemaining == 0) {
+            //AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            //audioPlayer?.play()
+            timer?.cancel()
+            
+            semaphore?.signal()
+            
+            pauseCellButton.isEnabled = false
+            
+        }
+        
+    }
+    
+    @objc func playAll(semaphore: DispatchSemaphore?) {
+        
+        cellState = .playing
+        
+        //timer?.cancel() // This here probably shouldn't happen.
+        
+        timer = DispatchSource.makeTimerSource(queue: DispatchQueue.main)
+        timer?.schedule(deadline: .now(), repeating: .seconds(1))
+        
+        timer?.setEventHandler(handler: { [weak self] in
+            self!.updateAllCellTimer(semaphore: semaphore)
+        })
+        
+        timer?.resume()
+        
+        // MARK: Figure out why this won't work on main thread
+        DispatchQueue.main.async {
+            self.playCellButton.isEnabled = false
+            self.stopCellButton.isHidden = true
+        }
+        
+    }
+    
+    // To be called after 'Stop All' is tapped
+    func resetAllCells(semaphore: DispatchSemaphore?) {
+        
+        semaphore?.suspend()
+        
+        countdownLabel.text = currentScore
+        playCellButton.isEnabled = true
+        stopCellButton.isHidden = false
+        _playbackOptionsView.isHidden = true
+        
+        timer?.cancel()
+        // MARK: decide is timer?.resume() needs to go here
         
     }
     

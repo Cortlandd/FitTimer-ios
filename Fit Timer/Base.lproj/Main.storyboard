@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yvm-K7-1Px" id="BuW-in-TQo">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="139.5"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uVb-GO-URM" userLabel="Vertical Parent Stack">
@@ -90,12 +90,12 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="_parentStackviewHeight" destination="uVb-GO-URM" id="KUI-4X-pwo"/>
                                     <outlet property="_playbackOptionsView" destination="JJw-Km-qzt" id="e8r-gZ-MBt"/>
                                     <outlet property="countdownLabel" destination="DUw-Be-pVK" id="GG9-88-gQH"/>
                                     <outlet property="pauseCellButton" destination="Ylz-4v-xhq" id="Gd3-6E-KDl"/>
                                     <outlet property="playCellButton" destination="SPJ-aZ-eFR" id="c8Z-DF-tE4"/>
                                     <outlet property="secondsLabel" destination="vbK-QT-BNS" id="gOY-Vv-dfz"/>
+                                    <outlet property="stopCellButton" destination="WH4-YM-ZUM" id="ndi-Cq-DM1"/>
                                     <outlet property="workoutLabel" destination="aax-HY-4gk" id="3zF-Ai-cQF"/>
                                     <segue destination="VV8-MK-kem" kind="show" identifier="showTimer" id="BLh-7T-udc"/>
                                 </connections>
@@ -130,11 +130,6 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X8P-qw-4IS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HsS-Hp-Yf8">
-                    <rect key="frame" x="0.0" y="0.0" width="92" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
-                </button>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vbK-QT-BNS">
                     <rect key="frame" x="0.0" y="0.0" width="21" height="20.5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

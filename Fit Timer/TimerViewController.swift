@@ -13,8 +13,6 @@ class TimerViewController: UITableViewController {
     var timerStore: TimerStore!
     var imageStore: ImageStore!
     
-    var playAllSemaphore : DispatchSemaphore?
-    
     var workoutCellPlaying: Bool = false
     
     @IBOutlet weak var _playAllButton: UIButton!
@@ -22,9 +20,7 @@ class TimerViewController: UITableViewController {
         
         let cells = self.tableView.visibleCells as! [TimerCell]
         
-        if (playAllSemaphore == nil) {
-            playAllSemaphore = DispatchSemaphore(value: 1)
-        }
+        let semaphore = DispatchSemaphore(value: 1)
         
         if _playAllButton.titleLabel?.text == "Play All" {
             
@@ -32,27 +28,30 @@ class TimerViewController: UITableViewController {
             
             _playAllButton.setTitle("Stop All", for: .normal)
             
+            // Prevent user from tapping Play on a cell, then tapping Play All
+//            for cell in cells {
+//                if cell.cellState == .playing {
+//                    cell.stopCell()
+//                    cell.resetAllCells(semaphore: semaphore)
+//                }
+//            }
+            
             DispatchQueue.global().async {
                 for cell in cells {
-                    self.playAllSemaphore?.wait()
-                    cell.play(semaphore: self.playAllSemaphore)
+                    semaphore.wait()
+                    cell.playAll(semaphore: semaphore)
                 }
-            }
-    
+            }    
         }
         
         if _playAllButton.titleLabel?.text == "Stop All" {
             
-            self.playAllSemaphore?.suspend()
-            
             for cell in cells {
-                cell.playCellButton.isEnabled = true
+                cell.resetAllCells(semaphore: semaphore)
             }
             
             _playAllButton.setTitle("Play All", for: .normal)
-            
             _addNewTimer.isEnabled = true
-            
         }
         
     }
@@ -72,6 +71,8 @@ class TimerViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        timerStore.customTimer(workout: "test", seconds: "5", soundEnabled: true)
 
         tableView.estimatedRowHeight = 90
         tableView.rowHeight = UITableViewAutomaticDimension
