@@ -16,20 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        // Create Timer Store
-        let timerStore = TimerStore()
-        
-        // Create Image Store
-        let imageStore = ImageStore()
-        
-        // Access viewcontroller and set timer to store
-        let navController = window!.rootViewController as! UINavigationController
-        let timerViewController = navController.topViewController as! TimerViewController
-        timerViewController.timerStore = timerStore
-        timerViewController.imageStore = imageStore
-        
-        //SDWebImageCodersManager.sharedInstance().addCoder(SDWebImageGIFCoder.shared())
+    //SDWebImageCodersManager.sharedInstance().addCoder(SDWebImageGIFCoder.shared())
         
         SwiftyGiphyAPI.shared.apiKey = SwiftyGiphyAPI.publicBetaKey
         

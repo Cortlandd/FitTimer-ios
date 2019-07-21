@@ -7,13 +7,31 @@
 //
 
 import UIKit
+import CoreData
 
 class TimerViewController: UITableViewController {
     
-    var timerStore: TimerStore!
-    var imageStore: ImageStore!
+    private let persistentContainer = NSPersistentContainer(name: "Workouts")
     
-    var workoutCellPlaying: Bool = false
+    @IBOutlet var _noWorkoutsMessage: UIView!
+    
+    fileprivate lazy var fetchResultsController: NSFetchedResultsController<Workout> = {
+        // Create fetch Request
+        let fetchRequest: NSFetchRequest<Workout> = Workout.fetchRequest()
+        
+        // Configure Fetch Request
+        // MARK: Find a way to get position when created
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: true)]
+        
+        // Create Fetched Results Controller
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        // Configure Fetched Results Controller
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+        
+    }()
     
     @IBOutlet weak var _playAllButton: UIButton!
     @IBAction func _playAllButton(_ sender: UIButton) {
@@ -56,83 +74,100 @@ class TimerViewController: UITableViewController {
         
     }
     
-    
     @IBOutlet weak var _addNewTimer: UIBarButtonItem!
-    @IBAction func addNewTimer(_ sender: UIBarButtonItem) {
-        // Create a new item and add it to the store
-        let newTimer = timerStore.createTimer()
-        // Figure out where that item is in the array
-        if let index = timerStore.allTimers.index(of: newTimer) {
-            let indexPath = IndexPath(row: index, section: 0)
-            // Insert this new row into the table
-            tableView.insertRows(at: [indexPath], with: .automatic)
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        timerStore.customTimer(workout: "test", seconds: "5", soundEnabled: true)
 
         tableView.estimatedRowHeight = 90
         tableView.rowHeight = UITableViewAutomaticDimension
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
         
-        //navigationItem.leftBarButtonItem = editButtonItem
-    }
-    
-    // Once the backbutton is pressed on detail page and this screen appears. Do:
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        tableView.backgroundView = _noWorkoutsMessage
         
-        tableView.reloadData()
+        /*
+         The loadPersistentStores(completionHandler:) method asynchronously loads the persistent store(s) and adds it to the persistent store coordinator.
+         */
+        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
+            if let error = error {
+                print("Unable to Load Persistent Store")
+                print("\(error), \(error.localizedDescription)")
+                
+            } else {
+                self.setupView()
+                
+                do {
+                    try self.fetchResultsController.performFetch()
+                } catch {
+                    let fetchError = error as NSError
+                    print("Unable to Perform Fetch Request")
+                    print("\(fetchError), \(fetchError.localizedDescription)")
+                }
+                
+                self.updateView()
+                
+            }
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
+        
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // If the triggered segue is the "showItem" segue
-        switch segue.identifier {
-        case "showTimer"?:
-            // Figure out which row was just tapped
-            if let row = tableView.indexPathForSelectedRow?.row {
-                // Get the item associated with this row and pass it along
-                let timer = timerStore.allTimers[row]
-                let detailViewController = segue.destination as! DetailViewController
-                detailViewController.timerModel = timer
-                detailViewController.imageStore = imageStore
-            }
-        case "showAddPopup"?:
-            if (segue.destination.isKind(of: PopupViewController.self)) {
-                (segue.destination as! PopupViewController).timerStore = timerStore
-            }
-        default:
-            preconditionFailure("Unexpected segue identifier.")
+    @objc func applicationDidEnterBackground(_ notification: Notification) {
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            print("Unable to Save Changes")
+            print("\(error), \(error.localizedDescription)")
         }
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destinationViewController = segue.destination as? ShowWorkoutViewController else { return }
         
-        if timerStore.allTimers.count <= 1 {
+        // Configure View Controller
+        destinationViewController.managedObjectContext = persistentContainer.viewContext
+        
+        if let indexPath = tableView.indexPathForSelectedRow, segue.identifier == "ShowWorkout" {
+            // Configure View Controller
+            destinationViewController.workout = fetchResultsController.object(at: indexPath)
+            destinationViewController.controllerTitle = "Edit Workout"
+        }
+        
+    }
+    
+    func setupView() {
+        updateView()
+    }
+    
+    fileprivate func updateView() {
+        
+        var hasWorkouts = false
+        
+        if let workouts = fetchResultsController.fetchedObjects {
+            hasWorkouts = workouts.count > 0
+        }
+        
+        //tableView.isHidden = !hasWorkouts
+        _noWorkoutsMessage.isHidden = hasWorkouts
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let workouts = fetchResultsController.fetchedObjects else { return 0 }
+        
+        if workouts.count <= 1 {
             _playAllButton.isEnabled = false
         } else {
             _playAllButton.isEnabled = true
         }
         
-        return timerStore.allTimers.count
+        return workouts.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TimerCell", for: indexPath) as! TimerCell
         
-        let timers = timerStore.allTimers[indexPath.row]
-        
-        cell.workoutLabel?.text = timers.workout
-        cell.secondsLabel?.text = timers.secondsPick
-        
-        // Assign the middle timer text to be the same as the seconds time
-        cell.countdownLabel?.text = timers.secondsPick
+        configure(cell, at: indexPath)
         
         return cell
     }
@@ -140,24 +175,34 @@ class TimerViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // if the table is asked to delete
         if editingStyle == .delete {
-            
             // Fetch the specific row in table
-            let item = timerStore.allTimers[indexPath.row]
-            
+            let workout = fetchResultsController.object(at: indexPath)
             // Remove fetched row
-            timerStore.removeTimer(item)
-            
-            // Remove the item's image from the image store
-            self.imageStore.deleteImage(forKey: item.imgKey)
-            
-            // Remove row in table
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            workout.managedObjectContext?.delete(workout)
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
         // update the model
-        timerStore.moveTimer(from: sourceIndexPath.row, to: destinationIndexPath.row)
+        //timerStore.moveTimer(from: sourceIndexPath.row, to: destinationIndexPath.row)
+    }
+    
+    func configure(_ cell: TimerCell, at indexPath: IndexPath) {
+        
+        // Fetch Workout
+        let workout = fetchResultsController.object(at: indexPath)
+        
+        cell.workoutLabel?.text = workout.workout
+        cell.secondsLabel?.text = workout.seconds.description
+        
+        // Assign the middle timer text to be the same as the seconds time
+        cell.countdownLabel?.text = workout.seconds.description
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -166,5 +211,50 @@ class TimerViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
+}
+
+extension TimerViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+        
+        updateView()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch (type) {
+        case .insert:
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+            break;
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        case .update:
+            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? TimerCell {
+                configure(cell, at: indexPath)
+            }
+            break;
+        case .move:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            
+            if let newIndexPath = newIndexPath {
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+            break;
+
+        }
+    }
+
     
 }

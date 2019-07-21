@@ -97,7 +97,7 @@
                                     <outlet property="secondsLabel" destination="vbK-QT-BNS" id="gOY-Vv-dfz"/>
                                     <outlet property="stopCellButton" destination="WH4-YM-ZUM" id="ndi-Cq-DM1"/>
                                     <outlet property="workoutLabel" destination="aax-HY-4gk" id="3zF-Ai-cQF"/>
-                                    <segue destination="VV8-MK-kem" kind="show" identifier="showTimer" id="BLh-7T-udc"/>
+                                    <segue destination="XxZ-vQ-Jqy" kind="show" identifier="ShowWorkout" id="1WC-11-eC8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -119,17 +119,35 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sls-cV-IeV">
                             <connections>
-                                <action selector="addNewTimer:" destination="94h-fj-HfI" id="X8y-x0-blY"/>
-                                <segue destination="XxZ-vQ-Jqy" kind="show" identifier="showAddPopup" id="Sfn-uW-4WB"/>
+                                <segue destination="XxZ-vQ-Jqy" kind="show" identifier="AddWorkout" id="Sfn-uW-4WB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="_addNewTimer" destination="sls-cV-IeV" id="17d-HV-E7h"/>
+                        <outlet property="_noWorkoutsMessage" destination="807-3v-8Kd" id="5qj-Pi-q5I"/>
                         <outlet property="_playAllButton" destination="9ep-3M-ATv" id="Jtb-SK-UNv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X8P-qw-4IS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="807-3v-8Kd">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No Workouts Created" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7r-0V-VgO" userLabel="No Workouts Text">
+                            <rect key="frame" x="38" y="54" width="165" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="g7r-0V-VgO" firstAttribute="centerX" secondItem="zcn-5j-zaT" secondAttribute="centerX" id="TbS-OD-kzR"/>
+                        <constraint firstItem="g7r-0V-VgO" firstAttribute="centerY" secondItem="zcn-5j-zaT" secondAttribute="centerY" id="cfS-eO-ZHb"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="zcn-5j-zaT"/>
+                </view>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vbK-QT-BNS">
                     <rect key="frame" x="0.0" y="0.0" width="21" height="20.5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -143,7 +161,7 @@
         <!--Add New Workout-->
         <scene sceneID="39e-dR-uOG">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="XxZ-vQ-Jqy" customClass="PopupViewController" customModule="Fit_Timer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="XxZ-vQ-Jqy" customClass="ShowWorkoutViewController" customModule="Fit_Timer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bFf-0b-0kW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -200,7 +218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOP-Aw-2Xs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2248.8000000000002" y="-196.55172413793105"/>
+            <point key="canvasLocation" x="2299" y="133"/>
         </scene>
         <!--Modify Workout-->
         <scene sceneID="zdY-vF-Qky">
@@ -211,7 +229,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ylx-8I-oae">
-                                <rect key="frame" x="20" y="96" width="374" height="648"/>
+                                <rect key="frame" x="20" y="52" width="374" height="692"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Jac-No-s2k">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="65"/>
@@ -247,7 +265,7 @@
                                         <variation key="heightClass=compact" axis="vertical" distribution="fillEqually"/>
                                     </stackView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="EXZ-hP-jfZ" customClass="FLAnimatedImageView">
-                                        <rect key="frame" x="0.0" y="73" width="374" height="575"/>
+                                        <rect key="frame" x="0.0" y="73" width="374" height="619"/>
                                     </imageView>
                                 </subviews>
                                 <variation key="heightClass=compact" axis="horizontal" distribution="fillEqually"/>
@@ -332,7 +350,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2248.8000000000002" y="593.25337331334333"/>
+            <point key="canvasLocation" x="2299" y="921"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HR4-Hx-YZc">
@@ -385,4 +403,7 @@
             <point key="canvasLocation" x="3055" y="592"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="1WC-11-eC8"/>
+    </inferredMetricsTieBreakers>
 </document>
