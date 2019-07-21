@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5D266958711DBF4458D9C63C /* Pods_Fit_Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D24483537D34EE0CCB28F4A1 /* Pods_Fit_Timer.framework */; };
 		7F08E397212B5C4600D6D9C9 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08E396212B5C4600D6D9C9 /* TimerViewController.swift */; };
-		7F29874821716A360039171E /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F29874721716A360039171E /* UIImage+Gif.swift */; };
 		7F6CC1ED22DF5705004BD587 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7F6CC1EC22DF5705004BD587 /* bell.wav */; };
 		7F6CC1F222E4BDDF004BD587 /* Workouts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F6CC1F022E4BDDF004BD587 /* Workouts.xcdatamodeld */; };
 		7F88C399212BAF3100C7D622 /* TimerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F88C398212BAF3100C7D622 /* TimerCell.swift */; };
@@ -37,7 +36,6 @@
 		02312E9AB34A57C15DDBD0CE /* Pods_Fit_TimerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fit_TimerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C354182339AB049E451B576 /* Pods-Fit Timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit Timer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fit Timer/Pods-Fit Timer.debug.xcconfig"; sourceTree = "<group>"; };
 		7F08E396212B5C4600D6D9C9 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
-		7F29874721716A360039171E /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Gif.swift"; path = "../../../../../../Users/user1/Desktop/UIImage+Gif.swift"; sourceTree = "<group>"; };
 		7F6CC1EC22DF5705004BD587 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell.wav; sourceTree = "<group>"; };
 		7F6CC1F122E4BDDF004BD587 /* Workouts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Workouts.xcdatamodel; sourceTree = "<group>"; };
 		7F88C398212BAF3100C7D622 /* TimerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCell.swift; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				7FE8EA7421192E5F00FD1596 /* ShowWorkoutViewController.swift */,
 				7F88C398212BAF3100C7D622 /* TimerCell.swift */,
 				7F88C39A212C4D2500C7D622 /* DetailViewController.swift */,
-				7F29874721716A360039171E /* UIImage+Gif.swift */,
 				7F6CC1F022E4BDDF004BD587 /* Workouts.xcdatamodeld */,
 			);
 			path = "Fit Timer";
@@ -319,7 +316,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F88C399212BAF3100C7D622 /* TimerCell.swift in Sources */,
-				7F29874821716A360039171E /* UIImage+Gif.swift in Sources */,
 				7F08E397212B5C4600D6D9C9 /* TimerViewController.swift in Sources */,
 				7F6CC1F222E4BDDF004BD587 /* Workouts.xcdatamodeld in Sources */,
 				7FE8EA5321187F6100FD1596 /* AppDelegate.swift in Sources */,
