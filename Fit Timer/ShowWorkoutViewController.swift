@@ -19,13 +19,18 @@ class ShowWorkoutViewController: UIViewController {
     
     var managedObjectContext: NSManagedObjectContext?
     
+    var selectedPickerRow: Int!
+    
+    @IBOutlet weak var pickerView: UIPickerView!
+    
     @IBOutlet weak var newWorkoutField: UITextField!
-    @IBOutlet weak var secondsField: UITextField!
     @IBOutlet weak var soundSwitch: UISwitch!
     
     @IBAction func saveButton(_ sender: Any) {
         
         guard let managedObjectContext = managedObjectContext else { return }
+        
+        selectedPickerRow = pickerView.selectedRow(inComponent: 0)
         
         if workout == nil {
             
@@ -41,7 +46,7 @@ class ShowWorkoutViewController: UIViewController {
         if let workout = workout {
             // Configure Workout
             workout.workout = newWorkoutField.text!
-            workout.seconds = Int16(secondsField.text!)!
+            workout.seconds = Int16(selectedPickerRow)
         }
         
         _ = navigationController?.popViewController(animated: true)
@@ -52,14 +57,17 @@ class ShowWorkoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        secondsField.keyboardType = UIKeyboardType.numberPad
-        
         self.title = controllerTitle
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
         
         if let workout = workout {
             newWorkoutField.text = workout.workout
-            secondsField.text = workout.seconds.description
+            pickerView.selectRow(selectedPickerRow, inComponent: 0, animated: true)
+            
         }
+        
     }
     
     
@@ -68,4 +76,34 @@ class ShowWorkoutViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+}
+
+extension ShowWorkoutViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        return 50.0
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component == 0 {
+            return 60
+        } else {
+            return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if component == 0 {
+            return "\(row)"
+        } else {
+            return "sec"
+        }
+    }
+    
+    
 }
