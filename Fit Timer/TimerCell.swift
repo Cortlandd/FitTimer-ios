@@ -36,14 +36,6 @@ class TimerCell: UITableViewCell {
         }
     }
     
-    var allCellState: TimerAllCellState = .playingAll {
-        didSet {
-            ""
-        }
-    }
-    
-    var currentScore: String!
-    
     //private var audioPlayer: AVAudioPlayer?
 
     @IBOutlet weak var _playbackOptionsView: UIStackView!
@@ -174,8 +166,6 @@ class TimerCell: UITableViewCell {
     /* Handle All Cell */
     @objc func updateAllCellTimer(semaphore: DispatchSemaphore?) {
         
-        currentScore = secondsLabel.text
-        
         var secondsRemaining: Int = Int(countdownLabel.text!)!
         secondsRemaining -= 1
         countdownLabel.text = String(secondsRemaining)
@@ -219,14 +209,14 @@ class TimerCell: UITableViewCell {
     // To be called after 'Stop All' is tapped
     func resetAllCells(semaphore: DispatchSemaphore?) {
         
+        timer?.cancel()
+        
         semaphore?.suspend()
         
-        countdownLabel.text = currentScore
         playCellButton.isEnabled = true
         stopCellButton.isHidden = false
         _playbackOptionsView.isHidden = true
         
-        timer?.cancel()
         // MARK: decide is timer?.resume() needs to go here
         
     }

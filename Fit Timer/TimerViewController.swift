@@ -66,6 +66,7 @@ class TimerViewController: UITableViewController {
             
             for cell in cells {
                 cell.resetAllCells(semaphore: semaphore)
+                tableView.reloadData()
             }
             
             _playAllButton.setTitle("Play All", for: .normal)
