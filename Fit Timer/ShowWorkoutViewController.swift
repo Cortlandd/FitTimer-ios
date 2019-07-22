@@ -35,6 +35,7 @@ class ShowWorkoutViewController: UIViewController {
         speechSynthesizer.speak(speechUtterance)
     }
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBAction func saveButton(_ sender: Any) {
         
         guard let managedObjectContext = managedObjectContext else { return }
@@ -91,6 +92,11 @@ class ShowWorkoutViewController: UIViewController {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         speechUtterance = AVSpeechUtterance(string: textField.text!)
+        if newWorkoutField.text == "" {
+            saveButton.isEnabled = false
+        } else {
+            saveButton.isEnabled = true
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -110,6 +116,16 @@ extension ShowWorkoutViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         return 2
     }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // if 0 is selected disable save button.
+        if component == 0 {
+            if row == 0 {
+                saveButton.isEnabled = false
+            } else {
+                saveButton.isEnabled = true
+            }
+        }
+    }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if component == 0 {

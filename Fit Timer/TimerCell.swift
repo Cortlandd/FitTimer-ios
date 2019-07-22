@@ -26,6 +26,10 @@ class TimerCell: UITableViewCell {
     // timer variable used to schedule the countdown
     var timer : DispatchSourceTimer?
     
+    var speechSynthesizer: AVSpeechSynthesizer!
+    
+    var speechUtterance: AVSpeechUtterance!
+    
     var defaultHeight: CGFloat!
     
     var cellState: TimerCellState = .playing {
@@ -74,7 +78,13 @@ class TimerCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         workoutLabel.adjustsFontForContentSizeCategory = true
-        secondsLabel.adjustsFontForContentSizeCategory = true
+        
+        speechSynthesizer = AVSpeechSynthesizer()
+        speechUtterance = AVSpeechUtterance(string: workoutLabel.text!)
+        // Rate is to be adjusted for double words and single words
+        speechUtterance.rate = AVSpeechUtteranceDefaultSpeechRate
+        // Is to be changed by country in settings and default to country
+        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-IE")
         
         /* Settings for timer notification sound
         let alertSound = URL(fileURLWithPath: Bundle.main.path(forResource: "bell", ofType: "wav")!)
@@ -127,6 +137,9 @@ class TimerCell: UITableViewCell {
     
     /* Handle Single Cell */
     @objc func play() {
+        
+        speechUtterance = AVSpeechUtterance(string: workoutLabel.text!)
+        speechSynthesizer.speak(speechUtterance)
         
         cellState = .playing
         
@@ -184,6 +197,9 @@ class TimerCell: UITableViewCell {
     @objc func playAll(semaphore: DispatchSemaphore) {
         
         cellState = .playing
+        
+        speechUtterance = AVSpeechUtterance(string: workoutLabel.text!)
+        speechSynthesizer.speak(speechUtterance)
         
         //timer?.cancel() // This here probably shouldn't happen.
         

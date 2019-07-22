@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yvm-K7-1Px" id="BuW-in-TQo">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="139.5"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uVb-GO-URM" userLabel="Vertical Parent Stack">
@@ -249,7 +249,7 @@
                         <viewLayoutGuide key="safeArea" id="QCE-6e-lNM"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add New Workout" id="PHp-x5-bu4">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="Sf6-Us-bw5">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="Sf6-Us-bw5">
                             <connections>
                                 <action selector="saveButton:" destination="XxZ-vQ-Jqy" id="t2o-Ty-mHr"/>
                             </connections>
@@ -258,6 +258,7 @@
                     <connections>
                         <outlet property="newWorkoutField" destination="cPP-s8-kq7" id="cp7-PI-XMy"/>
                         <outlet property="pickerView" destination="BmW-7G-wG5" id="gQt-gR-d1O"/>
+                        <outlet property="saveButton" destination="Sf6-Us-bw5" id="u0i-f0-DYk"/>
                         <outlet property="soundSwitch" destination="bcR-Uo-MBL" id="yJX-j5-oxU"/>
                         <segue destination="uFp-Uh-oO0" kind="presentation" identifier="gifSelectorSegue" id="qIA-Yg-0KN"/>
                     </connections>
@@ -305,7 +306,7 @@
             <objects>
                 <navigationController storyboardIdentifier="swiftyGiphyStoryboard" id="uFp-Uh-oO0" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CXW-d9-fRm">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

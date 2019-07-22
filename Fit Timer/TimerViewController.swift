@@ -142,6 +142,7 @@ class TimerViewController: UITableViewController {
             destinationViewController.workout = fetchResultsController.object(at: indexPath)
             destinationViewController.controllerTitle = "Edit Workout"
             destinationViewController.selectedPickerRow = Int(fetchResultsController.object(at: indexPath).seconds)
+            destinationViewController.saveButton.isEnabled = true
         }
         
     }
