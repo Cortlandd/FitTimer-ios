@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yvm-K7-1Px" id="BuW-in-TQo">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="139.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uVb-GO-URM" userLabel="Vertical Parent Stack">
@@ -134,8 +134,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No Workouts Created" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7r-0V-VgO" userLabel="No Workouts Text">
-                            <rect key="frame" x="38" y="54" width="165" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Workouts Created" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7r-0V-VgO" userLabel="No Workouts Text">
+                            <rect key="frame" x="37.5" y="58.5" width="165" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -166,17 +166,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcR-Uo-MBL" userLabel="soundSwitch">
-                                <rect key="frame" x="342" y="770" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcR-Uo-MBL" userLabel="soundSwitch">
+                                <rect key="frame" x="354" y="771" width="51" height="30"/>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voice Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2g-Bb-VbZ">
-                                <rect key="frame" x="238" y="775" width="96" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Speech" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2g-Bb-VbZ">
+                                <rect key="frame" x="232.5" y="777" width="113.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="EXZ-hP-jfZ" customClass="FLAnimatedImageView">
-                                <rect key="frame" x="20" y="322" width="374" height="434"/>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="EXZ-hP-jfZ">
+                                <rect key="frame" x="20" y="322" width="374" height="435"/>
                             </imageView>
                             <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xF9-vn-gW9">
                                 <rect key="frame" x="0.0" y="818" width="414" height="44"/>
@@ -205,11 +205,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGQ-Hv-rkX">
+                                <rect key="frame" x="71.5" y="770" width="121" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="koH-hb-8OY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="Test Workout Speech"/>
+                                <connections>
+                                    <action selector="testSpeechButton:" destination="XxZ-vQ-Jqy" eventType="touchUpInside" id="k9O-XC-fIQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xF9-vn-gW9" firstAttribute="centerY" secondItem="mFU-bq-mbq" secondAttribute="centerY" id="029-AJ-WUP"/>
-                            <constraint firstItem="QCE-6e-lNM" firstAttribute="trailing" secondItem="bcR-Uo-MBL" secondAttribute="trailing" constant="23" id="FmC-DF-MJL"/>
+                            <constraint firstItem="QCE-6e-lNM" firstAttribute="trailing" secondItem="bcR-Uo-MBL" secondAttribute="trailing" constant="11" id="FmC-DF-MJL"/>
                             <constraint firstAttribute="trailing" secondItem="BmW-7G-wG5" secondAttribute="trailing" id="GVR-3e-Yfm"/>
                             <constraint firstItem="BmW-7G-wG5" firstAttribute="trailing" secondItem="xF9-vn-gW9" secondAttribute="trailing" id="LQa-vo-od6"/>
                             <constraint firstItem="BmW-7G-wG5" firstAttribute="centerX" secondItem="mFU-bq-mbq" secondAttribute="centerX" id="OLi-8F-Icb"/>
@@ -217,15 +228,19 @@
                             <constraint firstItem="bcR-Uo-MBL" firstAttribute="leading" secondItem="z2g-Bb-VbZ" secondAttribute="trailing" constant="8" symbolic="YES" id="PRP-je-eZk"/>
                             <constraint firstItem="BmW-7G-wG5" firstAttribute="leading" secondItem="bFf-0b-0kW" secondAttribute="leading" id="Rji-mW-969"/>
                             <constraint firstItem="xF9-vn-gW9" firstAttribute="centerX" secondItem="EXZ-hP-jfZ" secondAttribute="centerX" id="Tha-pn-4oe"/>
+                            <constraint firstItem="wGQ-Hv-rkX" firstAttribute="centerY" secondItem="z2g-Bb-VbZ" secondAttribute="centerY" constant="-1" id="WL6-zf-FuJ"/>
                             <constraint firstItem="cPP-s8-kq7" firstAttribute="width" secondItem="bFf-0b-0kW" secondAttribute="width" constant="-40" id="WTi-kl-bFr"/>
                             <constraint firstItem="BmW-7G-wG5" firstAttribute="centerX" secondItem="EXZ-hP-jfZ" secondAttribute="centerX" id="Wgt-fE-W64"/>
                             <constraint firstItem="xF9-vn-gW9" firstAttribute="top" secondItem="bcR-Uo-MBL" secondAttribute="bottom" constant="17" id="XpT-wU-Xkr"/>
                             <constraint firstItem="bcR-Uo-MBL" firstAttribute="top" secondItem="EXZ-hP-jfZ" secondAttribute="bottom" constant="14" id="YZk-9n-q2X"/>
                             <constraint firstItem="BmW-7G-wG5" firstAttribute="top" secondItem="QCE-6e-lNM" secondAttribute="top" id="cC8-go-OVr"/>
+                            <constraint firstItem="z2g-Bb-VbZ" firstAttribute="leading" secondItem="wGQ-Hv-rkX" secondAttribute="trailing" constant="40" id="cPi-da-PLJ"/>
                             <constraint firstItem="BmW-7G-wG5" firstAttribute="centerX" secondItem="cPP-s8-kq7" secondAttribute="centerX" id="eBW-El-2ay"/>
                             <constraint firstItem="xF9-vn-gW9" firstAttribute="bottom" secondItem="QCE-6e-lNM" secondAttribute="bottom" id="eJD-Gi-cHL"/>
                             <constraint firstItem="EXZ-hP-jfZ" firstAttribute="top" secondItem="cPP-s8-kq7" secondAttribute="bottom" constant="8" symbolic="YES" id="idy-xS-nXP"/>
+                            <constraint firstItem="wGQ-Hv-rkX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EXZ-hP-jfZ" secondAttribute="leading" id="l2F-xN-kqH"/>
                             <constraint firstItem="cPP-s8-kq7" firstAttribute="top" secondItem="BmW-7G-wG5" secondAttribute="bottom" constant="8" id="lnA-ey-Tio"/>
+                            <constraint firstItem="wGQ-Hv-rkX" firstAttribute="top" secondItem="bcR-Uo-MBL" secondAttribute="top" constant="-1" id="r9l-RG-UnK"/>
                             <constraint firstItem="bcR-Uo-MBL" firstAttribute="centerY" secondItem="z2g-Bb-VbZ" secondAttribute="centerY" id="vnK-hn-51f"/>
                             <constraint firstItem="BmW-7G-wG5" firstAttribute="height" secondItem="bFf-0b-0kW" secondAttribute="height" multiplier="1:3" constant="-110.66666666666663" id="wSd-Ei-zSQ"/>
                             <constraint firstItem="BmW-7G-wG5" firstAttribute="width" secondItem="EXZ-hP-jfZ" secondAttribute="width" constant="40" id="wVs-SH-aQj"/>
@@ -290,7 +305,7 @@
             <objects>
                 <navigationController storyboardIdentifier="swiftyGiphyStoryboard" id="uFp-Uh-oO0" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CXW-d9-fRm">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

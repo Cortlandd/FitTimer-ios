@@ -6,7 +6,7 @@ target 'Fit Timer' do
   use_frameworks!
 
   # Pods for Fit Timer
-  pod 'SwiftyGiphy', '~> 1.1.1'
+  #pod 'SwiftyGiphy', '~> 1.1.1'
 
   target 'Fit TimerUITests' do
     inherit! :search_paths

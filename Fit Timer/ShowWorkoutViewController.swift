@@ -8,10 +8,15 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 class ShowWorkoutViewController: UIViewController {
     
     var timerViewController: TimerViewController?
+    
+    var speechSynthesizer: AVSpeechSynthesizer!
+    
+    var speechUtterance: AVSpeechUtterance!
     
     var workout: Workout?
     
@@ -25,6 +30,10 @@ class ShowWorkoutViewController: UIViewController {
     
     @IBOutlet weak var newWorkoutField: UITextField!
     @IBOutlet weak var soundSwitch: UISwitch!
+        
+    @IBAction func testSpeechButton(_ sender: Any) {
+        speechSynthesizer.speak(speechUtterance)
+    }
     
     @IBAction func saveButton(_ sender: Any) {
         
@@ -68,8 +77,21 @@ class ShowWorkoutViewController: UIViewController {
             
         }
         
+        // Listen for text changes
+        newWorkoutField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        
+        speechSynthesizer = AVSpeechSynthesizer()
+        speechUtterance = AVSpeechUtterance(string: newWorkoutField.text ?? "Enter A Workout")
+        // Rate is to be adjusted for double words and single words
+        speechUtterance.rate = AVSpeechUtteranceDefaultSpeechRate
+        // Is to be changed by country in settings and default to country
+        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-IE")
+        
     }
     
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        speechUtterance = AVSpeechUtterance(string: textField.text!)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

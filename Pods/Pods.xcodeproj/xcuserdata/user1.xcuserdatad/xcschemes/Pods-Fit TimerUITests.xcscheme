@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E3C0A4E77719E9D6ACB6BEEAA664EE3A"
+               BlueprintIdentifier = "DB4127819B607B6C01C44B60D0F52CA4"
                BuildableName = "Pods_Fit_TimerUITests.framework"
                BlueprintName = "Pods-Fit TimerUITests"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E3C0A4E77719E9D6ACB6BEEAA664EE3A"
+            BlueprintIdentifier = "DB4127819B607B6C01C44B60D0F52CA4"
             BuildableName = "Pods_Fit_TimerUITests.framework"
             BlueprintName = "Pods-Fit TimerUITests"
             ReferencedContainer = "container:Pods.xcodeproj">
