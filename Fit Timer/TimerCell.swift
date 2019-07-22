@@ -123,8 +123,6 @@ class TimerCell: UITableViewCell {
         } else {
             return
         }
-        
-        
     }
     
     /* Handle Single Cell */
@@ -183,7 +181,7 @@ class TimerCell: UITableViewCell {
         
     }
     
-    @objc func playAll(semaphore: DispatchSemaphore?) {
+    @objc func playAll(semaphore: DispatchSemaphore) {
         
         cellState = .playing
         
@@ -202,6 +200,33 @@ class TimerCell: UITableViewCell {
         DispatchQueue.main.async {
             self.playCellButton.isEnabled = false
             self.stopCellButton.isHidden = true
+        }
+        
+    }
+    
+    /*
+     A hack to stop all cells from timerviewcontroller
+     */
+    func stopAllCell() {
+        
+        // Capture current state before stopped state to decide to timer.resume() or not
+        let prevState = cellState
+        
+        if cellState == .stopped {
+            return
+        }
+        cellState = .stopped
+        
+        timer?.cancel()
+        
+        /*
+         If the timer is suspended, calling cancel without resuming
+         triggers a crash. This is documented here https://forums.developer.apple.com/thread/15902
+         */
+        if prevState == .paused {
+            timer?.resume()
+        } else {
+            return
         }
         
     }

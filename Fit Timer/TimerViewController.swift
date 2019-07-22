@@ -40,31 +40,40 @@ class TimerViewController: UITableViewController {
         
         let semaphore = DispatchSemaphore(value: 1)
         
+        var dwi: DispatchWorkItem?
+        
         if _playAllButton.titleLabel?.text == "Play All" {
             
             _addNewTimer.isEnabled = false
             
             _playAllButton.setTitle("Stop All", for: .normal)
             
-            // Prevent user from tapping Play on a cell, then tapping Play All
-//            for cell in cells {
-//                if cell.cellState == .playing {
-//                    cell.stopCell()
-//                    cell.resetAllCells(semaphore: semaphore)
-//                }
-//            }
+            for cell in cells {
+                cell.playCellButton.isEnabled = false
+            }
             
-            DispatchQueue.global().async {
+            dwi = DispatchWorkItem {
                 for cell in cells {
+                    if dwi!.isCancelled {
+                        break
+                    }
                     semaphore.wait()
                     cell.playAll(semaphore: semaphore)
                 }
-            }    
+            }
+            
+            DispatchQueue.global().async(execute: dwi!)
+            
         }
         
         if _playAllButton.titleLabel?.text == "Stop All" {
             
+            DispatchQueue.global().async {
+                dwi?.cancel()
+            }
+            
             for cell in cells {
+                cell.stopAllCell()
                 cell.resetAllCells(semaphore: semaphore)
                 tableView.reloadData()
             }
