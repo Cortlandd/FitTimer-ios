@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,7 +13,6 @@
 		7F6CC1F222E4BDDF004BD587 /* Workouts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F6CC1F022E4BDDF004BD587 /* Workouts.xcdatamodeld */; };
 		7F6CC1F622E62969004BD587 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6CC1F522E62969004BD587 /* AVFoundation.framework */; };
 		7F88C399212BAF3100C7D622 /* TimerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F88C398212BAF3100C7D622 /* TimerCell.swift */; };
-		7F88C39B212C4D2500C7D622 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F88C39A212C4D2500C7D622 /* DetailViewController.swift */; };
 		7FE8EA5321187F6100FD1596 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8EA5221187F6100FD1596 /* AppDelegate.swift */; };
 		7FE8EA5821187F6100FD1596 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8EA5621187F6100FD1596 /* Main.storyboard */; };
 		7FE8EA5A21187F6400FD1596 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8EA5921187F6400FD1596 /* Assets.xcassets */; };
@@ -41,7 +40,6 @@
 		7F6CC1F122E4BDDF004BD587 /* Workouts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Workouts.xcdatamodel; sourceTree = "<group>"; };
 		7F6CC1F522E62969004BD587 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7F88C398212BAF3100C7D622 /* TimerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCell.swift; sourceTree = "<group>"; };
-		7F88C39A212C4D2500C7D622 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		7FE8EA4F21187F6100FD1596 /* Fit Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE8EA5221187F6100FD1596 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FE8EA5721187F6100FD1596 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				7FE8EA5E21187F6400FD1596 /* Info.plist */,
 				7FE8EA7421192E5F00FD1596 /* ShowWorkoutViewController.swift */,
 				7F88C398212BAF3100C7D622 /* TimerCell.swift */,
-				7F88C39A212C4D2500C7D622 /* DetailViewController.swift */,
 				7F6CC1F022E4BDDF004BD587 /* Workouts.xcdatamodeld */,
 			);
 			path = "Fit Timer";
@@ -158,6 +155,7 @@
 				7FE8EA4B21187F6100FD1596 /* Sources */,
 				7FE8EA4C21187F6100FD1596 /* Frameworks */,
 				7FE8EA4D21187F6100FD1596 /* Resources */,
+				DE6F3B478975516EA3D8A0A5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -285,6 +283,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DE6F3B478975516EA3D8A0A5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fit Timer/Pods-Fit Timer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fit Timer/Pods-Fit Timer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fit Timer/Pods-Fit Timer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -297,7 +312,6 @@
 				7F6CC1F222E4BDDF004BD587 /* Workouts.xcdatamodeld in Sources */,
 				7FE8EA5321187F6100FD1596 /* AppDelegate.swift in Sources */,
 				7FE8EA7521192E5F00FD1596 /* ShowWorkoutViewController.swift in Sources */,
-				7F88C39B212C4D2500C7D622 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

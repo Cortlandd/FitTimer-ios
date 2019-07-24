@@ -15,38 +15,38 @@
         <scene sceneID="VwN-QC-sBY">
             <objects>
                 <tableViewController id="94h-fj-HfI" customClass="TimerViewController" customModule="Fit_Timer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" id="nC6-Ai-IDH">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" id="nC6-Ai-IDH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimerCell" rowHeight="140" id="Yvm-K7-1Px" customClass="TimerCell" customModule="Fit_Timer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="140"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimerCell" id="Yvm-K7-1Px" customClass="TimerCell" customModule="Fit_Timer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yvm-K7-1Px" id="BuW-in-TQo">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="139.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yvm-K7-1Px" id="BuW-in-TQo">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uVb-GO-URM" userLabel="Vertical Parent Stack">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="139.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6JP-bi-TEf" userLabel="Main Cell">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="139.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6JP-bi-TEf" userLabel="Main Cell">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aax-HY-4gk">
-                                                            <rect key="frame" x="0.0" y="61" width="132.5" height="18"/>
+                                                            <rect key="frame" x="0.0" y="13" width="132.5" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUw-Be-pVK" userLabel="Countdown Label">
-                                                            <rect key="frame" x="140.5" y="54" width="133" height="31.5"/>
+                                                            <rect key="frame" x="140.5" y="6" width="133" height="31.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPJ-aZ-eFR" userLabel="Play">
-                                                            <rect key="frame" x="281.5" y="55" width="132.5" height="30"/>
+                                                            <rect key="frame" x="281.5" y="7" width="132.5" height="30"/>
                                                             <state key="normal" title="Play"/>
                                                             <connections>
                                                                 <action selector="playCellButton:" destination="Yvm-K7-1Px" eventType="touchUpInside" id="9Jf-DN-2KW"/>
@@ -54,21 +54,21 @@
                                                         </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" priority="750" constant="90" id="soA-0S-Hvx"/>
+                                                        <constraint firstAttribute="height" constant="90" id="T27-xw-Ife"/>
                                                     </constraints>
                                                 </stackView>
-                                                <stackView hidden="YES" opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="JJw-Km-qzt">
+                                                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JJw-Km-qzt">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WH4-YM-ZUM" userLabel="Stop Cell Button">
-                                                            <rect key="frame" x="0.0" y="0.0" width="207" height="0.0"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="203" height="0.0"/>
                                                             <state key="normal" title="Stop"/>
                                                             <connections>
                                                                 <action selector="stopCellButton:" destination="Yvm-K7-1Px" eventType="touchUpInside" id="bYb-ka-jix"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ylz-4v-xhq">
-                                                            <rect key="frame" x="207" y="0.0" width="207" height="0.0"/>
+                                                            <rect key="frame" x="211" y="0.0" width="203" height="0.0"/>
                                                             <state key="normal" title="Pause"/>
                                                             <connections>
                                                                 <action selector="pauseCellButton:" destination="Yvm-K7-1Px" eventType="touchUpInside" id="GGm-o3-zjG"/>
@@ -76,17 +76,24 @@
                                                         </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" priority="750" constant="50" id="xLV-OG-ulz"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="HhJ-6F-CYE"/>
                                                     </constraints>
                                                 </stackView>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yhC-C5-p8n" customClass="FLAnimatedImageView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="wwC-GS-Y28"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="uVb-GO-URM" firstAttribute="leading" secondItem="BuW-in-TQo" secondAttribute="leading" id="88B-fs-HLX"/>
-                                        <constraint firstAttribute="bottom" secondItem="uVb-GO-URM" secondAttribute="bottom" id="hQo-Xr-191"/>
-                                        <constraint firstItem="uVb-GO-URM" firstAttribute="top" secondItem="BuW-in-TQo" secondAttribute="top" id="kv6-dQ-Bux"/>
-                                        <constraint firstAttribute="trailing" secondItem="uVb-GO-URM" secondAttribute="trailing" id="zsA-1B-s0d"/>
+                                        <constraint firstItem="uVb-GO-URM" firstAttribute="height" relation="lessThanOrEqual" secondItem="BuW-in-TQo" secondAttribute="height" id="A0g-JE-vjC"/>
+                                        <constraint firstAttribute="trailing" secondItem="uVb-GO-URM" secondAttribute="trailing" id="aoI-cA-1LB"/>
+                                        <constraint firstItem="uVb-GO-URM" firstAttribute="top" secondItem="BuW-in-TQo" secondAttribute="top" id="hfA-58-2OB"/>
+                                        <constraint firstItem="uVb-GO-URM" firstAttribute="leading" secondItem="BuW-in-TQo" secondAttribute="leading" id="mus-Ac-GzM"/>
+                                        <constraint firstAttribute="bottom" secondItem="uVb-GO-URM" secondAttribute="bottom" id="oUS-6e-eOe"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -96,6 +103,7 @@
                                     <outlet property="playCellButton" destination="SPJ-aZ-eFR" id="c8Z-DF-tE4"/>
                                     <outlet property="secondsLabel" destination="vbK-QT-BNS" id="gOY-Vv-dfz"/>
                                     <outlet property="stopCellButton" destination="WH4-YM-ZUM" id="ndi-Cq-DM1"/>
+                                    <outlet property="workoutImage" destination="yhC-C5-p8n" id="6Fy-Fg-5qP"/>
                                     <outlet property="workoutLabel" destination="aax-HY-4gk" id="3zF-Ai-cQF"/>
                                     <segue destination="XxZ-vQ-Jqy" kind="show" identifier="ShowWorkout" id="1WC-11-eC8"/>
                                 </connections>
@@ -175,22 +183,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="EXZ-hP-jfZ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="EXZ-hP-jfZ" customClass="FLAnimatedImageView">
                                 <rect key="frame" x="20" y="322" width="374" height="435"/>
                             </imageView>
-                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xF9-vn-gW9">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xF9-vn-gW9">
                                 <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="3Ab-q0-lrF"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem systemItem="camera" id="Z2G-5t-kjI"/>
+                                    <barButtonItem enabled="NO" systemItem="camera" id="Z2G-5t-kjI">
+                                        <connections>
+                                            <action selector="_cameraRollImage:" destination="XxZ-vQ-Jqy" id="W4Q-XP-UyP"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="COp-Fc-ySw"/>
-                                    <barButtonItem systemItem="search" id="AVf-fa-gaZ" userLabel="Search Gif"/>
+                                    <barButtonItem systemItem="search" id="AVf-fa-gaZ" userLabel="Search Gif">
+                                        <connections>
+                                            <segue destination="uFp-Uh-oO0" kind="presentation" identifier="selectGiphyImage" id="f4o-t0-vxl"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Load Camera Roll Image or Gif" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFU-bq-mbq" userLabel="Load Image">
-                                <rect key="frame" x="91" y="829.5" width="232" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Load Gif Image or Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFU-bq-mbq" userLabel="Load Image">
+                                <rect key="frame" x="110.5" y="829.5" width="193.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -256,11 +272,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="_workoutImage" destination="EXZ-hP-jfZ" id="Dn8-hn-Saq"/>
                         <outlet property="newWorkoutField" destination="cPP-s8-kq7" id="cp7-PI-XMy"/>
                         <outlet property="pickerView" destination="BmW-7G-wG5" id="gQt-gR-d1O"/>
                         <outlet property="saveButton" destination="Sf6-Us-bw5" id="u0i-f0-DYk"/>
                         <outlet property="soundSwitch" destination="bcR-Uo-MBL" id="yJX-j5-oxU"/>
-                        <segue destination="uFp-Uh-oO0" kind="presentation" identifier="gifSelectorSegue" id="qIA-Yg-0KN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOP-Aw-2Xs" userLabel="First Responder" sceneMemberID="firstResponder"/>

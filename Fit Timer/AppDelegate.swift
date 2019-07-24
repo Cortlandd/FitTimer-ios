@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyGiphy
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
     //SDWebImageCodersManager.sharedInstance().addCoder(SDWebImageGIFCoder.shared())
         
-        //SwiftyGiphyAPI.shared.apiKey = SwiftyGiphyAPI.publicBetaKey
+        SwiftyGiphyAPI.shared.apiKey = SwiftyGiphyAPI.publicBetaKey
         
         return true
     }

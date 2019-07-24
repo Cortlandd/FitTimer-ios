@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import FLAnimatedImage
 
 enum TimerCellState {
     case playing
@@ -73,6 +74,8 @@ class TimerCell: UITableViewCell {
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var workoutLabel: UILabel!
     @IBOutlet weak var secondsLabel: UILabel!
+    @IBOutlet weak var workoutImage: FLAnimatedImageView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -99,11 +102,14 @@ class TimerCell: UITableViewCell {
         switch cellState {
         case .playing:
             _playbackOptionsView.isHidden = false
+            workoutImage.isHidden = false
             playCellButton.isEnabled = false
         case .paused:
             _playbackOptionsView.isHidden = false
+            workoutImage.isHidden = false
         case .stopped:
             _playbackOptionsView.isHidden = true
+            workoutImage.isHidden = true
             countdownLabel.text = secondsLabel.text
             playCellButton.isEnabled = true
         default:
@@ -184,6 +190,9 @@ class TimerCell: UITableViewCell {
         if (secondsRemaining == 0) {
             //AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             //audioPlayer?.play()
+            
+            workoutImage.isHidden = true
+            
             timer?.cancel()
             
             semaphore?.signal()
@@ -257,6 +266,7 @@ class TimerCell: UITableViewCell {
         playCellButton.isEnabled = true
         stopCellButton.isHidden = false
         _playbackOptionsView.isHidden = true
+        workoutImage.isHidden = true
         
         // MARK: decide is timer?.resume() needs to go here
         

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import FLAnimatedImage
 
 class TimerViewController: UITableViewController {
     
@@ -88,9 +89,6 @@ class TimerViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.estimatedRowHeight = 90
-        tableView.rowHeight = UITableViewAutomaticDimension
         
         tableView.backgroundView = _noWorkoutsMessage
         
@@ -119,6 +117,14 @@ class TimerViewController: UITableViewController {
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.estimatedRowHeight = 400
+        tableView.rowHeight = UITableViewAutomaticDimension
         
     }
     
@@ -181,6 +187,9 @@ class TimerViewController: UITableViewController {
         
         configure(cell, at: indexPath)
         
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        
         return cell
     }
     
@@ -192,6 +201,11 @@ class TimerViewController: UITableViewController {
             // Remove fetched row
             workout.managedObjectContext?.delete(workout)
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -209,11 +223,14 @@ class TimerViewController: UITableViewController {
         // Fetch Workout
         let workout = fetchResultsController.object(at: indexPath)
         
+        let image: FLAnimatedImage? = FLAnimatedImage.init(animatedGIFData: workout.workoutImage)
+        
         cell.workoutLabel?.text = workout.workout
         cell.secondsLabel?.text = workout.seconds.description
         
         // Assign the middle timer text to be the same as the seconds time
         cell.countdownLabel?.text = workout.seconds.description
+        cell.workoutImage?.animatedImage = image
         
     }
 
