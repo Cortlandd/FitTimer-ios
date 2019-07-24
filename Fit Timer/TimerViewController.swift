@@ -187,9 +187,6 @@ class TimerViewController: UITableViewController {
         
         configure(cell, at: indexPath)
         
-        tableView.beginUpdates()
-        tableView.endUpdates()
-        
         return cell
     }
     
