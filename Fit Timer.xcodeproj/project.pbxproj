@@ -12,6 +12,25 @@
 		7F6CC1ED22DF5705004BD587 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7F6CC1EC22DF5705004BD587 /* bell.wav */; };
 		7F6CC1F222E4BDDF004BD587 /* Workouts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F6CC1F022E4BDDF004BD587 /* Workouts.xcdatamodeld */; };
 		7F6CC1F622E62969004BD587 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6CC1F522E62969004BD587 /* AVFoundation.framework */; };
+		7F723C1B22E8F023008BDA34 /* GiphyLogoEmblem.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F723C0722E8F023008BDA34 /* GiphyLogoEmblem.png */; };
+		7F723C1C22E8F023008BDA34 /* GiphyLogoEmblem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F723C0822E8F023008BDA34 /* GiphyLogoEmblem@2x.png */; };
+		7F723C1D22E8F023008BDA34 /* GiphyLogoEmblem@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F723C0922E8F023008BDA34 /* GiphyLogoEmblem@3x.png */; };
+		7F723C1E22E8F023008BDA34 /* CornerRoundingMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F723C0B22E8F023008BDA34 /* CornerRoundingMaskView.swift */; };
+		7F723C1F22E8F023008BDA34 /* GiphyImageSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F723C0C22E8F023008BDA34 /* GiphyImageSet.swift */; };
+		7F723C2022E8F023008BDA34 /* GiphyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F723C0D22E8F023008BDA34 /* GiphyItem.swift */; };
+		7F723C2122E8F023008BDA34 /* GiphyMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F723C0E22E8F023008BDA34 /* GiphyMeta.swift */; };
+		7F723C2222E8F023008BDA34 /* GiphyMultipleGIFResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F723C0F22E8F023008BDA34 /* GiphyMultipleGIFResponse.swift */; };
+		7F723C2322E8F023008BDA34 /* GiphyPagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F723C1022E8F023008BDA34 /* GiphyPagination.swift */; };
+		7F723C2422E8F023008BDA34 /* GiphySimpleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F723C1122E8F023008BDA34 /* GiphySimpleItem.swift */; };
+		7F723C2522E8F023008BDA34 /* GiphySimpleSingleGIFResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F723C1222E8F023008BDA34 /* GiphySimpleSingleGIFResponse.swift */; };
+		7F723C2622E8F023008BDA34 /* GiphySingleGIFResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F723C1322E8F023008BDA34 /* GiphySingleGIFResponse.swift */; };
+		7F723C2722E8F023008BDA34 /* GiphyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F723C1422E8F023008BDA34 /* GiphyUser.swift */; };
+		7F723C2822E8F023008BDA34 /* ParsingTransforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F723C1522E8F023008BDA34 /* ParsingTransforms.swift */; };
+		7F723C2922E8F023008BDA34 /* RoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F723C1622E8F023008BDA34 /* RoundedCornerView.swift */; };
+		7F723C2A22E8F023008BDA34 /* SwiftyGiphyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F723C1722E8F023008BDA34 /* SwiftyGiphyAPI.swift */; };
+		7F723C2B22E8F023008BDA34 /* SwiftyGiphyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F723C1822E8F023008BDA34 /* SwiftyGiphyCollectionViewCell.swift */; };
+		7F723C2C22E8F023008BDA34 /* SwiftyGiphyGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F723C1922E8F023008BDA34 /* SwiftyGiphyGridLayout.swift */; };
+		7F723C2D22E8F023008BDA34 /* SwiftyGiphyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F723C1A22E8F023008BDA34 /* SwiftyGiphyViewController.swift */; };
 		7F88C399212BAF3100C7D622 /* TimerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F88C398212BAF3100C7D622 /* TimerCell.swift */; };
 		7FE8EA5321187F6100FD1596 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8EA5221187F6100FD1596 /* AppDelegate.swift */; };
 		7FE8EA5821187F6100FD1596 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8EA5621187F6100FD1596 /* Main.storyboard */; };
@@ -39,6 +58,25 @@
 		7F6CC1EC22DF5705004BD587 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell.wav; sourceTree = "<group>"; };
 		7F6CC1F122E4BDDF004BD587 /* Workouts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Workouts.xcdatamodel; sourceTree = "<group>"; };
 		7F6CC1F522E62969004BD587 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		7F723C0722E8F023008BDA34 /* GiphyLogoEmblem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GiphyLogoEmblem.png; sourceTree = "<group>"; };
+		7F723C0822E8F023008BDA34 /* GiphyLogoEmblem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GiphyLogoEmblem@2x.png"; sourceTree = "<group>"; };
+		7F723C0922E8F023008BDA34 /* GiphyLogoEmblem@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GiphyLogoEmblem@3x.png"; sourceTree = "<group>"; };
+		7F723C0B22E8F023008BDA34 /* CornerRoundingMaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerRoundingMaskView.swift; sourceTree = "<group>"; };
+		7F723C0C22E8F023008BDA34 /* GiphyImageSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiphyImageSet.swift; sourceTree = "<group>"; };
+		7F723C0D22E8F023008BDA34 /* GiphyItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiphyItem.swift; sourceTree = "<group>"; };
+		7F723C0E22E8F023008BDA34 /* GiphyMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiphyMeta.swift; sourceTree = "<group>"; };
+		7F723C0F22E8F023008BDA34 /* GiphyMultipleGIFResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiphyMultipleGIFResponse.swift; sourceTree = "<group>"; };
+		7F723C1022E8F023008BDA34 /* GiphyPagination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiphyPagination.swift; sourceTree = "<group>"; };
+		7F723C1122E8F023008BDA34 /* GiphySimpleItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiphySimpleItem.swift; sourceTree = "<group>"; };
+		7F723C1222E8F023008BDA34 /* GiphySimpleSingleGIFResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiphySimpleSingleGIFResponse.swift; sourceTree = "<group>"; };
+		7F723C1322E8F023008BDA34 /* GiphySingleGIFResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiphySingleGIFResponse.swift; sourceTree = "<group>"; };
+		7F723C1422E8F023008BDA34 /* GiphyUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiphyUser.swift; sourceTree = "<group>"; };
+		7F723C1522E8F023008BDA34 /* ParsingTransforms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsingTransforms.swift; sourceTree = "<group>"; };
+		7F723C1622E8F023008BDA34 /* RoundedCornerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornerView.swift; sourceTree = "<group>"; };
+		7F723C1722E8F023008BDA34 /* SwiftyGiphyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyGiphyAPI.swift; sourceTree = "<group>"; };
+		7F723C1822E8F023008BDA34 /* SwiftyGiphyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyGiphyCollectionViewCell.swift; sourceTree = "<group>"; };
+		7F723C1922E8F023008BDA34 /* SwiftyGiphyGridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyGiphyGridLayout.swift; sourceTree = "<group>"; };
+		7F723C1A22E8F023008BDA34 /* SwiftyGiphyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyGiphyViewController.swift; sourceTree = "<group>"; };
 		7F88C398212BAF3100C7D622 /* TimerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCell.swift; sourceTree = "<group>"; };
 		7FE8EA4F21187F6100FD1596 /* Fit Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE8EA5221187F6100FD1596 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +115,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F723BDD22E8EF3D008BDA34 /* SwiftyGiphy */ = {
+			isa = PBXGroup;
+			children = (
+				7F723C0622E8F023008BDA34 /* Assets */,
+				7F723C0A22E8F023008BDA34 /* Library */,
+			);
+			path = SwiftyGiphy;
+			sourceTree = "<group>";
+		};
+		7F723C0622E8F023008BDA34 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				7F723C0722E8F023008BDA34 /* GiphyLogoEmblem.png */,
+				7F723C0822E8F023008BDA34 /* GiphyLogoEmblem@2x.png */,
+				7F723C0922E8F023008BDA34 /* GiphyLogoEmblem@3x.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		7F723C0A22E8F023008BDA34 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				7F723C0B22E8F023008BDA34 /* CornerRoundingMaskView.swift */,
+				7F723C0C22E8F023008BDA34 /* GiphyImageSet.swift */,
+				7F723C0D22E8F023008BDA34 /* GiphyItem.swift */,
+				7F723C0E22E8F023008BDA34 /* GiphyMeta.swift */,
+				7F723C0F22E8F023008BDA34 /* GiphyMultipleGIFResponse.swift */,
+				7F723C1022E8F023008BDA34 /* GiphyPagination.swift */,
+				7F723C1122E8F023008BDA34 /* GiphySimpleItem.swift */,
+				7F723C1222E8F023008BDA34 /* GiphySimpleSingleGIFResponse.swift */,
+				7F723C1322E8F023008BDA34 /* GiphySingleGIFResponse.swift */,
+				7F723C1422E8F023008BDA34 /* GiphyUser.swift */,
+				7F723C1522E8F023008BDA34 /* ParsingTransforms.swift */,
+				7F723C1622E8F023008BDA34 /* RoundedCornerView.swift */,
+				7F723C1722E8F023008BDA34 /* SwiftyGiphyAPI.swift */,
+				7F723C1822E8F023008BDA34 /* SwiftyGiphyCollectionViewCell.swift */,
+				7F723C1922E8F023008BDA34 /* SwiftyGiphyGridLayout.swift */,
+				7F723C1A22E8F023008BDA34 /* SwiftyGiphyViewController.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		7FE8EA4621187F6100FD1596 = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +180,7 @@
 		7FE8EA5121187F6100FD1596 /* Fit Timer */ = {
 			isa = PBXGroup;
 			children = (
+				7F723BDD22E8EF3D008BDA34 /* SwiftyGiphy */,
 				7F6CC1EC22DF5705004BD587 /* bell.wav */,
 				7FE8EA5221187F6100FD1596 /* AppDelegate.swift */,
 				7F08E396212B5C4600D6D9C9 /* TimerViewController.swift */,
@@ -197,11 +278,11 @@
 				TargetAttributes = {
 					7FE8EA4E21187F6100FD1596 = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 					};
 					7FE8EA6221187F6500FD1596 = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						TestTargetID = 7FE8EA4E21187F6100FD1596;
 					};
 				};
@@ -230,8 +311,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F723C1D22E8F023008BDA34 /* GiphyLogoEmblem@3x.png in Resources */,
 				7FE8EA5D21187F6400FD1596 /* LaunchScreen.storyboard in Resources */,
 				7FE8EA5A21187F6400FD1596 /* Assets.xcassets in Resources */,
+				7F723C1B22E8F023008BDA34 /* GiphyLogoEmblem.png in Resources */,
+				7F723C1C22E8F023008BDA34 /* GiphyLogoEmblem@2x.png in Resources */,
 				7FE8EA5821187F6100FD1596 /* Main.storyboard in Resources */,
 				7F6CC1ED22DF5705004BD587 /* bell.wav in Resources */,
 			);
@@ -308,10 +392,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F88C399212BAF3100C7D622 /* TimerCell.swift in Sources */,
+				7F723C2C22E8F023008BDA34 /* SwiftyGiphyGridLayout.swift in Sources */,
+				7F723C2522E8F023008BDA34 /* GiphySimpleSingleGIFResponse.swift in Sources */,
+				7F723C2222E8F023008BDA34 /* GiphyMultipleGIFResponse.swift in Sources */,
+				7F723C2422E8F023008BDA34 /* GiphySimpleItem.swift in Sources */,
+				7F723C2722E8F023008BDA34 /* GiphyUser.swift in Sources */,
+				7F723C2822E8F023008BDA34 /* ParsingTransforms.swift in Sources */,
+				7F723C2922E8F023008BDA34 /* RoundedCornerView.swift in Sources */,
 				7F08E397212B5C4600D6D9C9 /* TimerViewController.swift in Sources */,
+				7F723C2022E8F023008BDA34 /* GiphyItem.swift in Sources */,
+				7F723C2322E8F023008BDA34 /* GiphyPagination.swift in Sources */,
 				7F6CC1F222E4BDDF004BD587 /* Workouts.xcdatamodeld in Sources */,
+				7F723C1E22E8F023008BDA34 /* CornerRoundingMaskView.swift in Sources */,
+				7F723C2A22E8F023008BDA34 /* SwiftyGiphyAPI.swift in Sources */,
+				7F723C1F22E8F023008BDA34 /* GiphyImageSet.swift in Sources */,
 				7FE8EA5321187F6100FD1596 /* AppDelegate.swift in Sources */,
+				7F723C2122E8F023008BDA34 /* GiphyMeta.swift in Sources */,
+				7F723C2D22E8F023008BDA34 /* SwiftyGiphyViewController.swift in Sources */,
 				7FE8EA7521192E5F00FD1596 /* ShowWorkoutViewController.swift in Sources */,
+				7F723C2622E8F023008BDA34 /* GiphySingleGIFResponse.swift in Sources */,
+				7F723C2B22E8F023008BDA34 /* SwiftyGiphyCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,7 +583,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cortland.xyz.Fit-Timer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -502,7 +602,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cortland.xyz.Fit-Timer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -522,7 +622,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cortland.xyz.Fit-TimerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Fit Timer";
 			};
@@ -543,7 +643,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cortland.xyz.Fit-TimerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Fit Timer";
 			};

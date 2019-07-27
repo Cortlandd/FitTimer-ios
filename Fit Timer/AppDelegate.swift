@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyGiphy
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

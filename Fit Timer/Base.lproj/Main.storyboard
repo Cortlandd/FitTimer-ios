@@ -20,81 +20,70 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimerCell" id="Yvm-K7-1Px" customClass="TimerCell" customModule="Fit_Timer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimerCell" rowHeight="285" id="Yvm-K7-1Px" customClass="TimerCell" customModule="Fit_Timer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="285"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yvm-K7-1Px" id="BuW-in-TQo">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="284.5"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uVb-GO-URM" userLabel="Vertical Parent Stack">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uVb-GO-URM" userLabel="Vertical Parent Stack">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6JP-bi-TEf" userLabel="Main Cell">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6JP-bi-TEf" userLabel="Main Cell">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Workout" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aax-HY-4gk">
-                                                            <rect key="frame" x="0.0" y="6" width="132.5" height="18"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aax-HY-4gk">
+                                                            <rect key="frame" x="0.0" y="0.0" width="132.5" height="50"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUw-Be-pVK" userLabel="Countdown Label">
-                                                            <rect key="frame" x="140.5" y="0.0" width="133" height="30"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPJ-aZ-eFR" userLabel="Play">
-                                                            <rect key="frame" x="281.5" y="0.0" width="132.5" height="30"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPJ-aZ-eFR" userLabel="Play">
+                                                            <rect key="frame" x="140.5" y="0.0" width="133" height="50"/>
                                                             <state key="normal" title="Play"/>
                                                             <connections>
                                                                 <action selector="playCellButton:" destination="Yvm-K7-1Px" eventType="touchUpInside" id="9Jf-DN-2KW"/>
                                                             </connections>
                                                         </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUw-Be-pVK" userLabel="Countdown Label">
+                                                            <rect key="frame" x="281.5" y="0.0" width="132.5" height="50"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="90" id="T27-xw-Ife"/>
-                                                    </constraints>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JJw-Km-qzt">
-                                                    <rect key="frame" x="0.0" y="30" width="414" height="13.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JJw-Km-qzt">
+                                                    <rect key="frame" x="0.0" y="50" width="414" height="50"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WH4-YM-ZUM" userLabel="Stop Cell Button">
-                                                            <rect key="frame" x="0.0" y="0.0" width="203" height="13.5"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WH4-YM-ZUM" userLabel="Stop Cell Button">
+                                                            <rect key="frame" x="0.0" y="10" width="203" height="30"/>
                                                             <state key="normal" title="Stop"/>
                                                             <connections>
                                                                 <action selector="stopCellButton:" destination="Yvm-K7-1Px" eventType="touchUpInside" id="bYb-ka-jix"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ylz-4v-xhq">
-                                                            <rect key="frame" x="211" y="0.0" width="203" height="13.5"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ylz-4v-xhq">
+                                                            <rect key="frame" x="211" y="0.0" width="203" height="50"/>
                                                             <state key="normal" title="Pause"/>
                                                             <connections>
                                                                 <action selector="pauseCellButton:" destination="Yvm-K7-1Px" eventType="touchUpInside" id="GGm-o3-zjG"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="HhJ-6F-CYE"/>
-                                                    </constraints>
                                                 </stackView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yhC-C5-p8n" customClass="FLAnimatedImageView">
-                                                    <rect key="frame" x="0.0" y="43.5" width="414" height="0.0"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="wwC-GS-Y28"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="0.0" y="100" width="414" height="50"/>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="JJw-Km-qzt" firstAttribute="height" secondItem="uVb-GO-URM" secondAttribute="height" multiplier="1:3" id="PNF-Hi-nOw"/>
+                                                <constraint firstItem="yhC-C5-p8n" firstAttribute="height" secondItem="uVb-GO-URM" secondAttribute="height" multiplier="1:3" id="Z6B-xd-cYR"/>
+                                                <constraint firstItem="6JP-bi-TEf" firstAttribute="height" secondItem="uVb-GO-URM" secondAttribute="height" multiplier="1:3" id="zO8-M0-n9r"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="uVb-GO-URM" firstAttribute="height" relation="lessThanOrEqual" secondItem="BuW-in-TQo" secondAttribute="height" id="A0g-JE-vjC"/>
-                                        <constraint firstAttribute="trailing" secondItem="uVb-GO-URM" secondAttribute="trailing" id="aoI-cA-1LB"/>
-                                        <constraint firstItem="uVb-GO-URM" firstAttribute="top" secondItem="BuW-in-TQo" secondAttribute="top" id="hfA-58-2OB"/>
-                                        <constraint firstItem="uVb-GO-URM" firstAttribute="leading" secondItem="BuW-in-TQo" secondAttribute="leading" id="mus-Ac-GzM"/>
-                                        <constraint firstAttribute="bottom" secondItem="uVb-GO-URM" secondAttribute="bottom" id="oUS-6e-eOe"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="_playbackOptionsView" destination="JJw-Km-qzt" id="e8r-gZ-MBt"/>
@@ -304,7 +293,7 @@
         <!--Swifty Giphy View Controller-->
         <scene sceneID="Kfw-Gx-o8x">
             <objects>
-                <viewController id="WcK-Tr-Kmf" customClass="SwiftyGiphyViewController" customModule="SwiftyGiphy" sceneMemberID="viewController">
+                <viewController id="WcK-Tr-Kmf" customClass="SwiftyGiphyViewController" customModule="Fit_Timer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3yE-CH-XES">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

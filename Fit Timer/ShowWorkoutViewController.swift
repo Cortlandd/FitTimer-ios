@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import AVFoundation
-import SwiftyGiphy
 import FLAnimatedImage
 
 class ShowWorkoutViewController: UIViewController, UINavigationControllerDelegate {

@@ -165,14 +165,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/NSTimer-Blocks/NSTimer_Blocks.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyGiphy/SwiftyGiphy.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/NSTimer-Blocks/NSTimer_Blocks.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyGiphy/SwiftyGiphy.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

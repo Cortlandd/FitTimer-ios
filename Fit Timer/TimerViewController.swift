@@ -116,7 +116,7 @@ class TimerViewController: UITableViewController {
             }
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         
     }
     
@@ -124,7 +124,7 @@ class TimerViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         tableView.estimatedRowHeight = 400
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         
     }
     
