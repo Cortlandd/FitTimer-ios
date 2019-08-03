@@ -14,17 +14,11 @@ import FLAnimatedImage
 class ShowWorkoutViewController: UIViewController, UINavigationControllerDelegate {
     
     var timerViewController: TimerViewController?
-    
     var speechSynthesizer: AVSpeechSynthesizer!
-    
     var speechUtterance: AVSpeechUtterance!
-    
     var workout: Workout?
-    
     var controllerTitle = "Add New Workout"
-    
     var managedObjectContext: NSManagedObjectContext?
-    
     var selectedPickerRow: Int!
     
     @IBOutlet weak var pickerView: UIPickerView!
@@ -119,10 +113,22 @@ class ShowWorkoutViewController: UIViewController, UINavigationControllerDelegat
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
+        
         speechUtterance = AVSpeechUtterance(string: textField.text!)
-        if newWorkoutField.text == "" {
+        
+        if textField.text == "" {
             saveButton.isEnabled = false
-        } else {
+        }
+        if pickerView.selectedRow(inComponent: 0) == 0 {
+            saveButton.isEnabled = false
+        }
+        if textField.text == "" && pickerView.selectedRow(inComponent: 0) == 0 {
+            saveButton.isEnabled = false
+        }
+        if textField.text != "" &&  pickerView.selectedRow(inComponent: 0) == 0 {
+            saveButton.isEnabled = false
+        }
+        if textField.text != "" && pickerView.selectedRow(inComponent: 0) != 0 {
             saveButton.isEnabled = true
         }
     }
@@ -149,8 +155,6 @@ extension ShowWorkoutViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         if component == 0 {
             if row == 0 {
                 saveButton.isEnabled = false
-            } else {
-                saveButton.isEnabled = true
             }
         }
     }

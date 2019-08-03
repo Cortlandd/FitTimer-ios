@@ -10,9 +10,11 @@ import UIKit
 import CoreData
 import FLAnimatedImage
 
-class TimerViewController: UITableViewController {
+class TimerViewController: UIViewController {
     
     private let persistentContainer = NSPersistentContainer(name: "Workouts")
+    
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet var _noWorkoutsMessage: UIView!
     
@@ -90,6 +92,8 @@ class TimerViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.dataSource = self
+        tableView.delegate = self
         tableView.backgroundView = _noWorkoutsMessage
         
         /*
@@ -170,50 +174,7 @@ class TimerViewController: UITableViewController {
         
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let workouts = fetchResultsController.fetchedObjects else { return 0 }
-        
-        if workouts.count <= 1 {
-            _playAllButton.isEnabled = false
-        } else {
-            _playAllButton.isEnabled = true
-        }
-        
-        return workouts.count
-    }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TimerCell", for: indexPath) as! TimerCell
-        
-        configure(cell, at: indexPath)
-        
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        // if the table is asked to delete
-        if editingStyle == .delete {
-            // Fetch the specific row in table
-            let workout = fetchResultsController.object(at: indexPath)
-            // Remove fetched row
-            workout.managedObjectContext?.delete(workout)
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        tableView.beginUpdates()
-        tableView.endUpdates()
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
-        // update the model
-        //timerStore.moveTimer(from: sourceIndexPath.row, to: destinationIndexPath.row)
-    }
     
     func configure(_ cell: TimerCell, at indexPath: IndexPath) {
         
@@ -238,6 +199,54 @@ class TimerViewController: UITableViewController {
 
     // MARK: - Table view data source
     
+}
+
+extension TimerViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let workouts = fetchResultsController.fetchedObjects else { return 0 }
+        
+        if workouts.count <= 1 {
+            _playAllButton.isEnabled = false
+        } else {
+            _playAllButton.isEnabled = true
+        }
+        
+        return workouts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TimerCell", for: indexPath) as! TimerCell
+        
+        configure(cell, at: indexPath)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        // if the table is asked to delete
+        if editingStyle == .delete {
+            // Fetch the specific row in table
+            let workout = fetchResultsController.object(at: indexPath)
+            // Remove fetched row
+            workout.managedObjectContext?.delete(workout)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+        // update the model
+        //timerStore.moveTimer(from: sourceIndexPath.row, to: destinationIndexPath.row)
+    }
 }
 
 extension TimerViewController: NSFetchedResultsControllerDelegate {
