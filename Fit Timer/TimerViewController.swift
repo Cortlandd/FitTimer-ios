@@ -40,15 +40,12 @@ class TimerViewController: UIViewController {
     @IBAction func _playAllButton(_ sender: UIButton) {
         
         let cells = self.tableView.visibleCells as! [TimerCell]
-        
         let semaphore = DispatchSemaphore(value: 1)
-        
         var dwi: DispatchWorkItem?
         
         if _playAllButton.titleLabel?.text == "Play All" {
             
             _addNewTimer.isEnabled = false
-            
             _playAllButton.setTitle("Stop All", for: .normal)
             
             for cell in cells {
@@ -94,6 +91,9 @@ class TimerViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        tableView.estimatedRowHeight = 400
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.backgroundView = _noWorkoutsMessage
         
         /*
@@ -126,9 +126,6 @@ class TimerViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        tableView.estimatedRowHeight = 400
-        tableView.rowHeight = UITableView.automaticDimension
         
     }
     
