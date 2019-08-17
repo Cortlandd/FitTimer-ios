@@ -187,6 +187,9 @@ class TimerViewController: UIViewController {
         cell.countdownLabel?.text = workout.seconds.description
         cell.workoutImage?.animatedImage = image
         
+        cell.layoutIfNeeded()
+        cell.sizeToFit()
+        
     }
 
     override func didReceiveMemoryWarning() {
