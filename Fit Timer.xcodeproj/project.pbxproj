@@ -32,6 +32,7 @@
 		7F723C2C22E8F023008BDA34 /* SwiftyGiphyGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F723C1922E8F023008BDA34 /* SwiftyGiphyGridLayout.swift */; };
 		7F723C2D22E8F023008BDA34 /* SwiftyGiphyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F723C1A22E8F023008BDA34 /* SwiftyGiphyViewController.swift */; };
 		7F88C399212BAF3100C7D622 /* TimerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F88C398212BAF3100C7D622 /* TimerCell.swift */; };
+		7F8E8B5F230B89A600B8ACCE /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8E8B5E230B89A600B8ACCE /* SettingsTableViewController.swift */; };
 		7FE8EA5321187F6100FD1596 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8EA5221187F6100FD1596 /* AppDelegate.swift */; };
 		7FE8EA5821187F6100FD1596 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8EA5621187F6100FD1596 /* Main.storyboard */; };
 		7FE8EA5A21187F6400FD1596 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8EA5921187F6400FD1596 /* Assets.xcassets */; };
@@ -78,6 +79,7 @@
 		7F723C1922E8F023008BDA34 /* SwiftyGiphyGridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyGiphyGridLayout.swift; sourceTree = "<group>"; };
 		7F723C1A22E8F023008BDA34 /* SwiftyGiphyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyGiphyViewController.swift; sourceTree = "<group>"; };
 		7F88C398212BAF3100C7D622 /* TimerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCell.swift; sourceTree = "<group>"; };
+		7F8E8B5E230B89A600B8ACCE /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		7FE8EA4F21187F6100FD1596 /* Fit Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE8EA5221187F6100FD1596 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FE8EA5721187F6100FD1596 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				7FE8EA7421192E5F00FD1596 /* ShowWorkoutViewController.swift */,
 				7F88C398212BAF3100C7D622 /* TimerCell.swift */,
 				7F6CC1F022E4BDDF004BD587 /* Workouts.xcdatamodeld */,
+				7F8E8B5E230B89A600B8ACCE /* SettingsTableViewController.swift */,
 			);
 			path = "Fit Timer";
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				7F6CC1F222E4BDDF004BD587 /* Workouts.xcdatamodeld in Sources */,
 				7F723C1E22E8F023008BDA34 /* CornerRoundingMaskView.swift in Sources */,
 				7F723C2A22E8F023008BDA34 /* SwiftyGiphyAPI.swift in Sources */,
+				7F8E8B5F230B89A600B8ACCE /* SettingsTableViewController.swift in Sources */,
 				7F723C1F22E8F023008BDA34 /* GiphyImageSet.swift in Sources */,
 				7FE8EA5321187F6100FD1596 /* AppDelegate.swift in Sources */,
 				7F723C2122E8F023008BDA34 /* GiphyMeta.swift in Sources */,
