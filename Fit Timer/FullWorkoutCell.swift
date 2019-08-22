@@ -2,8 +2,8 @@
 //  FullWorkoutCell.swift
 //  ExerciseDemo
 //
-//  Created by Vishv Infotech on 21/08/19.
-//  Copyright © 2019 Vishv Infotech. All rights reserved.
+//  Created by Cortland Walker on 8/21/19.
+//  Copyright © 2019 Cortland Walker. All rights reserved.
 //
 
 import UIKit
