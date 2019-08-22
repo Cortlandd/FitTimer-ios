@@ -1,5 +1,5 @@
 //
-//  FullExerciseCell.swift
+//  FullWorkoutCell.swift
 //  ExerciseDemo
 //
 //  Created by Vishv Infotech on 21/08/19.
@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import FLAnimatedImage
 
-enum FullExerciseCellState {
+enum FullWorkoutCellState {
     case playingAll
     case stoppedAll
 }
@@ -20,12 +20,12 @@ enum CellState {
     case expanded
 }
 
-protocol FullExerciseCellDelegate: AnyObject {
-    func exerciseCellDidPressedPlay(_ exerciseCell: FullExerciseCell, index: Int)
-    func exerciseCellDidPressedStop(_ exerciseCell: FullExerciseCell, index: Int)
+protocol FullWorkoutCellDelegate: AnyObject {
+    func exerciseCellDidPressedPlay(_ exerciseCell: FullWorkoutCell, index: Int)
+    func exerciseCellDidPressedStop(_ exerciseCell: FullWorkoutCell, index: Int)
 }
 
-class FullExerciseCell: UITableViewCell {
+class FullWorkoutCell: UITableViewCell {
     
     /********************* UI Components *******************/
     
@@ -57,9 +57,9 @@ class FullExerciseCell: UITableViewCell {
     var semaphore: DispatchSemaphore?
     var state: CellState = .collapsed
     var index: Int = 0
-    weak var delegate: FullExerciseCellDelegate?
+    weak var delegate: FullWorkoutCellDelegate?
     var currentCount: Int! // Set from configure() in Timerviewcontroller
-    var fullExerciseCellState: FullExerciseCellState = .stoppedAll {
+    var fullWorkoutCellState: FullWorkoutCellState = .stoppedAll {
         didSet {
             DispatchQueue.main.async {
                 self.validateState()
@@ -133,14 +133,14 @@ class FullExerciseCell: UITableViewCell {
         //speechUtterance = AVSpeechUtterance(string: workoutLabel.text!)
         //speechSynthesizer.speak(speechUtterance)
         
-        fullExerciseCellState = .playingAll
+        fullWorkoutCellState = .playingAll
         
         play()
     }
     
     func stopAll() {
         
-        fullExerciseCellState = .stoppedAll
+        fullWorkoutCellState = .stoppedAll
         
         resetTimer()
         stopWorkout()
@@ -178,7 +178,7 @@ class FullExerciseCell: UITableViewCell {
     }
     
     func validateState() {
-        switch fullExerciseCellState {
+        switch fullWorkoutCellState {
         case .playingAll:
             countdownTimer.timerFinishingText = "0"
         case .stoppedAll:
@@ -190,7 +190,7 @@ class FullExerciseCell: UITableViewCell {
     
 }
 
-extension FullExerciseCell: SRCountdownTimerDelegate {
+extension FullWorkoutCell: SRCountdownTimerDelegate {
     
     func timerDidUpdateCounterValue(newValue: Int) {
         
@@ -201,7 +201,7 @@ extension FullExerciseCell: SRCountdownTimerDelegate {
     }
     
     func timerDidPause() {
-        if fullExerciseCellState == .playingAll {
+        if fullWorkoutCellState == .playingAll {
             print("")
         } else {
             print("")
@@ -209,7 +209,7 @@ extension FullExerciseCell: SRCountdownTimerDelegate {
     }
     
     func timerDidResume() {
-        if fullExerciseCellState == .playingAll {
+        if fullWorkoutCellState == .playingAll {
             print("")
         } else {
             print("")
@@ -217,7 +217,7 @@ extension FullExerciseCell: SRCountdownTimerDelegate {
     }
     
     func timerDidEnd() {
-        if fullExerciseCellState == .playingAll {
+        if fullWorkoutCellState == .playingAll {
             semaphore?.signal()
         } else {
             resetTimer()
