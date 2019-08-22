@@ -18,6 +18,9 @@ class TimerViewController: UIViewController {
     
     @IBOutlet var _noWorkoutsMessage: UIView!
     
+    var expandedCellsIndexes = [Int]()    
+    var semaphore: DispatchSemaphore?
+    
     fileprivate lazy var fetchResultsController: NSFetchedResultsController<Workout> = {
         // Create fetch Request
         let fetchRequest: NSFetchRequest<Workout> = Workout.fetchRequest()
@@ -39,8 +42,7 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var _playAllButton: UIButton!
     @IBAction func _playAllButton(_ sender: UIButton) {
         
-        let cells = self.tableView.visibleCells as! [TimerCell]
-        let semaphore = DispatchSemaphore(value: 1)
+        let cells = self.tableView.visibleCells as! [FullExerciseCell]
         var dwi: DispatchWorkItem?
         
         if _playAllButton.titleLabel?.text == "Play All" {
@@ -49,16 +51,22 @@ class TimerViewController: UIViewController {
             _playAllButton.setTitle("Stop All", for: .normal)
             
             for cell in cells {
-                cell.playCellButton.isEnabled = false
+                cell.btnPlay.isEnabled = false
             }
             
+            let lastCell = cells.last?.index
             dwi = DispatchWorkItem {
-                for cell in cells {
+                for (index, cell) in cells.enumerated() {
                     if dwi!.isCancelled {
                         break
                     }
-                    semaphore.wait()
-                    cell.playAll(semaphore: semaphore)
+                    self.semaphore!.wait()
+                    if index == lastCell! + 1 {
+                        print("Finished All")
+                        break
+                    } else {
+                        cell.playAll()
+                    }
                 }
             }
             
@@ -67,17 +75,20 @@ class TimerViewController: UIViewController {
         }
         
         if _playAllButton.titleLabel?.text == "Stop All" {
-            
+
             DispatchQueue.global().async {
                 dwi?.cancel()
             }
-            
+
             for cell in cells {
-                cell.stopAllCell()
-                cell.resetAllCells(semaphore: semaphore)
+                cell.fullExerciseCellState = .stoppedAll
+                cell.countdownTimer.end()
+                //cell.stopAllCell()
+                //cell.resetAllCells(semaphore: semaphore)
+                cell.btnPlay.isEnabled = true
                 tableView.reloadData()
             }
-            
+
             _playAllButton.setTitle("Play All", for: .normal)
             _addNewTimer.isEnabled = true
         }
@@ -92,9 +103,10 @@ class TimerViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.estimatedRowHeight = 400
-        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(UINib(nibName: "FullExerciseCell", bundle: nil), forCellReuseIdentifier: "FullExerciseCell")
         tableView.backgroundView = _noWorkoutsMessage
+        
+        semaphore = DispatchSemaphore(value: 1)
         
         /*
          The loadPersistentStores(completionHandler:) method asynchronously loads the persistent store(s) and adds it to the persistent store coordinator.
@@ -124,9 +136,11 @@ class TimerViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    func reloadTableViewAtIndex(_ index: Int) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.tableView.performBatchUpdates(nil, completion: nil)
+        }
     }
     
     @objc func applicationDidEnterBackground(_ notification: Notification) {
@@ -173,22 +187,31 @@ class TimerViewController: UIViewController {
     
     
     
-    func configure(_ cell: TimerCell, at indexPath: IndexPath) {
+    func configure(_ cell: FullExerciseCell, at indexPath: IndexPath) {
         
         // Fetch Workout
         let workout = fetchResultsController.object(at: indexPath)
         
         let image: FLAnimatedImage? = FLAnimatedImage.init(animatedGIFData: workout.workoutImage)
         
+        cell.delegate = self
+        
+        cell.index = indexPath.row
+        
+        let expanded = expandedCellsIndexes.contains(indexPath.row)
+        
+        cell.state = expanded ? .expanded : .collapsed
+        
         cell.workoutLabel?.text = workout.workout
-        cell.secondsLabel?.text = workout.seconds.description
+        //cell.secondsLabel?.text = workout.seconds.description
         
-        // Assign the middle timer text to be the same as the seconds time
-        cell.countdownLabel?.text = workout.seconds.description
-        cell.workoutImage?.animatedImage = image
+        cell.countdownTimer.counterLabel.text = workout.seconds.description
+        cell.workoutImage.animatedImage = image
         
-        cell.layoutIfNeeded()
-        cell.sizeToFit()
+        cell.semaphore = self.semaphore
+        cell.currentCount = Int(workout.seconds)
+        
+        cell.reloadUI()
         
     }
 
@@ -203,20 +226,26 @@ class TimerViewController: UIViewController {
 
 extension TimerViewController: UITableViewDataSource, UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let expanded = expandedCellsIndexes.contains(indexPath.row)
+        return expanded ? 422 : 162
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let workouts = fetchResultsController.fetchedObjects else { return 0 }
         
         if workouts.count <= 1 {
-            _playAllButton.isEnabled = false
+            _playAllButton.isHidden = true
         } else {
-            _playAllButton.isEnabled = true
+            _playAllButton.isHidden = false
         }
         
         return workouts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TimerCell", for: indexPath) as! TimerCell
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FullExerciseCell", for: indexPath) as! FullExerciseCell
         
         configure(cell, at: indexPath)
         
@@ -233,12 +262,14 @@ extension TimerViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        tableView.beginUpdates()
-        tableView.endUpdates()
-    }
+    // Unnecessary
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        tableView.beginUpdates()
+//        tableView.endUpdates()
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "ShowWorkout", sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -274,7 +305,7 @@ extension TimerViewController: NSFetchedResultsControllerDelegate {
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
         case .update:
-            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? TimerCell {
+            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? FullExerciseCell {
                 configure(cell, at: indexPath)
             }
             break;
@@ -290,6 +321,21 @@ extension TimerViewController: NSFetchedResultsControllerDelegate {
 
         }
     }
+    
+}
 
+extension TimerViewController: FullExerciseCellDelegate {
+    
+    func exerciseCellDidPressedPlay(_ exerciseCell: FullExerciseCell, index: Int) {
+        expandedCellsIndexes.append(index)
+        reloadTableViewAtIndex(index)
+    }
+    
+    func exerciseCellDidPressedStop(_ exerciseCell: FullExerciseCell, index: Int) {
+        if let indexToRemove = expandedCellsIndexes.firstIndex(of: index) {
+            expandedCellsIndexes.remove(at: indexToRemove)
+            reloadTableViewAtIndex(index)
+        }
+    }
     
 }

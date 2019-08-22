@@ -9,7 +9,7 @@ target 'Fit Timer' do
   pod 'ObjectMapper', '~> 3.0'
   pod 'SDWebImage/GIF'
   pod 'NSTimer-Blocks'
-  pod 'FLAnimatedImage', '~> 1.0'  
+  pod 'FLAnimatedImage', '~> 1.0'
 
   target 'Fit TimerUITests' do
     inherit! :search_paths
