@@ -13,6 +13,7 @@ import FLAnimatedImage
 enum FullWorkoutCellState {
     case playingAll
     case stoppedAll
+    case finishedAll
 }
 
 enum CellState {
@@ -21,8 +22,9 @@ enum CellState {
 }
 
 protocol FullWorkoutCellDelegate: AnyObject {
-    func exerciseCellDidPressedPlay(_ exerciseCell: FullWorkoutCell, index: Int)
-    func exerciseCellDidPressedStop(_ exerciseCell: FullWorkoutCell, index: Int)
+    func workoutCellDidPressedPlay(_ exerciseCell: FullWorkoutCell, index: Int)
+    func workoutCellDidPressedStop(_ exerciseCell: FullWorkoutCell, index: Int)
+    func workoutDidFinish(_ workoutCell: FullWorkoutCell, index: Int)
 }
 
 class FullWorkoutCell: UITableViewCell {
@@ -55,6 +57,7 @@ class FullWorkoutCell: UITableViewCell {
     var speechSynthesizer: AVSpeechSynthesizer!
     var speechUtterance: AVSpeechUtterance!
     var semaphore: DispatchSemaphore?
+    var finishedSemaphore: DispatchSemaphore?
     var state: CellState = .collapsed
     var index: Int = 0
     weak var delegate: FullWorkoutCellDelegate?
@@ -112,7 +115,7 @@ class FullWorkoutCell: UITableViewCell {
         state = .expanded
         reloadUIAnimated()
         countdownTimer.start(beginingValue: currentCount)
-        delegate?.exerciseCellDidPressedPlay(self, index: index)
+        delegate?.workoutCellDidPressedPlay(self, index: index)
     }
     
     func pause() {
@@ -174,7 +177,7 @@ class FullWorkoutCell: UITableViewCell {
     func stopWorkout() {
         state = .collapsed
         reloadUIAnimated()
-        delegate?.exerciseCellDidPressedStop(self, index: index)
+        delegate?.workoutCellDidPressedStop(self, index: index)
     }
     
     func validateState() {
@@ -183,6 +186,8 @@ class FullWorkoutCell: UITableViewCell {
             countdownTimer.timerFinishingText = "0"
         case .stoppedAll:
             countdownTimer.timerFinishingText = countdownTimer.counterLabel.text
+        case .finishedAll:
+            print("")
         default:
             break
         }
@@ -201,24 +206,17 @@ extension FullWorkoutCell: SRCountdownTimerDelegate {
     }
     
     func timerDidPause() {
-        if fullWorkoutCellState == .playingAll {
-            print("")
-        } else {
-            print("")
-        }
+        
     }
     
     func timerDidResume() {
-        if fullWorkoutCellState == .playingAll {
-            print("")
-        } else {
-            print("")
-        }
+        
     }
     
     func timerDidEnd() {
         if fullWorkoutCellState == .playingAll {
             semaphore?.signal()
+            delegate?.workoutDidFinish(self, index: index)
         } else {
             resetTimer()
             stopWorkout()

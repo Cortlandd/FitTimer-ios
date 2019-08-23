@@ -20,6 +20,8 @@ class WorkoutViewController: UIViewController {
     
     var expandedCellsIndexes = [Int]()    
     var semaphore: DispatchSemaphore?
+    var dwi: DispatchWorkItem?
+    var finishedSemaphore: DispatchSemaphore?
     
     fileprivate lazy var fetchResultsController: NSFetchedResultsController<Workout> = {
         // Create fetch Request
@@ -43,7 +45,6 @@ class WorkoutViewController: UIViewController {
     @IBAction func _playAllButton(_ sender: UIButton) {
         
         let cells = self.tableView.visibleCells as! [FullWorkoutCell]
-        var dwi: DispatchWorkItem?
         
         if _playAllButton.titleLabel?.text == "Play All" {
             
@@ -51,22 +52,16 @@ class WorkoutViewController: UIViewController {
             _playAllButton.setTitle("Stop All", for: .normal)
             
             for cell in cells {
-                cell.btnPlay.isEnabled = false
+                cell.btnPlay.isHidden = true
             }
             
-            let lastCell = cells.last?.index
             dwi = DispatchWorkItem {
-                for (index, cell) in cells.enumerated() {
-                    if dwi!.isCancelled {
+                for cell in cells {
+                    if self.dwi!.isCancelled {
                         break
                     }
                     self.semaphore!.wait()
-                    if index == lastCell! + 1 {
-                        print("Finished All")
-                        break
-                    } else {
-                        cell.playAll()
-                    }
+                    cell.playAll()
                 }
             }
             
@@ -77,7 +72,7 @@ class WorkoutViewController: UIViewController {
         if _playAllButton.titleLabel?.text == "Stop All" {
 
             DispatchQueue.global().async {
-                dwi?.cancel()
+                self.dwi?.cancel()
             }
 
             for cell in cells {
@@ -85,7 +80,7 @@ class WorkoutViewController: UIViewController {
                 cell.countdownTimer.end()
                 //cell.stopAllCell()
                 //cell.resetAllCells(semaphore: semaphore)
-                cell.btnPlay.isEnabled = true
+                cell.btnPlay.isHidden = false
                 tableView.reloadData()
             }
 
@@ -329,15 +324,43 @@ extension WorkoutViewController: NSFetchedResultsControllerDelegate {
 
 extension WorkoutViewController: FullWorkoutCellDelegate {
     
-    func exerciseCellDidPressedPlay(_ exerciseCell: FullWorkoutCell, index: Int) {
+    func workoutCellDidPressedPlay(_ exerciseCell: FullWorkoutCell, index: Int) {
         expandedCellsIndexes.append(index)
         reloadTableViewAtIndex(index)
     }
     
-    func exerciseCellDidPressedStop(_ exerciseCell: FullWorkoutCell, index: Int) {
+    func workoutCellDidPressedStop(_ exerciseCell: FullWorkoutCell, index: Int) {
         if let indexToRemove = expandedCellsIndexes.firstIndex(of: index) {
             expandedCellsIndexes.remove(at: indexToRemove)
             reloadTableViewAtIndex(index)
+        }
+    }
+    
+    func workoutDidFinish(_ workoutCell: FullWorkoutCell, index: Int) {
+        // TODO MARK find out if this is allocating memory each time
+        let cells = self.tableView.visibleCells as! [FullWorkoutCell]
+        
+        // Check if finished workout is the last in index
+        if index == cells.last?.index {
+            
+            print("Workout Complete")
+            
+            DispatchQueue.global().async {
+                self.dwi?.cancel()
+            }
+            
+            for cell in cells {
+                cell.fullWorkoutCellState = .stoppedAll
+                cell.countdownTimer.end()
+                //cell.stopAllCell()
+                //cell.resetAllCells(semaphore: semaphore)
+                cell.btnPlay.isHidden = false
+                tableView.reloadData()
+            }
+            
+            _playAllButton.setTitle("Play All", for: .normal)
+            _addNewTimer.isEnabled = true
+            
         }
     }
     
