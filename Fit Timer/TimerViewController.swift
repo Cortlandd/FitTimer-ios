@@ -153,17 +153,20 @@ class TimerViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destinationViewController = segue.destination as? ShowWorkoutViewController else { return }
+        guard let destinationViewController = segue.destination as? EditWorkoutViewController else { return }
         
         // Configure View Controller
         destinationViewController.managedObjectContext = persistentContainer.viewContext
         
-        if let indexPath = tableView.indexPathForSelectedRow, segue.identifier == "ShowWorkout" {
-            // Configure View Controller
-            destinationViewController.workout = fetchResultsController.object(at: indexPath)
-            destinationViewController.controllerTitle = "Edit Workout"
-            destinationViewController.selectedPickerRow = Int(fetchResultsController.object(at: indexPath).seconds)
-            destinationViewController.saveButton.isEnabled = true
+        switch segue.identifier {
+        case "ShowWorkout":            
+            if let indexPath = tableView.indexPathForSelectedRow {
+                // Configure View Controller
+                destinationViewController.workout = fetchResultsController.object(at: indexPath)
+                destinationViewController.selectedPickerRow = Int(fetchResultsController.object(at: indexPath).seconds)
+            }
+        default:
+            break
         }
         
     }

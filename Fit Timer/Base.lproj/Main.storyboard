@@ -141,7 +141,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ipy-M1-XON" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-291.304347826087" y="-559.15178571428567"/>
+            <point key="canvasLocation" x="-1100" y="-576"/>
         </scene>
         <!--Fit Timer-->
         <scene sceneID="9PI-ls-MH6">
@@ -202,7 +202,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sls-cV-IeV">
                             <color key="tintColor" red="0.42451322079999998" green="0.41450923680000001" blue="0.93896025419999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="XxZ-vQ-Jqy" kind="show" identifier="AddWorkout" id="Sfn-uW-4WB"/>
+                                <segue destination="e3z-wb-3Ky" kind="show" identifier="AddWorkout" id="17a-f3-NXA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -236,10 +236,10 @@
             </objects>
             <point key="canvasLocation" x="-1100" y="132.58928571428572"/>
         </scene>
-        <!--Add New Workout-->
+        <!--Edit Workout-->
         <scene sceneID="39e-dR-uOG">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="XxZ-vQ-Jqy" customClass="ShowWorkoutViewController" customModule="Fit_Timer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="XxZ-vQ-Jqy" userLabel="Edit Workout" customClass="EditWorkoutViewController" customModule="Fit_Timer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bFf-0b-0kW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -254,7 +254,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="749" image="placeholder_image2" translatesAutoresizingMaskIntoConstraints="NO" id="EXZ-hP-jfZ" customClass="FLAnimatedImageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="EXZ-hP-jfZ" customClass="FLAnimatedImageView">
                                 <rect key="frame" x="20" y="322" width="374" height="386"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xF9-vn-gW9">
@@ -340,8 +340,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QCE-6e-lNM"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add New Workout" id="PHp-x5-bu4">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="Sf6-Us-bw5">
+                    <navigationItem key="navigationItem" title="Edit Workout" id="PHp-x5-bu4">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="Sf6-Us-bw5">
                             <connections>
                                 <action selector="saveButton:" destination="XxZ-vQ-Jqy" id="t2o-Ty-mHr"/>
                             </connections>
@@ -357,7 +357,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOP-Aw-2Xs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-291" y="133"/>
+            <point key="canvasLocation" x="-246" y="-269"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HR4-Hx-YZc">
@@ -409,6 +409,129 @@
             </objects>
             <point key="canvasLocation" x="603" y="133"/>
         </scene>
+        <!--Add Workout-->
+        <scene sceneID="deg-F9-06X">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="e3z-wb-3Ky" userLabel="Add Workout" customClass="AddWorkoutViewController" customModule="Fit_Timer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Isn-uO-p9B">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rzH-kW-ePL" userLabel="soundSwitch">
+                                <rect key="frame" x="354" y="722" width="51" height="30"/>
+                                <color key="onTintColor" red="0.42451322079999998" green="0.41450923680000001" blue="0.93896025419999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Speech" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9F-4R-lYJ">
+                                <rect key="frame" x="232.5" y="728" width="113.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="749" image="placeholder_image2" translatesAutoresizingMaskIntoConstraints="NO" id="svY-bb-NwG" customClass="FLAnimatedImageView">
+                                <rect key="frame" x="20" y="322" width="374" height="386"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6WA-sR-12H">
+                                <rect key="frame" x="0.0" y="769" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="1VJ-4q-TpA"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem enabled="NO" systemItem="camera" id="8XD-Ld-h1h">
+                                        <color key="tintColor" red="0.42451322079999998" green="0.41450923680000001" blue="0.93896025419999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="_cameraRollImage:" destination="e3z-wb-3Ky" id="SvO-HC-P8x"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="iTW-vw-GmG"/>
+                                    <barButtonItem systemItem="search" id="BNX-x1-xbs" userLabel="Search Gif">
+                                        <connections>
+                                            <segue destination="uFp-Uh-oO0" kind="presentation" identifier="selectGiphyImage" id="5G3-Bz-1GE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" red="0.42451322079999998" green="0.41450923680000001" blue="0.93896025419999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Load Gif Image or Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWe-cs-5Xa" userLabel="Load Image">
+                                <rect key="frame" x="110.5" y="780.5" width="193.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="y45-lF-n1j">
+                                <rect key="frame" x="0.0" y="88" width="414" height="188"/>
+                            </pickerView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Workout" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fZg-VG-Adz">
+                                <rect key="frame" x="20" y="284" width="374" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="workoutText"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJ6-sK-9bG">
+                                <rect key="frame" x="71.5" y="721" width="121" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="c0p-yD-4V1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="tintColor" red="0.42451322079999998" green="0.41450923680000001" blue="0.93896025419999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Test Workout Speech">
+                                    <color key="titleColor" red="0.42451322079999998" green="0.41450923680000001" blue="0.93896025419999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="testSpeechButton:" destination="e3z-wb-3Ky" eventType="touchUpInside" id="tHB-Kd-gUQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="y45-lF-n1j" firstAttribute="top" secondItem="4j1-y4-CqF" secondAttribute="top" id="2SL-MM-HKs"/>
+                            <constraint firstItem="6WA-sR-12H" firstAttribute="centerY" secondItem="RWe-cs-5Xa" secondAttribute="centerY" id="2he-Vk-mW9"/>
+                            <constraint firstItem="y45-lF-n1j" firstAttribute="centerX" secondItem="RWe-cs-5Xa" secondAttribute="centerX" id="5HB-et-28K"/>
+                            <constraint firstItem="UJ6-sK-9bG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="svY-bb-NwG" secondAttribute="leading" id="9aF-rM-wI1"/>
+                            <constraint firstItem="u9F-4R-lYJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4j1-y4-CqF" secondAttribute="leading" symbolic="YES" id="B4P-f3-Dik"/>
+                            <constraint firstItem="y45-lF-n1j" firstAttribute="height" secondItem="Isn-uO-p9B" secondAttribute="height" multiplier="1:3" constant="-110.66666666666663" id="BOx-dy-80J"/>
+                            <constraint firstItem="rzH-kW-ePL" firstAttribute="top" secondItem="svY-bb-NwG" secondAttribute="bottom" constant="14" id="D0N-Ei-eqm"/>
+                            <constraint firstItem="u9F-4R-lYJ" firstAttribute="leading" secondItem="UJ6-sK-9bG" secondAttribute="trailing" constant="40" id="Fxy-IG-9Cq"/>
+                            <constraint firstItem="y45-lF-n1j" firstAttribute="width" secondItem="svY-bb-NwG" secondAttribute="width" constant="40" id="REx-AK-O2W"/>
+                            <constraint firstItem="6WA-sR-12H" firstAttribute="top" secondItem="rzH-kW-ePL" secondAttribute="bottom" constant="17" id="TGI-ke-fsB"/>
+                            <constraint firstItem="y45-lF-n1j" firstAttribute="centerX" secondItem="fZg-VG-Adz" secondAttribute="centerX" id="UAj-JW-OPp"/>
+                            <constraint firstItem="fZg-VG-Adz" firstAttribute="top" secondItem="y45-lF-n1j" secondAttribute="bottom" constant="8" id="VnQ-RG-lnt"/>
+                            <constraint firstItem="6WA-sR-12H" firstAttribute="bottom" secondItem="4j1-y4-CqF" secondAttribute="bottom" id="Xkm-ta-mLd"/>
+                            <constraint firstItem="y45-lF-n1j" firstAttribute="leading" secondItem="6WA-sR-12H" secondAttribute="leading" id="c0L-Sc-sXe"/>
+                            <constraint firstItem="UJ6-sK-9bG" firstAttribute="top" secondItem="rzH-kW-ePL" secondAttribute="top" constant="-1" id="gp6-yX-rkh"/>
+                            <constraint firstItem="y45-lF-n1j" firstAttribute="centerX" secondItem="svY-bb-NwG" secondAttribute="centerX" id="q8g-7f-9TL"/>
+                            <constraint firstItem="UJ6-sK-9bG" firstAttribute="centerY" secondItem="u9F-4R-lYJ" secondAttribute="centerY" constant="-1" id="tks-8h-TIb"/>
+                            <constraint firstItem="y45-lF-n1j" firstAttribute="trailing" secondItem="6WA-sR-12H" secondAttribute="trailing" id="ty8-Ls-o6T"/>
+                            <constraint firstItem="svY-bb-NwG" firstAttribute="top" secondItem="fZg-VG-Adz" secondAttribute="bottom" constant="8" symbolic="YES" id="uDn-ko-vFM"/>
+                            <constraint firstItem="y45-lF-n1j" firstAttribute="leading" secondItem="Isn-uO-p9B" secondAttribute="leading" id="uPG-DD-dQF"/>
+                            <constraint firstAttribute="trailing" secondItem="y45-lF-n1j" secondAttribute="trailing" id="wzq-zC-7Oh"/>
+                            <constraint firstItem="rzH-kW-ePL" firstAttribute="centerY" secondItem="u9F-4R-lYJ" secondAttribute="centerY" id="xUd-Ze-zhc"/>
+                            <constraint firstItem="6WA-sR-12H" firstAttribute="centerX" secondItem="svY-bb-NwG" secondAttribute="centerX" id="y2b-7I-cBK"/>
+                            <constraint firstItem="4j1-y4-CqF" firstAttribute="trailing" secondItem="rzH-kW-ePL" secondAttribute="trailing" constant="11" id="yUQ-Ax-vWF"/>
+                            <constraint firstItem="rzH-kW-ePL" firstAttribute="leading" secondItem="u9F-4R-lYJ" secondAttribute="trailing" constant="8" symbolic="YES" id="yW5-1D-tvd"/>
+                            <constraint firstItem="fZg-VG-Adz" firstAttribute="width" secondItem="Isn-uO-p9B" secondAttribute="width" constant="-40" id="zga-eo-2Ft"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4j1-y4-CqF"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add New Workout" id="krP-A5-JrK">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="Pf6-ph-rhp">
+                            <connections>
+                                <action selector="_saveButton:" destination="e3z-wb-3Ky" id="s4D-9W-jhW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="_workoutImage" destination="svY-bb-NwG" id="1Ao-b8-ZnR"/>
+                        <outlet property="newWorkoutField" destination="fZg-VG-Adz" id="qP5-jk-eBh"/>
+                        <outlet property="pickerView" destination="y45-lF-n1j" id="4d2-5B-3Ct"/>
+                        <outlet property="saveButton" destination="Pf6-ph-rhp" id="Eqh-7G-cpY"/>
+                        <outlet property="soundSwitch" destination="rzH-kW-ePL" id="Dp0-aU-Mnh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SpA-oZ-ZVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-246" y="385"/>
+        </scene>
     </scenes>
     <resources>
         <image name="code_icon" width="100" height="100"/>
@@ -420,7 +543,7 @@
         <image name="speaker-on" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1WC-11-eC8"/>
+        <segue reference="f4o-t0-vxl"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.42451322079999998" green="0.41450923680000001" blue="0.93896025419999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

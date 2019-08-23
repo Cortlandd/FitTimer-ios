@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5D266958711DBF4458D9C63C /* Pods_Fit_Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D24483537D34EE0CCB28F4A1 /* Pods_Fit_Timer.framework */; };
 		7F08E397212B5C4600D6D9C9 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08E396212B5C4600D6D9C9 /* TimerViewController.swift */; };
+		7F22448F23107B770079DE8E /* AddWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F22448E23107B770079DE8E /* AddWorkoutViewController.swift */; };
 		7F6CC1ED22DF5705004BD587 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7F6CC1EC22DF5705004BD587 /* bell.wav */; };
 		7F6CC1F222E4BDDF004BD587 /* Workouts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F6CC1F022E4BDDF004BD587 /* Workouts.xcdatamodeld */; };
 		7F6CC1F622E62969004BD587 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6CC1F522E62969004BD587 /* AVFoundation.framework */; };
@@ -40,7 +41,7 @@
 		7FE8EA5A21187F6400FD1596 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8EA5921187F6400FD1596 /* Assets.xcassets */; };
 		7FE8EA5D21187F6400FD1596 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8EA5B21187F6400FD1596 /* LaunchScreen.storyboard */; };
 		7FE8EA6821187F6500FD1596 /* Fit_TimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8EA6721187F6500FD1596 /* Fit_TimerUITests.swift */; };
-		7FE8EA7521192E5F00FD1596 /* ShowWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8EA7421192E5F00FD1596 /* ShowWorkoutViewController.swift */; };
+		7FE8EA7521192E5F00FD1596 /* EditWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8EA7421192E5F00FD1596 /* EditWorkoutViewController.swift */; };
 		A644F40080557EE6C478FC94 /* Pods_Fit_TimerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02312E9AB34A57C15DDBD0CE /* Pods_Fit_TimerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		02312E9AB34A57C15DDBD0CE /* Pods_Fit_TimerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fit_TimerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C354182339AB049E451B576 /* Pods-Fit Timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit Timer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fit Timer/Pods-Fit Timer.debug.xcconfig"; sourceTree = "<group>"; };
 		7F08E396212B5C4600D6D9C9 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		7F22448E23107B770079DE8E /* AddWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewController.swift; sourceTree = "<group>"; };
 		7F6CC1EC22DF5705004BD587 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell.wav; sourceTree = "<group>"; };
 		7F6CC1F122E4BDDF004BD587 /* Workouts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Workouts.xcdatamodel; sourceTree = "<group>"; };
 		7F6CC1F522E62969004BD587 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -93,7 +95,7 @@
 		7FE8EA6321187F6500FD1596 /* Fit TimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fit TimerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE8EA6721187F6500FD1596 /* Fit_TimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fit_TimerUITests.swift; sourceTree = "<group>"; };
 		7FE8EA6921187F6500FD1596 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7FE8EA7421192E5F00FD1596 /* ShowWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowWorkoutViewController.swift; sourceTree = "<group>"; };
+		7FE8EA7421192E5F00FD1596 /* EditWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWorkoutViewController.swift; sourceTree = "<group>"; };
 		9D8DEAAF5AE84DB2CDB214D2 /* Pods-Fit TimerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit TimerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fit TimerUITests/Pods-Fit TimerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AD2EAB6074612F8E6F1BC713 /* Pods-Fit TimerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit TimerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fit TimerUITests/Pods-Fit TimerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D24483537D34EE0CCB28F4A1 /* Pods_Fit_Timer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fit_Timer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,9 +207,10 @@
 				7FE8EA5921187F6400FD1596 /* Assets.xcassets */,
 				7FE8EA5B21187F6400FD1596 /* LaunchScreen.storyboard */,
 				7FE8EA5E21187F6400FD1596 /* Info.plist */,
-				7FE8EA7421192E5F00FD1596 /* ShowWorkoutViewController.swift */,
+				7FE8EA7421192E5F00FD1596 /* EditWorkoutViewController.swift */,
 				7F6CC1F022E4BDDF004BD587 /* Workouts.xcdatamodeld */,
 				7F8E8B5E230B89A600B8ACCE /* SettingsTableViewController.swift */,
+				7F22448E23107B770079DE8E /* AddWorkoutViewController.swift */,
 			);
 			path = "Fit Timer";
 			sourceTree = "<group>";
@@ -429,7 +432,8 @@
 				7FE8EA5321187F6100FD1596 /* AppDelegate.swift in Sources */,
 				7F723C2122E8F023008BDA34 /* GiphyMeta.swift in Sources */,
 				7F723C2D22E8F023008BDA34 /* SwiftyGiphyViewController.swift in Sources */,
-				7FE8EA7521192E5F00FD1596 /* ShowWorkoutViewController.swift in Sources */,
+				7F22448F23107B770079DE8E /* AddWorkoutViewController.swift in Sources */,
+				7FE8EA7521192E5F00FD1596 /* EditWorkoutViewController.swift in Sources */,
 				7F723C2622E8F023008BDA34 /* GiphySingleGIFResponse.swift in Sources */,
 				7F723C2B22E8F023008BDA34 /* SwiftyGiphyCollectionViewCell.swift in Sources */,
 			);

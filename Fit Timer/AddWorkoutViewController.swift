@@ -1,9 +1,9 @@
 //
-//  ShowWorkoutViewController.swift
+//  AddWorkoutViewController.swift
 //  Fit Timer
 //
-//  Created by User 1 on 8/6/18.
-//  Copyright © 2018 Cortland Walker. All rights reserved.
+//  Created by Cortland Walker on 8/23/19.
+//  Copyright © 2019 Cortland Walker. All rights reserved.
 //
 
 import UIKit
@@ -11,8 +11,9 @@ import CoreData
 import AVFoundation
 import FLAnimatedImage
 
-class ShowWorkoutViewController: UIViewController, UINavigationControllerDelegate {
-    
+class AddWorkoutViewController: UIViewController, UINavigationControllerDelegate {
+
+    /************* Variables ***************/
     var timerViewController: TimerViewController?
     var speechSynthesizer: AVSpeechSynthesizer!
     var speechUtterance: AVSpeechUtterance!
@@ -21,85 +22,57 @@ class ShowWorkoutViewController: UIViewController, UINavigationControllerDelegat
     var managedObjectContext: NSManagedObjectContext?
     var selectedPickerRow: Int!
     
+    /************* UI Components ***************/
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var _workoutImage: FLAnimatedImageView!
     @IBOutlet weak var newWorkoutField: UITextField!
     @IBOutlet weak var soundSwitch: UISwitch!
-        
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     @IBAction func testSpeechButton(_ sender: Any) {
         speechSynthesizer.speak(speechUtterance)
     }
     
-    @IBOutlet weak var saveButton: UIBarButtonItem!
-    @IBAction func saveButton(_ sender: Any) {
+    @IBAction func _saveButton(_ sender: Any) {
         
         guard let managedObjectContext = managedObjectContext else { return }
         
+        // Selected row in picker
         selectedPickerRow = pickerView.selectedRow(inComponent: 0)
         
-        if workout == nil {
-            
-            // Create Workout
-            let newWorkout = Workout(context: managedObjectContext)
-            
-            newWorkout.createdAt = Date().timeIntervalSince1970
-            
-            workout = newWorkout
-            
-        }
+        // Create Workout
+        let newWorkout = Workout(context: managedObjectContext)
         
-        if let workout = workout {
-            // Configure Workout
-            workout.workout = newWorkoutField.text!
-            workout.seconds = Int16(selectedPickerRow)
-            let nilData: Data? = nil // A hack so the below won't fucking crash. smh
-            workout.workoutImage = _workoutImage.animatedImage?.data ?? nilData
-        }
+        // Configure Workout
+        newWorkout.createdAt = Date().timeIntervalSince1970
+        
+        newWorkout.workout = newWorkoutField.text!
+        
+        newWorkout.seconds = Int16(selectedPickerRow)
+        
+        let nilData: Data? = nil // A hack so the below won't fucking crash if an image isn't selected
+        
+        newWorkout.workoutImage = _workoutImage.animatedImage?.data ?? nilData
         
         _ = navigationController?.popViewController(animated: true)
-        
     }
     
-    
-//    @IBAction func _cameraRollImage(_ sender: Any) {
-//        
-//        let imagePicker = UIImagePickerController()
-//        
-//        // Upload image using photo library
-//        imagePicker.sourceType = .photoLibrary
-//        imagePicker.delegate = self
-//        
-//        // Place imagepicker on the screen
-//        present(imagePicker, animated: true, completion: nil)
-//
-//        
-//    }
-    
+    /************* Overrides ***************/
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = controllerTitle
         
         pickerView.delegate = self
         pickerView.dataSource = self
         
-        if let workout = workout {
-            newWorkoutField.text = workout.workout
-            pickerView.selectRow(selectedPickerRow, inComponent: 0, animated: true)
-            let image: FLAnimatedImage? = FLAnimatedImage.init(animatedGIFData: workout.workoutImage)
-            _workoutImage?.animatedImage = image
-        }
-        
         // Listen for text changes
         newWorkoutField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
-        
+
         speechSynthesizer = AVSpeechSynthesizer()
         speechUtterance = AVSpeechUtterance(string: newWorkoutField.text ?? "Enter A Workout")
         // Rate is to be adjusted for double words and single words
         speechUtterance.rate = AVSpeechUtteranceDefaultSpeechRate
         // Is to be changed by country in settings and default to country
         speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-IE")
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -112,6 +85,7 @@ class ShowWorkoutViewController: UIViewController, UINavigationControllerDelegat
         }
     }
     
+    /************* Helper Functions ***************/
     @objc func textFieldDidChange(_ textField: UITextField) {
         
         speechUtterance = AVSpeechUtterance(string: textField.text!)
@@ -133,14 +107,22 @@ class ShowWorkoutViewController: UIViewController, UINavigationControllerDelegat
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
     }
+    */
 
 }
 
-extension ShowWorkoutViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+/************* Extensions ***************/
+extension AddWorkoutViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         return 50.0
@@ -175,10 +157,9 @@ extension ShowWorkoutViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         }
     }
     
-    
 }
 
-extension ShowWorkoutViewController: SwiftyGiphyViewControllerDelegate {
+extension AddWorkoutViewController: SwiftyGiphyViewControllerDelegate {
     
     func giphyControllerDidSelectGif(controller: SwiftyGiphyViewController, item: GiphyItem) {
         if let gifDownSized = item.downsizedImage {
@@ -198,23 +179,3 @@ extension ShowWorkoutViewController: SwiftyGiphyViewControllerDelegate {
     }
     
 }
-
-//extension ShowWorkoutViewController: UIImagePickerControllerDelegate {
-//
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//
-//        // Get the picked image
-//        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-//
-//        _workoutImage.image = image
-//
-//        // Take image picker off the screen you must call this dismiss method
-//        dismiss(animated: true, completion: nil)
-//
-//    }
-//
-//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-//        dismiss(animated: true, completion: nil)
-//    }
-//
-//}
