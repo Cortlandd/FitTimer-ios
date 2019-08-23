@@ -13,7 +13,7 @@ import FLAnimatedImage
 
 class EditWorkoutViewController: UIViewController, UINavigationControllerDelegate {
     
-    var timerViewController: TimerViewController?
+    var WorkoutViewController: WorkoutViewController?
     var speechSynthesizer: AVSpeechSynthesizer!
     var speechUtterance: AVSpeechUtterance!
     var workout: Workout?

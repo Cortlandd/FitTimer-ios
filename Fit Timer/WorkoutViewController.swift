@@ -1,5 +1,5 @@
 //
-//  TimerViewController.swift
+//  WorkoutViewController.swift
 //  Fit Timer
 //
 //  Created by User 1 on 8/20/18.
@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import FLAnimatedImage
 
-class TimerViewController: UIViewController {
+class WorkoutViewController: UIViewController {
     
     private let persistentContainer = NSPersistentContainer(name: "Workouts")
     
@@ -227,7 +227,7 @@ class TimerViewController: UIViewController {
     
 }
 
-extension TimerViewController: UITableViewDataSource, UITableViewDelegate {
+extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let expanded = expandedCellsIndexes.contains(indexPath.row)
@@ -283,7 +283,7 @@ extension TimerViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension TimerViewController: NSFetchedResultsControllerDelegate {
+extension WorkoutViewController: NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
@@ -327,7 +327,7 @@ extension TimerViewController: NSFetchedResultsControllerDelegate {
     
 }
 
-extension TimerViewController: FullWorkoutCellDelegate {
+extension WorkoutViewController: FullWorkoutCellDelegate {
     
     func exerciseCellDidPressedPlay(_ exerciseCell: FullWorkoutCell, index: Int) {
         expandedCellsIndexes.append(index)

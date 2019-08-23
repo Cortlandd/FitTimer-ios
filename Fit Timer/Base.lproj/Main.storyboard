@@ -146,7 +146,7 @@
         <!--Fit Timer-->
         <scene sceneID="9PI-ls-MH6">
             <objects>
-                <viewController id="VOh-Px-Gjc" customClass="TimerViewController" customModule="Fit_Timer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VOh-Px-Gjc" customClass="WorkoutViewController" customModule="Fit_Timer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZSG-0X-9Lc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
