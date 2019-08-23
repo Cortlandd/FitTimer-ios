@@ -25,8 +25,36 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WcB-BY-0KI">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="130"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mountain Climbers" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgb-0n-pr9">
+                                        <rect key="frame" x="20" y="44.5" width="90" height="41"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T8x-y5-85Y" customClass="SRCountdownTimer" customModule="Fit_Timer" customModuleProvider="target">
+                                        <rect key="frame" x="110" y="25" width="80" height="80"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="R5N-ao-Coi"/>
+                                            <constraint firstAttribute="width" constant="80" id="Ylh-lV-BkW"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="labelTextColor">
+                                                <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                <color key="value" red="0.43529411759999997" green="0.42745098040000001" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="trailLineColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFk-Fw-aaY">
-                                        <rect key="frame" x="210" y="47.5" width="80" height="35"/>
+                                        <rect key="frame" x="198" y="47.5" width="80" height="35"/>
                                         <color key="backgroundColor" red="0.43529411759999997" green="0.42745098040000001" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="8QL-CE-9Gv"/>
@@ -45,43 +73,15 @@
                                             <action selector="_btnPlay:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="RIv-EV-Krg"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mountain Climbers" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgb-0n-pr9">
-                                        <rect key="frame" x="20" y="44.5" width="90" height="41"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T8x-y5-85Y" customClass="SRCountdownTimer" customModule="Fit_Timer" customModuleProvider="target">
-                                        <rect key="frame" x="110" y="25" width="80" height="80"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="R5N-ao-Coi"/>
-                                            <constraint firstAttribute="width" constant="80" id="Ylh-lV-BkW"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="labelTextColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                                <color key="value" red="0.43529411759999997" green="0.42745098040000001" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                                <real key="value" value="6"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="trailLineColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.72941176470000002" green="0.72941176470000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="bFk-Fw-aaY" firstAttribute="centerY" secondItem="WcB-BY-0KI" secondAttribute="centerY" id="2Us-e1-hfL"/>
                                     <constraint firstItem="vgb-0n-pr9" firstAttribute="centerY" secondItem="WcB-BY-0KI" secondAttribute="centerY" id="7eA-XR-sFN"/>
-                                    <constraint firstItem="bFk-Fw-aaY" firstAttribute="leading" secondItem="T8x-y5-85Y" secondAttribute="trailing" constant="20" id="Mxc-WO-wPA"/>
                                     <constraint firstAttribute="height" constant="130" id="Ono-vm-frr"/>
                                     <constraint firstItem="vgb-0n-pr9" firstAttribute="leading" secondItem="WcB-BY-0KI" secondAttribute="leading" constant="20" id="gCg-1D-nHP"/>
-                                    <constraint firstAttribute="trailing" secondItem="bFk-Fw-aaY" secondAttribute="trailing" constant="10" id="gxX-mI-HYJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="bFk-Fw-aaY" secondAttribute="trailing" constant="22" id="gxX-mI-HYJ"/>
+                                    <constraint firstItem="T8x-y5-85Y" firstAttribute="centerX" secondItem="WcB-BY-0KI" secondAttribute="centerX" id="iyS-Ti-vmf"/>
                                     <constraint firstItem="T8x-y5-85Y" firstAttribute="leading" secondItem="vgb-0n-pr9" secondAttribute="trailing" id="qHo-b9-KGk"/>
                                     <constraint firstItem="T8x-y5-85Y" firstAttribute="centerY" secondItem="WcB-BY-0KI" secondAttribute="centerY" id="z5Q-Wl-3NN"/>
                                 </constraints>
