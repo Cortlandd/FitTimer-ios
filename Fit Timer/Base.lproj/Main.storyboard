@@ -516,16 +516,16 @@
                     <navigationItem key="navigationItem" title="Add New Workout" id="krP-A5-JrK">
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="Pf6-ph-rhp">
                             <connections>
-                                <action selector="_saveButton:" destination="e3z-wb-3Ky" id="s4D-9W-jhW"/>
+                                <action selector="saveButton:" destination="e3z-wb-3Ky" id="Hfo-yE-YaA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="_workoutImage" destination="svY-bb-NwG" id="1Ao-b8-ZnR"/>
                         <outlet property="newWorkoutField" destination="fZg-VG-Adz" id="qP5-jk-eBh"/>
                         <outlet property="pickerView" destination="y45-lF-n1j" id="4d2-5B-3Ct"/>
                         <outlet property="saveButton" destination="Pf6-ph-rhp" id="Eqh-7G-cpY"/>
                         <outlet property="soundSwitch" destination="rzH-kW-ePL" id="Dp0-aU-Mnh"/>
+                        <outlet property="workoutImage" destination="svY-bb-NwG" id="kZc-Nk-RjX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SpA-oZ-ZVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -543,7 +543,7 @@
         <image name="speaker-on" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="f4o-t0-vxl"/>
+        <segue reference="5G3-Bz-1GE"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.42451322079999998" green="0.41450923680000001" blue="0.93896025419999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
