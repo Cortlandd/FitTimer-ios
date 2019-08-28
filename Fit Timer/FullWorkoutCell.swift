@@ -188,8 +188,6 @@ class FullWorkoutCell: UITableViewCell {
             countdownTimer.timerFinishingText = countdownTimer.counterLabel.text
         case .finishedAll:
             print("")
-        default:
-            break
         }
     }
     

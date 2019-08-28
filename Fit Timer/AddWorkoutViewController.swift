@@ -15,8 +15,8 @@ class AddWorkoutViewController: UIViewController, UINavigationControllerDelegate
 
     /************* Variables ***************/
     var WorkoutViewController: WorkoutViewController?
-    var speechSynthesizer: AVSpeechSynthesizer!
-    var speechUtterance: AVSpeechUtterance!
+    var speechSynthesizer: AVSpeechSynthesizer?
+    var speechUtterance: AVSpeechUtterance?
     var workout: Workout?
     var controllerTitle = "Add New Workout"
     var managedObjectContext: NSManagedObjectContext?
@@ -24,16 +24,16 @@ class AddWorkoutViewController: UIViewController, UINavigationControllerDelegate
     
     /************* UI Components ***************/
     @IBOutlet weak var pickerView: UIPickerView!
-    @IBOutlet weak var _workoutImage: FLAnimatedImageView!
+    @IBOutlet weak var workoutImage: FLAnimatedImageView!
     @IBOutlet weak var newWorkoutField: UITextField!
     @IBOutlet weak var soundSwitch: UISwitch!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     @IBAction func testSpeechButton(_ sender: Any) {
-        speechSynthesizer.speak(speechUtterance)
+        speechSynthesizer?.speak(speechUtterance!)
     }
     
-    @IBAction func _saveButton(_ sender: Any) {
+    @IBAction func saveButton(_ sender: Any) {
         
         guard let managedObjectContext = managedObjectContext else { return }
         
@@ -52,7 +52,7 @@ class AddWorkoutViewController: UIViewController, UINavigationControllerDelegate
         
         let nilData: Data? = nil // A hack so the below won't fucking crash if an image isn't selected
         
-        newWorkout.workoutImage = _workoutImage.animatedImage?.data ?? nilData
+        newWorkout.workoutImage = workoutImage.animatedImage?.data ?? nilData
         
         _ = navigationController?.popViewController(animated: true)
     }
@@ -70,9 +70,9 @@ class AddWorkoutViewController: UIViewController, UINavigationControllerDelegate
         speechSynthesizer = AVSpeechSynthesizer()
         speechUtterance = AVSpeechUtterance(string: newWorkoutField.text ?? "Enter A Workout")
         // Rate is to be adjusted for double words and single words
-        speechUtterance.rate = AVSpeechUtteranceDefaultSpeechRate
+        speechUtterance?.rate = AVSpeechUtteranceDefaultSpeechRate
         // Is to be changed by country in settings and default to country
-        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-IE")
+        speechUtterance?.voice = AVSpeechSynthesisVoice(language: "en-IE")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -90,6 +90,10 @@ class AddWorkoutViewController: UIViewController, UINavigationControllerDelegate
         
         speechUtterance = AVSpeechUtterance(string: textField.text!)
         
+        validateWorkoutText(textField)
+    }
+    
+    func validateWorkoutText(_ textField: UITextField) {
         if textField.text == "" {
             saveButton.isEnabled = false
         }
@@ -106,18 +110,6 @@ class AddWorkoutViewController: UIViewController, UINavigationControllerDelegate
             saveButton.isEnabled = true
         }
     }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -165,10 +157,10 @@ extension AddWorkoutViewController: SwiftyGiphyViewControllerDelegate {
         if let gifDownSized = item.downsizedImage {
             
             // Activity/Loading spinner
-            _workoutImage?.sd_setShowActivityIndicatorView(true)
-            _workoutImage?.sd_setIndicatorStyle(.gray)
+            workoutImage?.sd_setShowActivityIndicatorView(true)
+            workoutImage?.sd_setIndicatorStyle(.gray)
             
-            _workoutImage?.sd_setImage(with: gifDownSized.url)
+            workoutImage?.sd_setImage(with: gifDownSized.url)
             
             dismiss(animated: true, completion: nil)
         }
