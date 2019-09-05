@@ -103,6 +103,13 @@ class WorkoutViewController: UIViewController {
         
         semaphore = DispatchSemaphore(value: 1)
         
+        loadWorkouts()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        
+    }
+    
+    func loadWorkouts() {
         /*
          The loadPersistentStores(completionHandler:) method asynchronously loads the persistent store(s) and adds it to the persistent store coordinator.
          */
@@ -126,9 +133,6 @@ class WorkoutViewController: UIViewController {
                 
             }
         }
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
-        
     }
     
     func reloadTableViewAtIndex(_ index: Int) {
@@ -154,14 +158,15 @@ class WorkoutViewController: UIViewController {
         destinationViewController.managedObjectContext = persistentContainer.viewContext
         
         switch segue.identifier {
-        case "ShowWorkout":            
+        case "ShowWorkout":
+            print("Showing workout")
             if let indexPath = tableView.indexPathForSelectedRow {
                 // Configure View Controller
                 destinationViewController.workout = fetchResultsController.object(at: indexPath)
                 destinationViewController.selectedPickerRow = Int(fetchResultsController.object(at: indexPath).seconds)
             }
         default:
-            break
+            preconditionFailure("Unexpected segue identifier")
         }
         
     }
@@ -182,8 +187,6 @@ class WorkoutViewController: UIViewController {
         _noWorkoutsMessage.isHidden = hasWorkouts
         
     }
-    
-    
     
     func configure(_ cell: FullWorkoutCell, at indexPath: IndexPath) {
         
@@ -210,6 +213,24 @@ class WorkoutViewController: UIViewController {
         cell.currentCount = Int(workout.seconds)
         
         cell.reloadUI()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "addedNewWorkout") {
+            do {
+                try self.fetchResultsController.performFetch()
+            } catch {
+                let fetchError = error as NSError
+                print("Unable to Perform Fetch Request")
+                print("\(fetchError), \(fetchError.localizedDescription)")
+            }
+            updateView()
+        } else {
+            return
+        }
         
     }
 
@@ -260,12 +281,6 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    // Unnecessary
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        tableView.beginUpdates()
-//        tableView.endUpdates()
-//    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "ShowWorkout", sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
@@ -301,6 +316,13 @@ extension WorkoutViewController: NSFetchedResultsControllerDelegate {
         case .delete:
             if let indexPath = indexPath {
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                do {
+                    try persistentContainer.viewContext.save()
+                } catch {
+                    print("Unable to Save Changes")
+                    print("\(error), \(error.localizedDescription)")
+                }
+                updateView()
             }
         case .update:
             if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? FullWorkoutCell {

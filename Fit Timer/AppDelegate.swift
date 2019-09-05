@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,10 +30,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+        let defaults = UserDefaults.standard
+        
+        let isWorkoutPlaying = defaults.bool(forKey: "workoutStarted")
+        
+        // MARK: Tested and it doesn't crash if I disable notifications
+        if isWorkoutPlaying {
+            // Get the notification center
+            let center = UNUserNotificationCenter.current()
+            // Create the content for the notification
+            let content = UNMutableNotificationContent()
+            content.title = defaults.string(forKey: "workoutName")!
+            content.body = defaults.string(forKey: "workoutTime")!
+            
+            // Notification trigger
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
+            // Create request to display
+            let request = UNNotificationRequest(identifier: "WorkoutNotificationIdentifier", content: content, trigger: trigger)
+            
+            // Add request to notification center
+            center.add(request) { (error) in
+                if error != nil {
+                    print("error \(String(describing: error))")
+                }
+            }
+        } else {
+            return
+        }
+        
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        let defaults = UserDefaults.standard
+        
+        let isWorkoutPlaying = defaults.bool(forKey: "workoutStarted")
+        
+        if isWorkoutPlaying {
+            let center = UNUserNotificationCenter.current()
+            center.removeDeliveredNotifications(withIdentifiers: ["WorkoutNotificationIdentifier"])
+        } else {
+            return
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

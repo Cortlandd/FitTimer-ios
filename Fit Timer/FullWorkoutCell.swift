@@ -200,7 +200,14 @@ extension FullWorkoutCell: SRCountdownTimerDelegate {
     }
     
     func timerDidStart() {
+        let defaults = UserDefaults.standard
         
+        defaults.set(true, forKey: "workoutStarted")
+        
+        defaults.set(workoutLabel.text!, forKey: "workoutName")
+        defaults.set("\(countdownTimer.counterLabel.text!) Second Workout.", forKey: "workoutTime")
+        // Get remaining seconds
+        //defaults.set(Any?, forKey: "workoutRemainingTime")
     }
     
     func timerDidPause() {
@@ -212,10 +219,17 @@ extension FullWorkoutCell: SRCountdownTimerDelegate {
     }
     
     func timerDidEnd() {
+        if btnPause.titleLabel?.text == "RESUME" {
+            btnPause.setTitle("PAUSE", for: .normal)
+        }
         if fullWorkoutCellState == .playingAll {
             semaphore?.signal()
             delegate?.workoutDidFinish(self, index: index)
         } else {
+            // TODO MARK: May need to investigate
+            let defaults = UserDefaults.standard
+            defaults.set(false, forKey: "workoutStarted")
+            
             resetTimer()
             stopWorkout()
         }

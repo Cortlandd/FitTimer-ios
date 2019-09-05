@@ -141,7 +141,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ipy-M1-XON" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1100" y="-576"/>
+            <point key="canvasLocation" x="-277" y="-956"/>
         </scene>
         <!--Fit Timer-->
         <scene sceneID="9PI-ls-MH6">
@@ -202,7 +202,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sls-cV-IeV">
                             <color key="tintColor" red="0.42451322079999998" green="0.41450923680000001" blue="0.93896025419999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="e3z-wb-3Ky" kind="show" identifier="AddWorkout" id="17a-f3-NXA"/>
+                                <segue destination="e3z-wb-3Ky" kind="show" identifier="AddWorkout" id="ioo-5S-NfF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -516,7 +516,7 @@
                     <navigationItem key="navigationItem" title="Add New Workout" id="krP-A5-JrK">
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="Pf6-ph-rhp">
                             <connections>
-                                <action selector="saveButton:" destination="e3z-wb-3Ky" id="Hfo-yE-YaA"/>
+                                <action selector="saveButton:" destination="e3z-wb-3Ky" id="3hq-YW-bkV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

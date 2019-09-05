@@ -10,14 +10,16 @@ import UIKit
 import CoreData
 import AVFoundation
 import FLAnimatedImage
+import UserNotifications
 
-class AddWorkoutViewController: UIViewController, UINavigationControllerDelegate {
+class AddWorkoutViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate {
+    
+    private let persistentContainer = NSPersistentContainer(name: "Workouts")
 
     /************* Variables ***************/
     var WorkoutViewController: WorkoutViewController?
     var speechSynthesizer: AVSpeechSynthesizer?
     var speechUtterance: AVSpeechUtterance?
-    var workout: Workout?
     var controllerTitle = "Add New Workout"
     var managedObjectContext: NSManagedObjectContext?
     var selectedPickerRow: Int!
@@ -35,24 +37,28 @@ class AddWorkoutViewController: UIViewController, UINavigationControllerDelegate
     
     @IBAction func saveButton(_ sender: Any) {
         
-        guard let managedObjectContext = managedObjectContext else { return }
+        let defaults = UserDefaults.standard
         
         // Selected row in picker
         selectedPickerRow = pickerView.selectedRow(inComponent: 0)
         
         // Create Workout
-        let newWorkout = Workout(context: managedObjectContext)
+        let workout = Workout(context: persistentContainer.viewContext)
         
         // Configure Workout
-        newWorkout.createdAt = Date().timeIntervalSince1970
-        
-        newWorkout.workout = newWorkoutField.text!
-        
-        newWorkout.seconds = Int16(selectedPickerRow)
-        
+        workout.createdAt = Date().timeIntervalSince1970
+        workout.workout = newWorkoutField.text!
+        workout.seconds = Int16(selectedPickerRow)
         let nilData: Data? = nil // A hack so the below won't fucking crash if an image isn't selected
+        workout.workoutImage = workoutImage.animatedImage?.data ?? nilData
         
-        newWorkout.workoutImage = workoutImage.animatedImage?.data ?? nilData
+        do {
+            try persistentContainer.viewContext.save()
+            defaults.set(true, forKey: "addedNewWorkout")
+        } catch {
+            print("Unable to Save Changes")
+            print("\(error), \(error.localizedDescription)")
+        }
         
         _ = navigationController?.popViewController(animated: true)
     }
@@ -66,6 +72,7 @@ class AddWorkoutViewController: UIViewController, UINavigationControllerDelegate
         
         // Listen for text changes
         newWorkoutField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        newWorkoutField.delegate = self
 
         speechSynthesizer = AVSpeechSynthesizer()
         speechUtterance = AVSpeechUtterance(string: newWorkoutField.text ?? "Enter A Workout")
@@ -73,6 +80,21 @@ class AddWorkoutViewController: UIViewController, UINavigationControllerDelegate
         speechUtterance?.rate = AVSpeechUtteranceDefaultSpeechRate
         // Is to be changed by country in settings and default to country
         speechUtterance?.voice = AVSpeechSynthesisVoice(language: "en-IE")
+        
+        // Request permission to get in-app notifications
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (didAllow, error) in
+        }
+        
+        let tapOutsideGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
+        self.view.addGestureRecognizer(tapOutsideGesture)
+        
+        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
+            if let error = error {
+                print("Unable to Load Persistent Store")
+                print("\(error), \(error.localizedDescription)")
+                
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -147,6 +169,15 @@ extension AddWorkoutViewController: UIPickerViewDelegate, UIPickerViewDataSource
         } else {
             return "sec"
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
+    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        newWorkoutField.resignFirstResponder()
     }
     
 }
