@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Fit Timer.xcodeproj">
+      location = "group:/Volumes/Untitled/Development/ios/Fit Timer/Semaphore.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

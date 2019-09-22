@@ -86,13 +86,13 @@
 		7F8E8B61230DADBF00B8ACCE /* FullWorkoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullWorkoutCell.swift; sourceTree = "<group>"; };
 		7F8E8B63230DADBF00B8ACCE /* FullWorkoutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FullWorkoutCell.xib; sourceTree = "<group>"; };
 		7F9246FB230DF005003CAE15 /* SRCountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRCountdownTimer.swift; sourceTree = "<group>"; };
-		7FE8EA4F21187F6100FD1596 /* Fit Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FE8EA4F21187F6100FD1596 /* Semaphore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Semaphore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE8EA5221187F6100FD1596 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FE8EA5721187F6100FD1596 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7FE8EA5921187F6400FD1596 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7FE8EA5C21187F6400FD1596 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7FE8EA5E21187F6400FD1596 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7FE8EA6321187F6500FD1596 /* Fit TimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fit TimerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FE8EA6321187F6500FD1596 /* SemaphoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SemaphoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE8EA6721187F6500FD1596 /* Fit_TimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fit_TimerUITests.swift; sourceTree = "<group>"; };
 		7FE8EA6921187F6500FD1596 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FE8EA7421192E5F00FD1596 /* EditWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWorkoutViewController.swift; sourceTree = "<group>"; };
@@ -187,8 +187,8 @@
 		7FE8EA5021187F6100FD1596 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7FE8EA4F21187F6100FD1596 /* Fit Timer.app */,
-				7FE8EA6321187F6500FD1596 /* Fit TimerUITests.xctest */,
+				7FE8EA4F21187F6100FD1596 /* Semaphore.app */,
+				7FE8EA6321187F6500FD1596 /* SemaphoreUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -248,9 +248,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7FE8EA4E21187F6100FD1596 /* Fit Timer */ = {
+		7FE8EA4E21187F6100FD1596 /* Semaphore */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7FE8EA6C21187F6500FD1596 /* Build configuration list for PBXNativeTarget "Fit Timer" */;
+			buildConfigurationList = 7FE8EA6C21187F6500FD1596 /* Build configuration list for PBXNativeTarget "Semaphore" */;
 			buildPhases = (
 				3A29845982F189E95DEBF212 /* [CP] Check Pods Manifest.lock */,
 				7FE8EA4B21187F6100FD1596 /* Sources */,
@@ -262,14 +262,14 @@
 			);
 			dependencies = (
 			);
-			name = "Fit Timer";
+			name = Semaphore;
 			productName = "Fit Timer";
-			productReference = 7FE8EA4F21187F6100FD1596 /* Fit Timer.app */;
+			productReference = 7FE8EA4F21187F6100FD1596 /* Semaphore.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7FE8EA6221187F6500FD1596 /* Fit TimerUITests */ = {
+		7FE8EA6221187F6500FD1596 /* SemaphoreUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7FE8EA6F21187F6500FD1596 /* Build configuration list for PBXNativeTarget "Fit TimerUITests" */;
+			buildConfigurationList = 7FE8EA6F21187F6500FD1596 /* Build configuration list for PBXNativeTarget "SemaphoreUITests" */;
 			buildPhases = (
 				DCB1208A4516564AABBDD1DF /* [CP] Check Pods Manifest.lock */,
 				7FE8EA5F21187F6500FD1596 /* Sources */,
@@ -281,9 +281,9 @@
 			dependencies = (
 				7FE8EA6521187F6500FD1596 /* PBXTargetDependency */,
 			);
-			name = "Fit TimerUITests";
+			name = SemaphoreUITests;
 			productName = "Fit TimerUITests";
-			productReference = 7FE8EA6321187F6500FD1596 /* Fit TimerUITests.xctest */;
+			productReference = 7FE8EA6321187F6500FD1596 /* SemaphoreUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -307,7 +307,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7FE8EA4A21187F6100FD1596 /* Build configuration list for PBXProject "Fit Timer" */;
+			buildConfigurationList = 7FE8EA4A21187F6100FD1596 /* Build configuration list for PBXProject "Semaphore" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -320,8 +320,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7FE8EA4E21187F6100FD1596 /* Fit Timer */,
-				7FE8EA6221187F6500FD1596 /* Fit TimerUITests */,
+				7FE8EA4E21187F6100FD1596 /* Semaphore */,
+				7FE8EA6221187F6500FD1596 /* SemaphoreUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -452,7 +452,7 @@
 /* Begin PBXTargetDependency section */
 		7FE8EA6521187F6500FD1596 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7FE8EA4E21187F6100FD1596 /* Fit Timer */;
+			target = 7FE8EA4E21187F6100FD1596 /* Semaphore */;
 			targetProxy = 7FE8EA6421187F6500FD1596 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -605,7 +605,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "cortland.xyz.Fit-Timer";
+				PRODUCT_BUNDLE_IDENTIFIER = cortland.xyz.semaphore.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -624,7 +624,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "cortland.xyz.Fit-Timer";
+				PRODUCT_BUNDLE_IDENTIFIER = cortland.xyz.semaphore.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -676,7 +676,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7FE8EA4A21187F6100FD1596 /* Build configuration list for PBXProject "Fit Timer" */ = {
+		7FE8EA4A21187F6100FD1596 /* Build configuration list for PBXProject "Semaphore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7FE8EA6A21187F6500FD1596 /* Debug */,
@@ -685,7 +685,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7FE8EA6C21187F6500FD1596 /* Build configuration list for PBXNativeTarget "Fit Timer" */ = {
+		7FE8EA6C21187F6500FD1596 /* Build configuration list for PBXNativeTarget "Semaphore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7FE8EA6D21187F6500FD1596 /* Debug */,
@@ -694,7 +694,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7FE8EA6F21187F6500FD1596 /* Build configuration list for PBXNativeTarget "Fit TimerUITests" */ = {
+		7FE8EA6F21187F6500FD1596 /* Build configuration list for PBXNativeTarget "SemaphoreUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7FE8EA7021187F6500FD1596 /* Debug */,
