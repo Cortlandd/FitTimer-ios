@@ -61,7 +61,7 @@ class FullWorkoutCell: UITableViewCell {
     var state: CellState = .collapsed
     var index: Int = 0
     weak var delegate: FullWorkoutCellDelegate?
-    var currentCount: Int! // Set from configure() in Timerviewcontroller
+    var currentCount: Int! // Set from configure() in WorkoutViewcontroller
     var fullWorkoutCellState: FullWorkoutCellState = .stoppedAll {
         didSet {
             DispatchQueue.main.async {
@@ -189,6 +189,24 @@ class FullWorkoutCell: UITableViewCell {
         case .finishedAll:
             print("")
         }
+    }
+    
+    /**
+     * Calculate value in hours, minutes, and seconds and return it as a string.
+     */
+    func getHoursAndMinutesAndSeconds(remainingSeconds: Int) -> (String) {
+        let (hours, minutes, seconds) = secondsToHoursMinutesSeconds(seconds: remainingSeconds)
+        let hoursString = hours < 10 ? "0" + hours.description : hours.description
+        let minutesString = minutes < 10 ? "0" + minutes.description : minutes.description
+        let secondString = seconds < 10 ? "0" + seconds.description : seconds.description
+        return hoursString + ":" + minutesString + ":" + secondString
+    }
+    
+    /**
+     * Converts total seconds to Hours, Minutes, and Seconds. Returning a tuple of all values
+     */
+    func secondsToHoursMinutesSeconds(seconds : Int) -> (Int, Int, Int) {
+        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
     
 }

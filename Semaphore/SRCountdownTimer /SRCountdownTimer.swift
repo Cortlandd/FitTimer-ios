@@ -52,8 +52,8 @@ public class SRCountdownTimer: UIView {
     
     public weak var delegate: SRCountdownTimerDelegate?
     
-    // use minutes and seconds for presentation
-    public var useMinutesAndSecondsRepresentation = false
+    /* use hours, minutes and seconds for presentation */
+    public var useHoursAndMinutesAndSecondsRepresentation = true
     
     private var timer: Timer?
     private var beginingValue: Int = 1
@@ -83,8 +83,8 @@ public class SRCountdownTimer: UIView {
                 if let text = timerFinishingText, currentCounterValue == 0 {
                     counterLabel.text = text
                 } else {
-                    if useMinutesAndSecondsRepresentation {
-                        counterLabel.text = getMinutesAndSeconds(remainingSeconds: currentCounterValue)
+                    if useHoursAndMinutesAndSecondsRepresentation {
+                        counterLabel.text = getHoursAndMinutesAndSeconds(remainingSeconds: currentCounterValue)
                     } else {
                         counterLabel.text = "\(currentCounterValue)"
                     }
@@ -203,6 +203,25 @@ public class SRCountdownTimer: UIView {
         let secondString = seconds < 10 ? "0" + seconds.description : seconds.description
         return minutes.description + ":" + secondString
     }
+
+    /**
+     * Calculate value in hours, minutes, and seconds and return it as a string.
+     */
+    private func getHoursAndMinutesAndSeconds(remainingSeconds: Int) -> (String) {
+        let (hours, minutes, seconds) = secondsToHoursMinutesSeconds(seconds: remainingSeconds)
+        let hoursString = hours < 10 ? "0" + hours.description : hours.description
+        let minutesString = minutes < 10 ? "0" + minutes.description : minutes.description
+        let secondString = seconds < 10 ? "0" + seconds.description : seconds.description
+        return hoursString + ":" + minutesString + ":" + secondString
+    }
+    
+    /**
+     * Converts total seconds to Hours, Minutes, and Seconds. Returning a tuple of all values
+     */
+    private func secondsToHoursMinutesSeconds(seconds : Int) -> (Int, Int, Int) {
+        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+    }
+    
     
     // MARK: Private methods
     @objc private func timerFired(_ timer: Timer) {

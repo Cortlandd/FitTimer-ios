@@ -193,6 +193,8 @@ class WorkoutViewController: UIViewController {
         // Fetch Workout
         let workout = fetchResultsController.object(at: indexPath)
         
+        let totalTime = workout.hours * (60 * 60) + workout.minutes * 60 + workout.seconds * 1
+        
         let image: FLAnimatedImage? = FLAnimatedImage.init(animatedGIFData: workout.workoutImage)
         
         cell.delegate = self
@@ -206,11 +208,12 @@ class WorkoutViewController: UIViewController {
         cell.workoutLabel?.text = workout.workout
         //cell.secondsLabel?.text = workout.seconds.description
         
-        cell.countdownTimer.counterLabel.text = workout.seconds.description
+        cell.countdownTimer.counterLabel.text = cell.getHoursAndMinutesAndSeconds(remainingSeconds: Int(totalTime))
         cell.workoutImage.animatedImage = image
         
         cell.semaphore = self.semaphore
-        cell.currentCount = Int(workout.seconds)
+        //;
+        cell.currentCount = Int(totalTime)
         
         cell.reloadUI()
         

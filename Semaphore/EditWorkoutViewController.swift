@@ -19,6 +19,9 @@ class EditWorkoutViewController: UIViewController, UINavigationControllerDelegat
     var workout: Workout?
     var managedObjectContext: NSManagedObjectContext?
     var selectedPickerRow: Int!
+    var hours = 0
+    var minutes = 0
+    var seconds = 0
     
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var _workoutImage: FLAnimatedImageView!
@@ -34,7 +37,9 @@ class EditWorkoutViewController: UIViewController, UINavigationControllerDelegat
         
         guard let managedObjectContext = managedObjectContext else { return }
         
-        selectedPickerRow = pickerView.selectedRow(inComponent: 0)
+        hours = pickerView.selectedRow(inComponent: 0)
+        minutes = pickerView.selectedRow(inComponent: 2)
+        seconds = pickerView.selectedRow(inComponent: 4)
         
         if workout == nil {
             
@@ -50,7 +55,9 @@ class EditWorkoutViewController: UIViewController, UINavigationControllerDelegat
         if let workout = workout {
             // Configure Workout
             workout.workout = newWorkoutField.text!
-            workout.seconds = Int16(selectedPickerRow)
+            workout.hours = Int16(hours)
+            workout.minutes = Int16(minutes)
+            workout.seconds = Int16(seconds)
             let nilData: Data? = nil // A hack so the below won't fucking crash. smh
             workout.workoutImage = _workoutImage.animatedImage?.data ?? nilData
         }
@@ -82,7 +89,9 @@ class EditWorkoutViewController: UIViewController, UINavigationControllerDelegat
         
         if let workout = workout {
             newWorkoutField.text = workout.workout
-            pickerView.selectRow(selectedPickerRow, inComponent: 0, animated: true)
+            pickerView.selectRow(Int(workout.hours), inComponent: 0, animated: true) // Update Hours
+            pickerView.selectRow(Int(workout.minutes), inComponent: 2, animated: true) // Update Minutes
+            pickerView.selectRow(Int(workout.seconds), inComponent: 4, animated: true) // Update Seconds
             let image: FLAnimatedImage? = FLAnimatedImage.init(animatedGIFData: workout.workoutImage)
             _workoutImage?.animatedImage = image
         }
@@ -115,17 +124,19 @@ class EditWorkoutViewController: UIViewController, UINavigationControllerDelegat
         
         if textField.text == "" {
             saveButton.isEnabled = false
+        } else {
+            saveButton.isEnabled = true
         }
-        if pickerView.selectedRow(inComponent: 0) == 0 {
+        
+        if textField.text == "" && pickerView.selectedRow(inComponent: 0) == 0 && pickerView.selectedRow(inComponent: 2) == 0 && pickerView.selectedRow(inComponent: 4) == 0 {
             saveButton.isEnabled = false
+        } else {
+            saveButton.isEnabled = true
         }
-        if textField.text == "" && pickerView.selectedRow(inComponent: 0) == 0 {
+        
+        if pickerView.selectedRow(inComponent: 0) == 0 && pickerView.selectedRow(inComponent: 2) == 0 && pickerView.selectedRow(inComponent: 4) == 0 {
             saveButton.isEnabled = false
-        }
-        if textField.text != "" &&  pickerView.selectedRow(inComponent: 0) == 0 {
-            saveButton.isEnabled = false
-        }
-        if textField.text != "" && pickerView.selectedRow(inComponent: 0) != 0 {
+        } else {
             saveButton.isEnabled = true
         }
     }
@@ -140,39 +151,58 @@ class EditWorkoutViewController: UIViewController, UINavigationControllerDelegat
 extension EditWorkoutViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        return 50.0
+        return pickerView.frame.size.width / 8
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
+        return 6
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // if 0 is selected disable save button.
-        if component == 0 {
-            if row == 0 {
-                saveButton.isEnabled = false
-            }
+        switch component {
+        case 0:
+            hours = row
+        case 2:
+            minutes = row
+        case 4:
+            seconds = row
+        default:
+            break;
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if component == 0 {
-            return 60
-        } else {
+        switch component {
+        case 0:
+            return 24
+        case 1,3,5:
             return 1
+        case 2,4:
+            return 60
+        default:
+            return 0
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if component == 0 {
-            return "\(row)"
-        } else {
+        switch component {
+        case 0:
+            return (0...9).contains(row) ? "0\(row)" : "\(row)"
+        case 1:
+            return "hr"
+        case 2:
+            return (0...9).contains(row) ? "0\(row)" : "\(row)"
+        case 3:
+            return "min"
+        case 4:
+            return (0...9).contains(row) ? "0\(row)" : "\(row)"
+        case 5:
             return "sec"
+        default:
+            return ""
         }
     }
-    
-    
 }
 
 extension EditWorkoutViewController: SwiftyGiphyViewControllerDelegate {
