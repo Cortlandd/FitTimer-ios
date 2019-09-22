@@ -176,8 +176,8 @@
 		7FE8EA4621187F6100FD1596 = {
 			isa = PBXGroup;
 			children = (
-				7FE8EA5121187F6100FD1596 /* Fit Timer */,
-				7FE8EA6621187F6500FD1596 /* Fit TimerUITests */,
+				7FE8EA5121187F6100FD1596 /* Semaphore */,
+				7FE8EA6621187F6500FD1596 /* SemaphoreUITests */,
 				7FE8EA5021187F6100FD1596 /* Products */,
 				DB095BC29DA730B7A0906819 /* Pods */,
 				9B1004A6310ABD67B5C07017 /* Frameworks */,
@@ -193,7 +193,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7FE8EA5121187F6100FD1596 /* Fit Timer */ = {
+		7FE8EA5121187F6100FD1596 /* Semaphore */ = {
 			isa = PBXGroup;
 			children = (
 				7F9246FA230DEFC5003CAE15 /* SRCountdownTimer  */,
@@ -212,16 +212,16 @@
 				7F8E8B5E230B89A600B8ACCE /* SettingsTableViewController.swift */,
 				7F22448E23107B770079DE8E /* AddWorkoutViewController.swift */,
 			);
-			path = "Fit Timer";
+			path = Semaphore;
 			sourceTree = "<group>";
 		};
-		7FE8EA6621187F6500FD1596 /* Fit TimerUITests */ = {
+		7FE8EA6621187F6500FD1596 /* SemaphoreUITests */ = {
 			isa = PBXGroup;
 			children = (
 				7FE8EA6721187F6500FD1596 /* Fit_TimerUITests.swift */,
 				7FE8EA6921187F6500FD1596 /* Info.plist */,
 			);
-			path = "Fit TimerUITests";
+			path = SemaphoreUITests;
 			sourceTree = "<group>";
 		};
 		9B1004A6310ABD67B5C07017 /* Frameworks */ = {
