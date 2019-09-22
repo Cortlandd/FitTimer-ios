@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D266958711DBF4458D9C63C /* Pods_Fit_Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D24483537D34EE0CCB28F4A1 /* Pods_Fit_Timer.framework */; };
+		5294AF60DDAAE0CA1F595998 /* Pods_SemaphoreUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F503E0DAB7C8D5503E1E9CCA /* Pods_SemaphoreUITests.framework */; };
 		7F08E397212B5C4600D6D9C9 /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08E396212B5C4600D6D9C9 /* WorkoutViewController.swift */; };
 		7F22448F23107B770079DE8E /* AddWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F22448E23107B770079DE8E /* AddWorkoutViewController.swift */; };
 		7F6CC1ED22DF5705004BD587 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7F6CC1EC22DF5705004BD587 /* bell.wav */; };
@@ -42,7 +42,7 @@
 		7FE8EA5D21187F6400FD1596 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8EA5B21187F6400FD1596 /* LaunchScreen.storyboard */; };
 		7FE8EA6821187F6500FD1596 /* Fit_TimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8EA6721187F6500FD1596 /* Fit_TimerUITests.swift */; };
 		7FE8EA7521192E5F00FD1596 /* EditWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8EA7421192E5F00FD1596 /* EditWorkoutViewController.swift */; };
-		A644F40080557EE6C478FC94 /* Pods_Fit_TimerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02312E9AB34A57C15DDBD0CE /* Pods_Fit_TimerUITests.framework */; };
+		F5CCD48393789E5437164181 /* Pods_Semaphore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 395614DD599E1EE2B2C27A53 /* Pods_Semaphore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,8 +56,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02312E9AB34A57C15DDBD0CE /* Pods_Fit_TimerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fit_TimerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		395614DD599E1EE2B2C27A53 /* Pods_Semaphore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Semaphore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		40E470EE36D995F0866BB1CE /* Pods-Semaphore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Semaphore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Semaphore/Pods-Semaphore.debug.xcconfig"; sourceTree = "<group>"; };
+		45B7D80F3D10BD43BF475961 /* Pods-Semaphore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Semaphore.release.xcconfig"; path = "Pods/Target Support Files/Pods-Semaphore/Pods-Semaphore.release.xcconfig"; sourceTree = "<group>"; };
 		5C354182339AB049E451B576 /* Pods-Fit Timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit Timer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fit Timer/Pods-Fit Timer.debug.xcconfig"; sourceTree = "<group>"; };
+		785D11C20861A4BCB7A1FC0D /* Pods-SemaphoreUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SemaphoreUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SemaphoreUITests/Pods-SemaphoreUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7F08E396212B5C4600D6D9C9 /* WorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
 		7F22448E23107B770079DE8E /* AddWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewController.swift; sourceTree = "<group>"; };
 		7F6CC1EC22DF5705004BD587 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell.wav; sourceTree = "<group>"; };
@@ -98,8 +101,9 @@
 		7FE8EA7421192E5F00FD1596 /* EditWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWorkoutViewController.swift; sourceTree = "<group>"; };
 		9D8DEAAF5AE84DB2CDB214D2 /* Pods-Fit TimerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit TimerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fit TimerUITests/Pods-Fit TimerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AD2EAB6074612F8E6F1BC713 /* Pods-Fit TimerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit TimerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fit TimerUITests/Pods-Fit TimerUITests.release.xcconfig"; sourceTree = "<group>"; };
-		D24483537D34EE0CCB28F4A1 /* Pods_Fit_Timer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fit_Timer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E362BA06B45EA71EA7A9BFC9 /* Pods-SemaphoreUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SemaphoreUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SemaphoreUITests/Pods-SemaphoreUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EC87178FA0D6FB502FBCB525 /* Pods-Fit Timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit Timer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fit Timer/Pods-Fit Timer.release.xcconfig"; sourceTree = "<group>"; };
+		F503E0DAB7C8D5503E1E9CCA /* Pods_SemaphoreUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SemaphoreUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +112,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F6CC1F622E62969004BD587 /* AVFoundation.framework in Frameworks */,
-				5D266958711DBF4458D9C63C /* Pods_Fit_Timer.framework in Frameworks */,
+				F5CCD48393789E5437164181 /* Pods_Semaphore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A644F40080557EE6C478FC94 /* Pods_Fit_TimerUITests.framework in Frameworks */,
+				5294AF60DDAAE0CA1F595998 /* Pods_SemaphoreUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,8 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				7F6CC1F522E62969004BD587 /* AVFoundation.framework */,
-				D24483537D34EE0CCB28F4A1 /* Pods_Fit_Timer.framework */,
-				02312E9AB34A57C15DDBD0CE /* Pods_Fit_TimerUITests.framework */,
+				395614DD599E1EE2B2C27A53 /* Pods_Semaphore.framework */,
+				F503E0DAB7C8D5503E1E9CCA /* Pods_SemaphoreUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -241,6 +245,10 @@
 				EC87178FA0D6FB502FBCB525 /* Pods-Fit Timer.release.xcconfig */,
 				9D8DEAAF5AE84DB2CDB214D2 /* Pods-Fit TimerUITests.debug.xcconfig */,
 				AD2EAB6074612F8E6F1BC713 /* Pods-Fit TimerUITests.release.xcconfig */,
+				40E470EE36D995F0866BB1CE /* Pods-Semaphore.debug.xcconfig */,
+				45B7D80F3D10BD43BF475961 /* Pods-Semaphore.release.xcconfig */,
+				E362BA06B45EA71EA7A9BFC9 /* Pods-SemaphoreUITests.debug.xcconfig */,
+				785D11C20861A4BCB7A1FC0D /* Pods-SemaphoreUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -363,7 +371,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Fit Timer-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Semaphore-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -381,7 +389,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Fit TimerUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SemaphoreUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -394,15 +402,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Fit Timer/Pods-Fit Timer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Semaphore/Pods-Semaphore-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Fit Timer/Pods-Fit Timer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Semaphore/Pods-Semaphore-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fit Timer/Pods-Fit Timer-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Semaphore/Pods-Semaphore-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -595,7 +603,7 @@
 		};
 		7FE8EA6D21187F6500FD1596 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C354182339AB049E451B576 /* Pods-Fit Timer.debug.xcconfig */;
+			baseConfigurationReference = 40E470EE36D995F0866BB1CE /* Pods-Semaphore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -614,7 +622,7 @@
 		};
 		7FE8EA6E21187F6500FD1596 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC87178FA0D6FB502FBCB525 /* Pods-Fit Timer.release.xcconfig */;
+			baseConfigurationReference = 45B7D80F3D10BD43BF475961 /* Pods-Semaphore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -633,7 +641,7 @@
 		};
 		7FE8EA7021187F6500FD1596 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D8DEAAF5AE84DB2CDB214D2 /* Pods-Fit TimerUITests.debug.xcconfig */;
+			baseConfigurationReference = E362BA06B45EA71EA7A9BFC9 /* Pods-SemaphoreUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -654,7 +662,7 @@
 		};
 		7FE8EA7121187F6500FD1596 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AD2EAB6074612F8E6F1BC713 /* Pods-Fit TimerUITests.release.xcconfig */;
+			baseConfigurationReference = 785D11C20861A4BCB7A1FC0D /* Pods-SemaphoreUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

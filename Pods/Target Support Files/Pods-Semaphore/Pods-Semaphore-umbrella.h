@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_Fit_TimerVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_Fit_TimerVersionString[];
+FOUNDATION_EXPORT double Pods_SemaphoreVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_SemaphoreVersionString[];
 

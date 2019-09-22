@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_Fit_TimerUITestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_Fit_TimerUITestsVersionString[];
+FOUNDATION_EXPORT double Pods_SemaphoreUITestsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_SemaphoreUITestsVersionString[];
 
