@@ -175,19 +175,18 @@
                         <barButtonItem key="leftBarButtonItem" title="Settings" image="gear-7" id="Io2-5W-YXp">
                             <color key="tintColor" red="0.42451322078704834" green="0.41450923681259155" blue="0.93896025419235229" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="ngr-vX-ce3" kind="show" id="9kb-tL-3SB"/>
+                                <segue destination="ngr-vX-ce3" kind="show" identifier="Settings" id="9kb-tL-3SB"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="sls-cV-IeV">
-                            <color key="tintColor" red="0.42451322079999998" green="0.41450923680000001" blue="0.93896025419999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="GmQ-QP-hRW">
                             <connections>
-                                <segue destination="e3z-wb-3Ky" kind="show" identifier="AddWorkout" id="ioo-5S-NfF"/>
+                                <segue destination="e3z-wb-3Ky" kind="show" identifier="NewWorkout" id="xNX-VQ-eZO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="_addNewTimer" destination="sls-cV-IeV" id="FiZ-7m-tuB"/>
+                        <outlet property="_addNewTimer" destination="GmQ-QP-hRW" id="qDd-IN-bwX"/>
                         <outlet property="_noWorkoutsMessage" destination="807-3v-8Kd" id="dk3-4k-F1Z"/>
                         <outlet property="_playAllButton" destination="AdH-gs-i1F" id="jz8-qN-0de"/>
                         <outlet property="tableView" destination="nC6-Ai-IDH" id="XEk-di-p2B"/>

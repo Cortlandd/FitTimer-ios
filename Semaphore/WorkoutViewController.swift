@@ -92,6 +92,7 @@ class WorkoutViewController: UIViewController {
     
     @IBOutlet weak var _addNewTimer: UIBarButtonItem!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -152,6 +153,11 @@ class WorkoutViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.destination is AddWorkoutViewController {
+            let viewController = segue.destination as! AddWorkoutViewController
+            viewController.managedObjectContext = persistentContainer.viewContext
+        }
         guard let destinationViewController = segue.destination as? EditWorkoutViewController else { return }
         
         // Configure View Controller
@@ -159,7 +165,7 @@ class WorkoutViewController: UIViewController {
         
         switch segue.identifier {
         case "ShowWorkout":
-            print("Showing workout")
+            print("Showing Activity")
             if let indexPath = tableView.indexPathForSelectedRow {
                 // Configure View Controller
                 destinationViewController.workout = fetchResultsController.object(at: indexPath)
@@ -216,24 +222,6 @@ class WorkoutViewController: UIViewController {
         cell.currentCount = Int(totalTime)
         
         cell.reloadUI()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let defaults = UserDefaults.standard
-        if defaults.bool(forKey: "addedNewWorkout") {
-            do {
-                try self.fetchResultsController.performFetch()
-            } catch {
-                let fetchError = error as NSError
-                print("Unable to Perform Fetch Request")
-                print("\(fetchError), \(fetchError.localizedDescription)")
-            }
-            updateView()
-        } else {
-            return
-        }
         
     }
 

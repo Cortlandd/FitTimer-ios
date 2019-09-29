@@ -13,8 +13,6 @@ import FLAnimatedImage
 import UserNotifications
 
 class AddWorkoutViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate {
-    
-    private let persistentContainer = NSPersistentContainer(name: "Workouts")
 
     /************* Variables ***************/
     var WorkoutViewController: WorkoutViewController?
@@ -40,10 +38,10 @@ class AddWorkoutViewController: UIViewController, UINavigationControllerDelegate
     
     @IBAction func saveButton(_ sender: Any) {
         
-        let defaults = UserDefaults.standard
+        guard let managedObjectContext = managedObjectContext else { return }
         
         // Create Workout
-        let workout = Workout(context: persistentContainer.viewContext)
+        let workout = Workout(context: managedObjectContext)
         
         // Configure Workout
         workout.createdAt = Date().timeIntervalSince1970
@@ -55,8 +53,7 @@ class AddWorkoutViewController: UIViewController, UINavigationControllerDelegate
         workout.workoutImage = workoutImage.animatedImage?.data ?? nilData
         
         do {
-            try persistentContainer.viewContext.save()
-            defaults.set(true, forKey: "addedNewWorkout")
+            try managedObjectContext.save()
         } catch {
             print("Unable to Save Changes")
             print("\(error), \(error.localizedDescription)")
@@ -89,14 +86,7 @@ class AddWorkoutViewController: UIViewController, UINavigationControllerDelegate
         
         let tapOutsideGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
         self.view.addGestureRecognizer(tapOutsideGesture)
-        
-        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
-            if let error = error {
-                print("Unable to Load Persistent Store")
-                print("\(error), \(error.localizedDescription)")
-                
-            }
-        }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
