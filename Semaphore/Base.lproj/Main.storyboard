@@ -172,17 +172,19 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Semaphore" id="kHw-IU-KNw">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Wcm-sk-Kry"/>
-                        <barButtonItem key="leftBarButtonItem" title="Settings" image="gear-7" id="Io2-5W-YXp">
-                            <color key="tintColor" red="0.42451322078704834" green="0.41450923681259155" blue="0.93896025419235229" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <segue destination="ngr-vX-ce3" kind="show" identifier="Settings" id="9kb-tL-3SB"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="GmQ-QP-hRW">
-                            <connections>
-                                <segue destination="e3z-wb-3Ky" kind="show" identifier="NewWorkout" id="xNX-VQ-eZO"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="GmQ-QP-hRW">
+                                <connections>
+                                    <segue destination="e3z-wb-3Ky" kind="show" identifier="NewWorkout" id="xNX-VQ-eZO"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Settings" image="gear-7" id="Io2-5W-YXp">
+                                <color key="tintColor" red="0.42451322078704834" green="0.41450923681259155" blue="0.93896025419235229" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <segue destination="ngr-vX-ce3" kind="show" identifier="Settings" id="9kb-tL-3SB"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

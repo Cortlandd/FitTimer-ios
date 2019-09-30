@@ -106,6 +106,9 @@ class WorkoutViewController: UIViewController {
         
         loadWorkouts()
         
+        let leftEditButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTableCell))
+        self.navigationItem.leftBarButtonItem = leftEditButton
+        
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         
     }
@@ -134,6 +137,11 @@ class WorkoutViewController: UIViewController {
                 
             }
         }
+    }
+    
+    @objc func editTableCell(sender: UIBarButtonItem) {
+        tableView.setEditing(!tableView.isEditing, animated: true) // Set opposite value of current editing status
+        navigationItem.leftBarButtonItem?.title = tableView.isEditing ? "Done" : "Edit" // Set title depending on the editing status
     }
     
     func reloadTableViewAtIndex(_ index: Int) {
