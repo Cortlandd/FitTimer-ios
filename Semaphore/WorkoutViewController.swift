@@ -61,7 +61,9 @@ class WorkoutViewController: UIViewController {
                         break
                     }
                     self.semaphore!.wait()
-                    cell.playAll()
+                    DispatchQueue.main.async {
+                        cell.playAll()
+                    }
                 }
             }
             
@@ -361,10 +363,8 @@ extension WorkoutViewController: FullWorkoutCellDelegate {
         // TODO MARK find out if this is allocating memory each time
         let cells = self.tableView.visibleCells as! [FullWorkoutCell]
         
-        // Check if finished workout is the last in index
+        // Check if finished Activiy is the last in index
         if index == cells.last?.index {
-            
-            print("Workout Complete")
             
             DispatchQueue.global().async {
                 self.dwi?.cancel()
